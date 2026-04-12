@@ -1,0 +1,396 @@
+/** @format */
+
+@use "settings";
+@use "mixins";
+@use "reset";
+
+/* ------- General [Elements] ------- */
+
+body {
+	color: var(--text-primary);
+	font-size: var(--font-size-body);
+	font-family:
+		"Open Sans",
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	font-variation-settings: "wdth" 100;
+	line-height: 1.5;
+}
+
+.h2 {
+	margin-block-end: var(--space-2xs);
+	border-bottom: 2px solid currentColor;
+	color: var(--text-secondary);
+	color: var(--background-color-secondary);
+	text-transform: capitalize;
+}
+
+.h3 {
+	text-transform: capitalize;
+	margin-block-start: var(--space-3xs);
+	text-decoration: underline;
+}
+
+.h3,
+p {
+	margin-block-end: var(--space-3xs);
+}
+
+a,
+p,
+li {
+	/* somebrowsers don't break links or long words by default */
+	// overflow-wrap: break-word;
+	overflow-wrap: anywhere;
+}
+
+a:is(:link, :visited) {
+	color: inherit;
+}
+
+a:has(> svg) {
+	display: inline-flex;
+}
+
+ul {
+	padding-inline-start: 0;
+	display: grid;
+	gap: 0.5em;
+}
+
+li {
+	list-style: circle;
+}
+
+/* ------- Composition ------- */
+
+.page-section {
+	padding-block: var(--padding-page-section);
+	padding-inline: var(--space-l-3xl);
+	display: grid;
+	gap: var(--space-xs);
+	/* 
+	# fix internal link scroll for fixed nav
+
+	## Detail
+	
+	Because the nav has position: sticky, 
+	clicking internal links makes sections
+	appear behind the nav rather than under it
+
+	to fix this, javascript is used, 
+	but since this is a progressive enhancement
+	project I want this to work even without js.
+
+	## IMPORTANT NOTES:
+	
+	- This solution would work without js for
+	screen readers, but the nav menu can't
+	be displayed without js because clicking
+	the nav button doesn't work without js
+	- css only solution would not work if page
+	is resized becuause the calculation below
+	will not recalculate without js
+
+	## Calculation
+
+	- 4 * var(--padding-page-section)
+	  - the nav has double margin-block-start
+	and double margin-block-end of each section
+	- var(--font-size-large-icon)
+	  - the font-size as part of height calculation
+		is reliable for calculating the 
+		height of the nav's svg because it 
+		has no borders, margin, or padding
+		and line height is removed by 
+		giving the parent display:grid.
+
+	 */
+	--nav-height: calc(4 * var(--padding-page-section) + var(--font-size-large-icon));
+	scroll-margin-top: var(--nav-height);
+}
+
+.page-section:first-child {
+	padding-block-start: calc(2 * var(--padding-page-section));
+}
+
+.page-section:is(:last-child, :last-of-type) {
+	padding-block-end: calc(2 * var(--padding-page-section));
+}
+
+.page-section:not(.bg-color-secondary) a {
+	color: var(--background-color-secondary);
+	color: var(--text-bluish-lighter);
+	// border: 3px solid currentColor;
+	// border-radius: 8px;
+}
+
+.subsection-description {
+	margin-block: var(--space-s-l);
+}
+
+/* ------- Components ------- */
+
+/* --- Nav --- */
+
+.nav {
+	display: grid;
+	place-items: center;
+	place-content: center;
+	text-align: center;
+	position: sticky;
+	top: 0;
+}
+
+.nav-button {
+	padding: 0;
+	display: inline-flex;
+	background-color: transparent;
+	border: none;
+}
+
+.nav-icons {
+	display: grid;
+}
+
+[data-status="nav-hidden"] .nav-icons .menu-x {
+	display: none;
+}
+
+[data-status="nav-hidden"] .nav__ul {
+	@include mixins.screen-readers-only;
+}
+
+[data-status="nav-shown"] .nav-icons .menu-bars {
+	display: none;
+}
+
+.nav__li {
+	list-style: none;
+	text-transform: capitalize;
+}
+
+.nav__link {
+	text-decoration: none;
+	font-size: var(--step-1);
+	font-weight: 900;
+}
+
+// nav .fa-icon {
+// 	font-size: var(--step-4);
+// }
+
+/* --- Header [Profile hero - Contact] --- */
+
+/* Profile hero */
+
+.profile-hero {
+	text-align: center;
+	display: grid;
+	place-items: center;
+}
+
+.personal-photo {
+	aspect-ratio: 1 / 1;
+	width: var(--photo-size-190-300);
+	border-width: 10px;
+	border-color: var(--accent-yellow);
+	border-style: solid;
+	border-radius: 50px;
+	margin-block-start: var(--photo-margin-b-s);
+	margin-block-end: var(--photo-margin-b-e);
+}
+
+.pf-version-2 {
+	background: radial-gradient(
+		circle,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(244, 185, 66, 1) 80%
+	);
+	border-color: var(--text-secondary-bg);
+}
+
+.name {
+	display: grid;
+	justify-items: center;
+	font-weight: 900;
+}
+
+.name::after {
+	display: block;
+	content: "";
+	width: 40px;
+	height: 3px;
+	background-color: var(--text-muted);
+	border-radius: 50rem;
+	margin-block: var(--space-2xs);
+}
+
+.job-target {
+	text-transform: uppercase;
+	font-weight: 900;
+}
+
+/* Contact */
+
+.nationality__h3 {
+	text-transform: uppercase;
+	color: var(--text-muted);
+	font-size: var(--step-0);
+	letter-spacing: 0.125em; /* 2px */
+	margin-block-start: var(--space-2xs);
+	margin-block-end: 0;
+}
+
+/* Technical Skills */
+
+.page-section.technical-skills {
+	/* display: grid; on .page-section */
+	gap: 0;
+}
+
+.skill {
+	padding: 0.25em 0.5em;
+	display: inline-block;
+	margin-block: var(--space-3xs);
+	margin-inline: 0.0625em;
+	border: 2px solid currentcolor;
+	border-radius: 4px;
+}
+
+/* Github Projects */
+
+.work-title {
+	color: var(--text-bluish-light);
+}
+
+.screenshot {
+	border: var(--screenshot-border);
+	border-radius: var(--screenshot-border-radius);
+	margin-block: var(--space-xs-m);
+	box-shadow: var(--screenshot-boxshadow);
+}
+
+/* Soft Skills */
+
+// .soft-skills__ul {
+
+// }
+
+.soft-skills__li {
+	// text-decoration: underline;
+	// text-decoration-line: underline;
+	// text-decoration-style: dashed;
+	list-style-type: circle;
+	// padding: .25em .5em;
+	border-bottom: 1px solid currentColor;
+	// width: fit-content;
+}
+
+/* Work experience & projects */
+
+.experience__location,
+.experience__year {
+	font-size: var(--step--1);
+	color: var(--text-bluish-darker);
+	color: var(--text-bluish-muted);
+	font-weight: 700;
+}
+
+.experience__description {
+	color: var(--text-bluish-dark);
+	color: var(--text-bluish-lighter);
+	font-weight: 700;
+}
+
+/* ------- Utilities ------- */
+
+.bg-color-secondary {
+	background-color: var(--background-color-secondary);
+	color: var(--text-secondary-bg);
+}
+
+.bg-color-secondary > h2 {
+	color: var(--neutral-medium);
+}
+
+.bg-color-secondary > h3 {
+	color: var(--muted-line);
+}
+
+.screenshot-overlay-container {
+	position: relative;
+}
+
+// .screenshot-overlay-container::after {
+// 	position: absolute;
+// 	content: "";
+// 	display: block;
+// 	inset: 0;
+// 	background-color: rgb(from var(--neutral-light) r g b / 0.1);
+// 	border: var(--screenshot-border);
+// 	border-radius: var(--screenshot-border-radius);
+// }
+
+/* 
+IMPORTANT: SVG element sizing
+April 2026
+sizing on browsers is quirky 
+for correct representation:
+* use one css class only for each element
+* font-size must be set
+* height and width must be set for the element to appear
+	* use 1em so height and width reflect font-size
+ */
+
+// .fa-icon {
+// 	width: var(--fa-icon-size, 1em);
+// 	height: var(--fa-icon-size, 1em);
+// }
+
+.fa-icon-large {
+	font-size: var(--step-6);
+	width: var(--fa-icon-size, 1em);
+	height: var(--fa-icon-size, 1em);
+}
+
+.fa-icon-small {
+	font-size: inherit;
+	width: var(--fa-icon-size, 1em);
+	height: var(--fa-icon-size, 1em);
+}
+
+.webdev-project-link {
+	display: inline-grid;
+	grid-auto-flow: column;
+	place-items: center;
+	color: var(--background-color-secondary);
+	// font-size: var(--step-0);
+	gap: 0.25em;
+	padding: 0.25em 0.5em;
+	// border-radius: 8px;
+	// border: 5px solid currentColor;
+	border: 2px solid currentcolor;
+	border-radius: 4px;
+}
+
+.webdev-project-link + .webdev-project-link {
+	margin-inline-start: var(--space-3xs-2xs);
+}
+
+.section-separator {
+	border-bottom: 1px solid var(--background-color-secondary);
+	padding-bottom: var(--space-xs);
+}
+
+.vertically-centered-inline {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-3xs);
+	gap: 4px;
+}

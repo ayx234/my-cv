@@ -1,0 +1,646 @@
+/** @format */
+/** @format */
+/* ------- Fonts ------- */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@font-face {
+  font-family: "Open Sans";
+  src: url("../../fonts/OpenSans-VariableFont_wdth,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+/* ------- Variables ------- */
+:root {
+  /* 	----- colors ----- */
+  /* Background Colors */
+  --background-color-main: #ffffff;
+  --background-color-secondary: #1b3142;
+  /* Text Colors */
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #8a8a8a;
+  --text-secondary-bg: #eef2f4;
+  --text-bluish-light: #2a4a5e;
+  --text-bluish-lighter: #3d5f75;
+  --text-bluish-dark: #0f1f2a;
+  --text-bluish-darker: #081118;
+  --text-bluish-muted: #253d4d;
+  /* Accent Colors */
+  --accent-primary: #0066cc;
+  --accent-strong: #004499;
+  --accent-yellow: #f4b942;
+  /* UI Elements */
+  --muted-line: #d9d9d9;
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  /* Additional Useful Colors */
+  --success: #2ecc71;
+  --warning: #f39c12;
+  --error: #e74c3c;
+  --neutral-light: #f5f5f5;
+  --neutral-medium: #b0b0b0;
+  /* 	----- Font Size & Spacing ----- */
+  /* @link https://utopia.fyi/type/calculator?c=320,15,1.2,1440,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l|l-2xl&g=s,l,xl,12 */
+  /* // --- font size --- */
+  --step--2: clamp(0.651rem, 0.6085rem + 0.2128vw, 0.8rem);
+  --step--1: clamp(0.7813rem, 0.7188rem + 0.3125vw, 1rem);
+  --step-0: clamp(0.9375rem, 0.8482rem + 0.4464vw, 1.25rem);
+  --step-1: clamp(1.125rem, 1rem + 0.625vw, 1.5625rem);
+  --step-2: clamp(1.35rem, 1.1777rem + 0.8616vw, 1.9531rem);
+  --step-3: clamp(1.62rem, 1.3853rem + 1.1734vw, 2.4414rem);
+  --step-4: clamp(1.944rem, 1.6275rem + 1.5825vw, 3.0518rem);
+  --step-5: clamp(2.3328rem, 1.9094rem + 2.117vw, 3.8147rem);
+  --step-6: clamp(2.7994rem, 2.2368rem + 2.8129vw, 4.7684rem);
+  /* // --- Spacing --- */
+  /* // Fluid */
+  --space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
+  --space-2xs: clamp(0.5625rem, 0.5446rem + 0.0893vw, 0.625rem);
+  --space-xs: clamp(0.875rem, 0.8571rem + 0.0893vw, 0.9375rem);
+  --space-s: clamp(1.125rem, 1.0893rem + 0.1786vw, 1.25rem);
+  --space-m: clamp(1.6875rem, 1.6339rem + 0.2679vw, 1.875rem);
+  --space-l: clamp(2.25rem, 2.1786rem + 0.3571vw, 2.5rem);
+  --space-xl: clamp(3.375rem, 3.2679rem + 0.5357vw, 3.75rem);
+  --space-2xl: clamp(4.5rem, 4.3571rem + 0.7143vw, 5rem);
+  --space-3xl: clamp(6.75rem, 6.5357rem + 1.0714vw, 7.5rem);
+  /*   // One-up pairs */
+  --space-3xs-2xs: clamp(0.3125rem, 0.2232rem + 0.4464vw, 0.625rem);
+  --space-2xs-xs: clamp(0.5625rem, 0.4554rem + 0.5357vw, 0.9375rem);
+  --space-xs-s: clamp(0.875rem, 0.7679rem + 0.5357vw, 1.25rem);
+  --space-s-m: clamp(1.125rem, 0.9107rem + 1.0714vw, 1.875rem);
+  --space-m-l: clamp(1.6875rem, 1.4554rem + 1.1607vw, 2.5rem);
+  --space-l-xl: clamp(2.25rem, 1.8214rem + 2.1429vw, 3.75rem);
+  --space-xl-2xl: clamp(3.375rem, 2.9107rem + 2.3214vw, 5rem);
+  --space-2xl-3xl: clamp(4.5rem, 3.6429rem + 4.2857vw, 7.5rem);
+  /*   // Custom pairs */
+  --space-3xs-2xs: clamp(0.3125rem, 0.2411rem + 0.3571vw, 0.5625rem);
+  --space-xs-m: clamp(0.5625rem, 0.1875rem + 1.875vw, 1.875rem);
+  --space-s-l: clamp(1.125rem, 0.7321rem + 1.9643vw, 2.5rem);
+  --space-l-2xl: clamp(2.25rem, 1.4643rem + 3.9286vw, 5rem);
+  --space-l-3xl: clamp(1.875rem, 0.2679rem + 8.0357vw, 7.5rem);
+  /* Semantic font-size */
+  --font-size-body: var(--step-0);
+  --font-size-large-icon: var(--step-6);
+  /* Semantic spacing */
+  --padding-page-section: var(--space-s);
+  --photo-size-190-300: clamp(11.875rem, 9.9107rem + 9.8214vw, 18.75rem);
+  --photo-margin-b-s: -1.875rem; /* 30px */
+  --photo-margin-b-e: var(--space-s);
+  /* ----- Icons ----- */
+  --fa-icon-size: 1em;
+  /* Borders */
+  --screenshot-border-width: clamp(
+  	0.5rem,
+  	0.2143rem + 1.4286vw,
+  	1.5rem
+  ); /* 8 - 24 px */
+  --screenshot-border: var(--screenshot-border-width) solid
+  	var(--background-color-secondary);
+  --screenshot-border-radius: 0.5em;
+  /* Box Shadow */
+  --screenshot-boxshadow-size: clamp(
+  	0.25rem,
+  	0.1071rem + 0.7143vw,
+  	0.75rem
+  ); /* 4 - 12 px */
+  --screenshot-boxshadow-size: clamp(
+  	0.1875rem,
+  	0.0982rem + 0.4464vw,
+  	0.5rem
+  ); /* 3 - 8 px */
+  --screenshot-boxshadow: var(--screenshot-boxshadow-size)
+  	var(--screenshot-boxshadow-size) var(--screenshot-boxshadow-size) 0
+  	var(--text-secondary);
+}
+
+/** @format */
+/** @format */
+/* 
+# Reset Base :
+- based on Josh Comeau's structure/rules
+- adjusted with Andy Bells rules
+    - these will be indicated
+- further adjusted by my rules
+    - these will be indicated
+
+# Resources:
+- [Josh Comeau's Reset](https://www.joshwcomeau.com/css/custom-css-reset/)
+- [Andy Bell's Reset](https://piccalil.li/blog/a-more-modern-css-reset/)
+*/
+/*
+  1. Use a more-intuitive box-sizing model.
+  */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+    2. Remove default margin
+
+    - Josh Comeau removes the margin from all elements
+    using the * selector.
+    - I'm trying Andy Bells approach of only removing 
+    the margin from some elements
+
+  */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+        - replace -webkit-font-smoothing: antialiased;
+        with font-smoothing: antialiased; to work with 
+        progressive inhancements principles
+        - add text-rendering: optimizeSpeed; from Andy Bell's
+  */
+body {
+  line-height: 1.5;
+  font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+}
+
+/*
+    5. Improve media defaults
+    My edit: removed display: block from svg
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+img,
+picture,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+    6. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 
+My additions
+ */
+button,
+input {
+  color: inherit;
+}
+
+:is(input, button, textarea, a, select, [tabindex]):focus-visible {
+  outline: 0.125em solid currentColor;
+}
+
+button {
+  cursor: pointer;
+}
+
+/*
+    7. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*
+    8. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* The following are from Andy Bells' reset */
+/* 
+  9. Remove list styles on ul, ol elements with a 
+  list role
+ */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* 
+  10. Set core root defaults
+  My Addition: html {scroll-behavior: smooth}
+  * The general html { scroll-behavior: smooth; } rule 
+  will apply to all scroll events (manual scrolling, 
+  window.scrollTo(), anchor clicks, etc.), 
+  while :focus-within adds an extra layer for 
+  focus-based scrolling.
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* 
+  11. Set core body defaults
+ - my change: change vh to dvh (dynamic viewport height) */
+body {
+  min-height: 100dvh;
+}
+
+/* 
+  12. Elements that don't have a class get default styles 
+  */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* 13. Remove all animations, transitions and smooth scroll
+ for people that prefer not to see them 
+  My addition:
+  added the general html {scroll-behavior: auto}
+  to account for my addition at point 10
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* ------- General [Elements] ------- */
+body {
+  color: var(--text-primary);
+  font-size: var(--font-size-body);
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  line-height: 1.5;
+}
+
+.h2 {
+  margin-block-end: var(--space-2xs);
+  border-bottom: 2px solid currentColor;
+  color: var(--text-secondary);
+  color: var(--background-color-secondary);
+  text-transform: capitalize;
+}
+
+.h3 {
+  text-transform: capitalize;
+  margin-block-start: var(--space-3xs);
+  text-decoration: underline;
+}
+
+.h3,
+p {
+  margin-block-end: var(--space-3xs);
+}
+
+a,
+p,
+li {
+  /* somebrowsers don't break links or long words by default */
+  overflow-wrap: anywhere;
+}
+
+a:is(:link, :visited) {
+  color: inherit;
+}
+
+a:has(> svg) {
+  display: inline-flex;
+}
+
+ul {
+  padding-inline-start: 0;
+  display: grid;
+  gap: 0.5em;
+}
+
+li {
+  list-style: circle;
+}
+
+/* ------- Composition ------- */
+.page-section {
+  padding-block: var(--padding-page-section);
+  padding-inline: var(--space-l-3xl);
+  display: grid;
+  gap: var(--space-xs);
+  /* 
+  # fix internal link scroll for fixed nav
+
+  ## Detail
+
+  Because the nav has position: sticky, 
+  clicking internal links makes sections
+  appear behind the nav rather than under it
+
+  to fix this, javascript is used, 
+  but since this is a progressive enhancement
+  project I want this to work even without js.
+
+  ## IMPORTANT NOTES:
+
+  - This solution would work without js for
+  screen readers, but the nav menu can't
+  be displayed without js because clicking
+  the nav button doesn't work without js
+  - css only solution would not work if page
+  is resized becuause the calculation below
+  will not recalculate without js
+
+  ## Calculation
+
+  - 4 * var(--padding-page-section)
+    - the nav has double margin-block-start
+  and double margin-block-end of each section
+  - var(--font-size-large-icon)
+    - the font-size as part of height calculation
+  	is reliable for calculating the 
+  	height of the nav's svg because it 
+  	has no borders, margin, or padding
+  	and line height is removed by 
+  	giving the parent display:grid.
+
+   */
+  --nav-height: calc(4 * var(--padding-page-section) + var(--font-size-large-icon));
+  scroll-margin-top: var(--nav-height);
+}
+
+.page-section:first-child {
+  padding-block-start: calc(2 * var(--padding-page-section));
+}
+
+.page-section:is(:last-child, :last-of-type) {
+  padding-block-end: calc(2 * var(--padding-page-section));
+}
+
+.page-section:not(.bg-color-secondary) a {
+  color: var(--background-color-secondary);
+  color: var(--text-bluish-lighter);
+}
+
+.subsection-description {
+  margin-block: var(--space-s-l);
+}
+
+/* ------- Components ------- */
+/* --- Nav --- */
+.nav {
+  display: grid;
+  place-items: center;
+  place-content: center;
+  text-align: center;
+  position: sticky;
+  top: 0;
+}
+
+.nav-button {
+  padding: 0;
+  display: inline-flex;
+  background-color: transparent;
+  border: none;
+}
+
+.nav-icons {
+  display: grid;
+}
+
+[data-status=nav-hidden] .nav-icons .menu-x {
+  display: none;
+}
+
+[data-status=nav-hidden] .nav__ul {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+[data-status=nav-shown] .nav-icons .menu-bars {
+  display: none;
+}
+
+.nav__li {
+  list-style: none;
+  text-transform: capitalize;
+}
+
+.nav__link {
+  text-decoration: none;
+  font-size: var(--step-1);
+  font-weight: 900;
+}
+
+/* --- Header [Profile hero - Contact] --- */
+/* Profile hero */
+.profile-hero {
+  text-align: center;
+  display: grid;
+  place-items: center;
+}
+
+.personal-photo {
+  aspect-ratio: 1/1;
+  width: var(--photo-size-190-300);
+  border-width: 10px;
+  border-color: var(--accent-yellow);
+  border-style: solid;
+  border-radius: 50px;
+  margin-block-start: var(--photo-margin-b-s);
+  margin-block-end: var(--photo-margin-b-e);
+}
+
+.pf-version-2 {
+  background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(244, 185, 66) 80%);
+  border-color: var(--text-secondary-bg);
+}
+
+.name {
+  display: grid;
+  justify-items: center;
+  font-weight: 900;
+}
+
+.name::after {
+  display: block;
+  content: "";
+  width: 40px;
+  height: 3px;
+  background-color: var(--text-muted);
+  border-radius: 50rem;
+  margin-block: var(--space-2xs);
+}
+
+.job-target {
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+/* Contact */
+.nationality__h3 {
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-size: var(--step-0);
+  letter-spacing: 0.125em; /* 2px */
+  margin-block-start: var(--space-2xs);
+  margin-block-end: 0;
+}
+
+/* Technical Skills */
+.page-section.technical-skills {
+  /* display: grid; on .page-section */
+  gap: 0;
+}
+
+.skill {
+  padding: 0.25em 0.5em;
+  display: inline-block;
+  margin-block: var(--space-3xs);
+  margin-inline: 0.0625em;
+  border: 2px solid currentcolor;
+  border-radius: 4px;
+}
+
+/* Github Projects */
+.work-title {
+  color: var(--text-bluish-light);
+}
+
+.screenshot {
+  border: var(--screenshot-border);
+  border-radius: var(--screenshot-border-radius);
+  margin-block: var(--space-xs-m);
+  box-shadow: var(--screenshot-boxshadow);
+}
+
+/* Soft Skills */
+.soft-skills__li {
+  list-style-type: circle;
+  border-bottom: 1px solid currentColor;
+}
+
+/* Work experience & projects */
+.experience__location,
+.experience__year {
+  font-size: var(--step--1);
+  color: var(--text-bluish-darker);
+  color: var(--text-bluish-muted);
+  font-weight: 700;
+}
+
+.experience__description {
+  color: var(--text-bluish-dark);
+  color: var(--text-bluish-lighter);
+  font-weight: 700;
+}
+
+/* ------- Utilities ------- */
+.bg-color-secondary {
+  background-color: var(--background-color-secondary);
+  color: var(--text-secondary-bg);
+}
+
+.bg-color-secondary > h2 {
+  color: var(--neutral-medium);
+}
+
+.bg-color-secondary > h3 {
+  color: var(--muted-line);
+}
+
+.screenshot-overlay-container {
+  position: relative;
+}
+
+/* 
+IMPORTANT: SVG element sizing
+April 2026
+sizing on browsers is quirky 
+for correct representation:
+* use one css class only for each element
+* font-size must be set
+* height and width must be set for the element to appear
+	* use 1em so height and width reflect font-size
+ */
+.fa-icon-large {
+  font-size: var(--step-6);
+  width: var(--fa-icon-size, 1em);
+  height: var(--fa-icon-size, 1em);
+}
+
+.fa-icon-small {
+  font-size: inherit;
+  width: var(--fa-icon-size, 1em);
+  height: var(--fa-icon-size, 1em);
+}
+
+.webdev-project-link {
+  display: inline-grid;
+  grid-auto-flow: column;
+  place-items: center;
+  color: var(--background-color-secondary);
+  gap: 0.25em;
+  padding: 0.25em 0.5em;
+  border: 2px solid currentcolor;
+  border-radius: 4px;
+}
+
+.webdev-project-link + .webdev-project-link {
+  margin-inline-start: var(--space-3xs-2xs);
+}
+
+.section-separator {
+  border-bottom: 1px solid var(--background-color-secondary);
+  padding-bottom: var(--space-xs);
+}
+
+.vertically-centered-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  gap: 4px;
+}
+
+/*# sourceMappingURL=styles.css.map */
