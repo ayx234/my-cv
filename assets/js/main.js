@@ -17,6 +17,7 @@ Array.from(NAV_LINKS).forEach(link => {
 // scroll into view on internal link click
 Array.from(NAV_LINKS).forEach(link => {
 	link.addEventListener("click", _ => {
+		console.log("link clicked")
 		const hash = link.getAttribute("href");
 		scrollToAnchor(hash);
 	});
@@ -29,6 +30,7 @@ window.addEventListener("hashchange", () => {
 
 // Handle page load with hash (e.g., user bookmarks a section)
 document.addEventListener("DOMContentLoaded", () => {
+	console.log("domcontentloaded")
 	scrollToAnchor(window.location.hash);
 });
 
@@ -56,14 +58,18 @@ function hideNav() {
 }
 
 function scrollToAnchor(hash) {
-  if (!hash) return;
+	if (!hash) return;
+	console.log(hash);
   
 	const target = document.querySelector(hash);
 	if (!target) return;
-
+	
 	const navHeight = NAV.offsetHeight;
   console.log("navHeight =", navHeight);
 	const targetPosition = target.offsetTop - navHeight;
+	console.log(target.offsetTop);
+	console.log(navHeight);
+	console.log(targetPosition);
 
 	window.scrollTo({
 		top: targetPosition,

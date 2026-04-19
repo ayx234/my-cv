@@ -1,10 +1,8 @@
 # CV Webpage
 
+## Working on
+
 ## Next
 
-The nav ul should appear for screen readers
-even when hidden from the regular user
-Change the nav ul display from none; to hidden
-and change related settings.
-
-consult ai.
+- Review the code so far
+- Work on the large screens and the print version of the webpage

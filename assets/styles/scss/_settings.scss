@@ -108,7 +108,8 @@
 
 	/*   // Custom pairs */
 	--space-3xs-2xs: clamp(0.3125rem, 0.2411rem + 0.3571vw, 0.5625rem);
-	--space-xs-m: clamp(0.5625rem, 0.1875rem + 1.875vw, 1.875rem);
+	--space-2xs-m: clamp(0.5625rem, 0.1875rem + 1.875vw, 1.875rem);
+	--space-2xs-l: clamp(0.5625rem, 0.0804rem + 2.4107vw, 2.25rem);
 	--space-s-l: clamp(1.125rem, 0.7321rem + 1.9643vw, 2.5rem);
 	--space-l-2xl: clamp(2.25rem, 1.4643rem + 3.9286vw, 5rem);
 	--space-l-3xl: clamp(1.875rem, 0.2679rem + 8.0357vw, 7.5rem);
@@ -118,7 +119,8 @@
 	--font-size-large-icon: var(--step-6);
 
 	/* Semantic spacing */
-	--padding-page-section: var(--space-s);
+	--padding-block-section-container: var(--space-s);
+
 	--photo-size-190-300: clamp(11.875rem, 9.9107rem + 9.8214vw, 18.75rem);
 	// --photo-margin-b-s: calc(clamp(1.25rem, 1.0714rem + 0.8929vw, 1.875rem) * -1);
 	--photo-margin-b-s: -1.875rem; /* 30px */
@@ -130,9 +132,9 @@
 	/* Borders */
 	--screenshot-border-width: clamp(
 		0.5rem,
-		0.2143rem + 1.4286vw,
-		1.5rem
-	); /* 8 - 24 px */
+		0.3571rem + 0.7143vw,
+		1rem
+	); /* 8 - 16 px */
 	--screenshot-border: var(--screenshot-border-width) solid
 		var(--background-color-secondary);
 	--screenshot-border-radius: 0.5em;

@@ -71,7 +71,8 @@
   --space-2xl-3xl: clamp(4.5rem, 3.6429rem + 4.2857vw, 7.5rem);
   /*   // Custom pairs */
   --space-3xs-2xs: clamp(0.3125rem, 0.2411rem + 0.3571vw, 0.5625rem);
-  --space-xs-m: clamp(0.5625rem, 0.1875rem + 1.875vw, 1.875rem);
+  --space-2xs-m: clamp(0.5625rem, 0.1875rem + 1.875vw, 1.875rem);
+  --space-2xs-l: clamp(0.5625rem, 0.0804rem + 2.4107vw, 2.25rem);
   --space-s-l: clamp(1.125rem, 0.7321rem + 1.9643vw, 2.5rem);
   --space-l-2xl: clamp(2.25rem, 1.4643rem + 3.9286vw, 5rem);
   --space-l-3xl: clamp(1.875rem, 0.2679rem + 8.0357vw, 7.5rem);
@@ -79,7 +80,7 @@
   --font-size-body: var(--step-0);
   --font-size-large-icon: var(--step-6);
   /* Semantic spacing */
-  --padding-page-section: var(--space-s);
+  --padding-block-section-container: var(--space-s);
   --photo-size-190-300: clamp(11.875rem, 9.9107rem + 9.8214vw, 18.75rem);
   --photo-margin-b-s: -1.875rem; /* 30px */
   --photo-margin-b-e: var(--space-s);
@@ -88,9 +89,9 @@
   /* Borders */
   --screenshot-border-width: clamp(
   	0.5rem,
-  	0.2143rem + 1.4286vw,
-  	1.5rem
-  ); /* 8 - 24 px */
+  	0.3571rem + 0.7143vw,
+  	1rem
+  ); /* 8 - 16 px */
   --screenshot-border: var(--screenshot-border-width) solid
   	var(--background-color-secondary);
   --screenshot-border-radius: 0.5em;
@@ -350,6 +351,8 @@ ul {
   padding-inline-start: 0;
   display: grid;
   gap: 0.5em;
+  margin-block: 0;
+  margin-block: var(--space-3xs);
 }
 
 li {
@@ -358,10 +361,6 @@ li {
 
 /* ------- Composition ------- */
 .page-section {
-  padding-block: var(--padding-page-section);
-  padding-inline: var(--space-l-3xl);
-  display: grid;
-  gap: var(--space-xs);
   /* 
   # fix internal link scroll for fixed nav
 
@@ -387,7 +386,7 @@ li {
 
   ## Calculation
 
-  - 4 * var(--padding-page-section)
+  - 4 * var(--padding-block-section-container)
     - the nav has double margin-block-start
   and double margin-block-end of each section
   - var(--font-size-large-icon)
@@ -399,36 +398,43 @@ li {
   	giving the parent display:grid.
 
    */
-  --nav-height: calc(4 * var(--padding-page-section) + var(--font-size-large-icon));
+  --nav-height: calc(
+  	2 * var(--padding-block-section-container) + var(--font-size-large-icon));
   scroll-margin-top: var(--nav-height);
 }
 
-.page-section:first-child {
-  padding-block-start: calc(2 * var(--padding-page-section));
+.section-container {
+  padding-block: var(--padding-block-section-container);
+  padding-inline: var(--space-l-3xl);
+  display: grid;
+  gap: var(--space-3xs);
 }
 
-.page-section:is(:last-child, :last-of-type) {
-  padding-block-end: calc(2 * var(--padding-page-section));
+.bg-color-secondary .section-container a {
+  color: inherit;
 }
 
-.page-section:not(.bg-color-secondary) a {
+.section-container a {
   color: var(--background-color-secondary);
   color: var(--text-bluish-lighter);
 }
 
 .subsection-description {
-  margin-block: var(--space-s-l);
+  margin-block-start: 0;
+  margin-block-end: var(--space-s);
 }
 
 /* ------- Components ------- */
 /* --- Nav --- */
 .nav {
-  display: grid;
-  place-items: center;
-  place-content: center;
   text-align: center;
   position: sticky;
   top: 0;
+}
+
+.nav-icons {
+  display: grid;
+  justify-self: center;
 }
 
 .nav-button {
@@ -438,8 +444,27 @@ li {
   border: none;
 }
 
-.nav-icons {
-  display: grid;
+.nav__ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+@media (min-width: 450px) {
+  .nav__ul {
+    max-height: 180px;
+  }
+}
+@media (min-width: 580px) {
+  .nav__ul {
+    max-height: 140px;
+  }
+}
+@media (min-width: 900px) {
+  .nav__ul {
+    max-height: 100px;
+  }
 }
 
 [data-status=nav-hidden] .nav-icons .menu-x {
@@ -480,6 +505,11 @@ li {
   display: grid;
   place-items: center;
 }
+@media (min-width: 680px) {
+  .profile-hero {
+    justify-content: end;
+  }
+}
 
 .personal-photo {
   aspect-ratio: 1/1;
@@ -488,7 +518,6 @@ li {
   border-color: var(--accent-yellow);
   border-style: solid;
   border-radius: 50px;
-  margin-block-start: var(--photo-margin-b-s);
   margin-block-end: var(--photo-margin-b-e);
 }
 
@@ -519,18 +548,36 @@ li {
 }
 
 /* Contact */
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: var(--space-2xs);
+}
+
+.contact * {
+  margin: 0;
+}
+
+.links {
+  margin-block-start: auto;
+}
+
+.nationality {
+  margin-block-start: calc(-1 * var(--space-2xs));
+}
+
 .nationality__h3 {
   text-transform: uppercase;
   color: var(--text-muted);
   font-size: var(--step-0);
   letter-spacing: 0.125em; /* 2px */
-  margin-block-start: var(--space-2xs);
   margin-block-end: 0;
 }
 
 /* Technical Skills */
-.page-section.technical-skills {
-  /* display: grid; on .page-section */
+.section-container.technical-skills {
+  /* display: grid; on .section-container */
   gap: 0;
 }
 
@@ -551,14 +598,15 @@ li {
 .screenshot {
   border: var(--screenshot-border);
   border-radius: var(--screenshot-border-radius);
-  margin-block: var(--space-xs-m);
+  margin-block: var(--space-2xs);
   box-shadow: var(--screenshot-boxshadow);
+  align-self: start;
 }
 
 /* Soft Skills */
 .soft-skills__li {
   list-style-type: circle;
-  border-bottom: 1px solid currentColor;
+  text-decoration: underline;
 }
 
 /* Work experience & projects */
@@ -576,17 +624,22 @@ li {
   font-weight: 700;
 }
 
+/* Education */
+.education {
+  gap: 0;
+}
+
 /* ------- Utilities ------- */
 .bg-color-secondary {
   background-color: var(--background-color-secondary);
   color: var(--text-secondary-bg);
 }
 
-.bg-color-secondary > h2 {
+.bg-color-secondary .h2 {
   color: var(--neutral-medium);
 }
 
-.bg-color-secondary > h3 {
+.bg-color-secondary .h3 {
   color: var(--muted-line);
 }
 
@@ -641,6 +694,41 @@ for correct representation:
   align-items: center;
   gap: var(--space-3xs);
   gap: 4px;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+}
+
+.flex-children-1-0-295 > * {
+  flex: 1 0 295px;
+}
+
+.flex-1-1-295px {
+  flex: 1 1 295px;
+}
+
+.flex-2-1-295px {
+  flex: 2 1 295px;
+}
+
+.gap-0 {
+  gap: 0;
+}
+
+.gap-2xs-l {
+  gap: var(--space-2xs-l);
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.container-max {
+  max-width: 90rem;
+  margin-inline: auto;
 }
 
 /*# sourceMappingURL=styles.css.map */
