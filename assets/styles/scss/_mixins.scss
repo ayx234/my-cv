@@ -1,14 +1,56 @@
 /** @format */
 
-@mixin screen-readers-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+// Text presets
+
+// General / body font
+@mixin text-preset-1 {
+	font-size: var(--font-size-body);
+	font-family:
+		"Open Sans",
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	font-variation-settings: "wdth" 100;
+	line-height: 1.5;
+	color: var(--text-primary);
 }
 
+/* Utility styles */
+
+@mixin screen-readers-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+@mixin vertically-centered-inline {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25em;
+}
+
+@mixin break-word-overflow {
+	/* 
+	- some browsers don't break links or long words
+	 by default 
+	- without this, links would overflow in small
+	 screen
+	*/
+	overflow-wrap: anywhere;
+}
+
+@mixin text-box {
+  padding: 0.25em 0.5em;
+	border: 2px solid currentcolor;
+	border-radius: 4px;
+}

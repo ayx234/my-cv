@@ -87,11 +87,7 @@
   /* ----- Icons ----- */
   --fa-icon-size: 1em;
   /* Borders */
-  --screenshot-border-width: clamp(
-  	0.5rem,
-  	0.3571rem + 0.7143vw,
-  	1rem
-  ); /* 8 - 16 px */
+  --screenshot-border-width: var(--space-3xs-2xs) ;
   --screenshot-border: var(--screenshot-border-width) solid
   	var(--background-color-secondary);
   --screenshot-border-radius: 0.5em;
@@ -112,6 +108,7 @@
 }
 
 /** @format */
+/* Utility styles */
 /** @format */
 /* 
 # Reset Base :
@@ -303,7 +300,6 @@ a:not([class]) {
 }
 /* ------- General [Elements] ------- */
 body {
-  color: var(--text-primary);
   font-size: var(--font-size-body);
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-optical-sizing: auto;
@@ -311,20 +307,20 @@ body {
   font-style: normal;
   font-variation-settings: "wdth" 100;
   line-height: 1.5;
+  color: var(--text-primary);
 }
 
 .h2 {
-  margin-block-end: var(--space-2xs);
-  border-bottom: 2px solid currentColor;
-  color: var(--text-secondary);
   color: var(--background-color-secondary);
   text-transform: capitalize;
+  border-bottom: 2px solid currentColor;
+  margin-block-end: var(--space-2xs);
 }
 
 .h3 {
   text-transform: capitalize;
-  margin-block-start: var(--space-3xs);
   text-decoration: underline;
+  margin-block-start: var(--space-3xs);
 }
 
 .h3,
@@ -335,7 +331,10 @@ p {
 a,
 p,
 li {
-  /* somebrowsers don't break links or long words by default */
+  /* 
+  - somebrowsers don't break links or long words by default 
+  - without this, links would overflow in small screen
+  */
   overflow-wrap: anywhere;
 }
 
@@ -349,10 +348,10 @@ a:has(> svg) {
 
 ul {
   padding-inline-start: 0;
-  display: grid;
-  gap: 0.5em;
   margin-block: 0;
   margin-block: var(--space-3xs);
+  display: grid;
+  gap: 0.5em;
 }
 
 li {
@@ -367,39 +366,38 @@ li {
   ## Detail
 
   Because the nav has position: sticky, 
-  clicking internal links makes sections
-  appear behind the nav rather than under it
+  clicking internal links for .page-sections
+  makes them appear behind the nav rather than
+  under it
 
-  to fix this, javascript is used, 
+  to fix this, javascript is also used, 
   but since this is a progressive enhancement
   project I want this to work even without js.
 
   ## IMPORTANT NOTES:
 
-  - This solution would work without js for
-  screen readers, but the nav menu can't
-  be displayed without js because clicking
-  the nav button doesn't work without js
   - css only solution would not work if page
   is resized becuause the calculation below
-  will not recalculate without js
+  would be for the initial screen size only
 
   ## Calculation
 
-  - 4 * var(--padding-block-section-container)
-    - the nav has double margin-block-start
+  - 2 * var(--padding-block-section-container)
+    - 2 * to count for starting and ending padding
   and double margin-block-end of each section
   - var(--font-size-large-icon)
     - the font-size as part of height calculation
-  	is reliable for calculating the 
+  	and is reliable for calculating the 
   	height of the nav's svg because it 
   	has no borders, margin, or padding
   	and line height is removed by 
   	giving the parent display:grid.
-
+  	- font-size would not be reliable if text was
+  	present in the nav even if line-height was 1
    */
   --nav-height: calc(
-  	2 * var(--padding-block-section-container) + var(--font-size-large-icon));
+  	2 * var(--padding-block-section-container) + var(--font-size-large-icon)
+  );
   scroll-margin-top: var(--nav-height);
 }
 
@@ -415,7 +413,6 @@ li {
 }
 
 .section-container a {
-  color: var(--background-color-secondary);
   color: var(--text-bluish-lighter);
 }
 
@@ -427,47 +424,50 @@ li {
 /* ------- Components ------- */
 /* --- Nav --- */
 .nav {
-  text-align: center;
   position: sticky;
   top: 0;
 }
 
-.nav-icons {
+.nav-icons-container {
   display: grid;
   justify-self: center;
 }
 
 .nav-button {
-  padding: 0;
   display: inline-flex;
   background-color: transparent;
+  padding: 0;
   border: none;
 }
 
+.container-nav {
+  max-width: 1800px;
+  margin-inline: auto;
+}
+
 .nav__ul {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
+  text-align: center;
 }
-@media (min-width: 450px) {
+@media (width > 450px) {
   .nav__ul {
-    max-height: 180px;
+    display: block;
+    column-width: 18ch;
   }
 }
-@media (min-width: 580px) {
+@media (width > 900px) {
   .nav__ul {
-    max-height: 140px;
-  }
-}
-@media (min-width: 900px) {
-  .nav__ul {
-    max-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
   }
 }
 
-[data-status=nav-hidden] .nav-icons .menu-x {
+.nav__ul > li {
+  break-inside: avoid;
+}
+
+[data-status=nav-hidden] .nav-icons-container .menu-x {
   display: none;
 }
 
@@ -483,7 +483,7 @@ li {
   border-width: 0;
 }
 
-[data-status=nav-shown] .nav-icons .menu-bars {
+[data-status=nav-shown] .nav-icons-container .menu-bars {
   display: none;
 }
 
@@ -500,30 +500,35 @@ li {
 
 /* --- Header [Profile hero - Contact] --- */
 /* Profile hero */
+.cv-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+}
+
+.cv-header > * {
+  flex: 1 0 18rem;
+}
+
 .profile-hero {
-  text-align: center;
   display: grid;
   place-items: center;
 }
-@media (min-width: 680px) {
+@media (min-width: 600px) {
   .profile-hero {
     justify-content: end;
   }
 }
 
 .personal-photo {
-  aspect-ratio: 1/1;
   width: var(--photo-size-190-300);
+  background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(244, 185, 66) 80%);
   border-width: 10px;
-  border-color: var(--accent-yellow);
   border-style: solid;
+  border-color: var(--text-secondary-bg);
   border-radius: 50px;
   margin-block-end: var(--photo-margin-b-e);
-}
-
-.pf-version-2 {
-  background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(244, 185, 66) 80%);
-  border-color: var(--text-secondary-bg);
 }
 
 .name {
@@ -535,8 +540,8 @@ li {
 .name::after {
   display: block;
   content: "";
-  width: 40px;
-  height: 3px;
+  width: 2.5rem;
+  height: 0.1875rem; /* 3px */
   background-color: var(--text-muted);
   border-radius: 50rem;
   margin-block: var(--space-2xs);
@@ -583,24 +588,51 @@ li {
 
 .skill {
   padding: 0.25em 0.5em;
+  border: 2px solid currentcolor;
+  border-radius: 4px;
   display: inline-block;
   margin-block: var(--space-3xs);
   margin-inline: 0.0625em;
-  border: 2px solid currentcolor;
-  border-radius: 4px;
 }
 
 /* Github Projects */
-.work-title {
-  color: var(--text-bluish-light);
+.github-projects__content-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2xs-l);
+}
+
+.github-projects__screenshot {
+  flex: 1 1 18rem;
 }
 
 .screenshot {
+  width: 100%;
   border: var(--screenshot-border);
   border-radius: var(--screenshot-border-radius);
   margin-block: var(--space-2xs);
   box-shadow: var(--screenshot-boxshadow);
   align-self: start;
+}
+
+.github-projects__description-container {
+  flex: 2 1 18rem;
+}
+
+.webdev-project-link {
+  padding: 0.25em 0.5em;
+  border: 2px solid currentcolor;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  color: var(--background-color-secondary);
+  border-width: 0.1875em;
+}
+
+.webdev-project-link + .webdev-project-link {
+  margin-inline-start: var(--space-3xs-2xs);
 }
 
 /* Soft Skills */
@@ -612,14 +644,15 @@ li {
 /* Work experience & projects */
 .experience__location,
 .experience__year {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
   font-size: var(--step--1);
-  color: var(--text-bluish-darker);
   color: var(--text-bluish-muted);
   font-weight: 700;
 }
 
 .experience__description {
-  color: var(--text-bluish-dark);
   color: var(--text-bluish-lighter);
   font-weight: 700;
 }
@@ -643,8 +676,8 @@ li {
   color: var(--muted-line);
 }
 
-.screenshot-overlay-container {
-  position: relative;
+.work-title {
+  color: var(--text-bluish-light);
 }
 
 /* 
@@ -652,11 +685,17 @@ IMPORTANT: SVG element sizing
 April 2026
 sizing on browsers is quirky 
 for correct representation:
-* use one css class only for each element
+* use only one css class for each element
 * font-size must be set
 * height and width must be set for the element to appear
 	* use 1em so height and width reflect font-size
  */
+.fa-icon-nav {
+  font-size: 3rem;
+  width: var(--fa-icon-size, 1em);
+  height: var(--fa-icon-size, 1em);
+}
+
 .fa-icon-large {
   font-size: var(--step-6);
   width: var(--fa-icon-size, 1em);
@@ -667,21 +706,7 @@ for correct representation:
   font-size: inherit;
   width: var(--fa-icon-size, 1em);
   height: var(--fa-icon-size, 1em);
-}
-
-.webdev-project-link {
-  display: inline-grid;
-  grid-auto-flow: column;
-  place-items: center;
-  color: var(--background-color-secondary);
-  gap: 0.25em;
-  padding: 0.25em 0.5em;
-  border: 2px solid currentcolor;
-  border-radius: 4px;
-}
-
-.webdev-project-link + .webdev-project-link {
-  margin-inline-start: var(--space-3xs-2xs);
+  margin-block-start: 0.1em;
 }
 
 .section-separator {
@@ -689,45 +714,29 @@ for correct representation:
   padding-bottom: var(--space-xs);
 }
 
-.vertically-centered-inline {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3xs);
-  gap: 4px;
-}
-
 .flex-container {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2xs);
 }
 
-.flex-children-1-0-295 > * {
-  flex: 1 0 295px;
-}
-
-.flex-1-1-295px {
-  flex: 1 1 295px;
-}
-
-.flex-2-1-295px {
-  flex: 2 1 295px;
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .gap-0 {
   gap: 0;
 }
 
-.gap-2xs-l {
-  gap: var(--space-2xs-l);
-}
-
 .align-items-center {
   align-items: center;
 }
 
+.justify-content-center {
+  justify-content: center;
+}
+
 .container-max {
-  max-width: 90rem;
+  max-width: 55em;
   margin-inline: auto;
 }
 

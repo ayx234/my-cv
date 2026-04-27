@@ -15,28 +15,6 @@
 /* ------- Variables ------- */
 
 :root {
-	/* 	----- colors ----- */
-	// /* primary layout */
-	// --sidebar-bg: #26323a; // left sidebar dark slate
-	// --sidebar-bg-2: #1b3142;
-
-	// /* // text */
-	// --text-primary: #0f1720; // main heading / high-contrast body
-	// --text-secondary: #6b7277; // muted body text
-	// --text-muted: #9aa0a6; // light muted text
-
-	// /* // accents */
-	// --accent-primary: #0b8cff; // bright blue accent (name link / icons)
-	// --accent-strong: #00b39f; // teal/green accent (small highlights)
-
-	// /* // UI elements */
-	// --muted-line: #e6e9eb; // divider / subtle lines
-	// --card-shadow: rgba(16, 24, 32, 0.04);
-
-	// /* // semantic */
-	// --heading: var(--text-primary);
-	// --body: var(--text-secondary);
-	// --link: var(--accent-primary);
 
 	/* Background Colors */
 	--background-color-main: #ffffff;
@@ -130,11 +108,7 @@
 	--fa-icon-size: 1em;
 
 	/* Borders */
-	--screenshot-border-width: clamp(
-		0.5rem,
-		0.3571rem + 0.7143vw,
-		1rem
-	); /* 8 - 16 px */
+	--screenshot-border-width: var(--space-3xs-2xs) ;
 	--screenshot-border: var(--screenshot-border-width) solid
 		var(--background-color-secondary);
 	--screenshot-border-radius: 0.5em;

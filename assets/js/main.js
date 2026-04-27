@@ -30,7 +30,6 @@ window.addEventListener("hashchange", () => {
 
 // Handle page load with hash (e.g., user bookmarks a section)
 document.addEventListener("DOMContentLoaded", () => {
-	console.log("domcontentloaded")
 	scrollToAnchor(window.location.hash);
 });
 
