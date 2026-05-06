@@ -1,0 +1,87 @@
+/** @format */
+
+@use "settings";
+@use "mixins";
+
+/* ------- Utilities ------- */
+
+.bg-color-secondary {
+	background-color: var(--background-color-secondary);
+	color: var(--text-secondary-bg);
+}
+
+.bg-color-secondary .h2 {
+	color: var(--neutral-medium);
+}
+
+.bg-color-secondary .h3 {
+	color: var(--muted-line);
+}
+
+.work-title {
+	color: var(--text-bluish-light);
+}
+
+/* 
+IMPORTANT: SVG element sizing
+April 2026
+sizing on browsers is quirky 
+for correct representation:
+* use only one css class for each element
+* font-size must be set
+* height and width must be set for the element to appear
+	* use 1em so height and width reflect font-size
+ */
+
+.fa-icon-nav {
+	font-size: var(--font-size-fa-icon-nav);
+	width: var(--fa-icon-size, 1em);
+	height: var(--fa-icon-size, 1em);
+}
+
+.fa-icon-large {
+	font-size: var(--font-size-fa-icon-large);
+	width: var(--fa-icon-size, 1em);
+	height: var(--fa-icon-size, 1em);
+}
+
+.fa-icon-small {
+	font-size: var(--font-size-fa-icon-small);
+	width: var(--fa-icon-size, 1em);
+	height: var(--fa-icon-size, 1em);
+	margin-block-start: 0.1em;
+}
+
+.section-separator {
+	border-bottom: 1px solid var(--background-color-secondary);
+	padding-bottom: var(--space-xs);
+}
+
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+.gap-0 {
+	gap: 0;
+}
+
+.align-items-center {
+	align-items: center;
+}
+
+.justify-content-center {
+	justify-content: center;
+}
+
+.container-max {
+	/* 
+	equals ~1440px but breakpoints go to 1240px 
+	maintains visual consistency */
+	max-width: 55em;
+	margin-inline: auto;
+}

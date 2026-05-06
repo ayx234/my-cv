@@ -33,6 +33,12 @@
 	border-width: 0;
 }
 
+@mixin visibility-hidden {
+	max-height: 0;
+	overflow: hidden;
+	visibility: hidden;
+}
+
 @mixin vertically-centered-inline {
 	display: inline-flex;
 	align-items: center;
@@ -50,7 +56,10 @@
 }
 
 @mixin text-box {
-  padding: 0.25em 0.5em;
+	padding: 0.5em 1em;
 	border: 2px solid currentcolor;
 	border-radius: 4px;
+	min-height: 44px;
+	display: inline-flex;
+	align-items: center;
 }

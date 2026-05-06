@@ -1,0 +1,59 @@
+/** @format */
+@use "settings";
+@use "mixins";
+
+
+/* ------- General [Elements] ------- */
+
+body {
+	@include mixins.text-preset-1;
+}
+
+.h2 {
+	color: var(--background-color-secondary);
+	text-transform: capitalize;
+	border-bottom: 2px solid currentColor;
+	margin-block-end: var(--space-2xs);
+}
+
+.h3 {
+	text-transform: capitalize;
+	text-decoration: underline;
+	margin-block-start: var(--space-3xs);
+}
+
+.h3,
+p {
+	margin-block-end: var(--space-3xs);
+	margin-block-end: var(--space-2xs);
+}
+
+a,
+p,
+li {
+	@include mixins.break-word-overflow;
+}
+
+a {
+	transition: var(--transition-transform);
+}
+
+a:has(h2, h3) {
+	display: block;
+}
+
+ul {
+	padding-inline-start: 0;
+	margin-block: 0;
+	margin-block: var(--space-3xs);
+	display: grid;
+	gap: 0.5em;
+}
+
+li {
+	list-style: circle;
+}
+
+.h2-link {
+	text-decoration: none;
+}

@@ -5,6 +5,35 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Ali Al Yahya's resume & CV. Web developer with finance background. HTML, CSS, JavaScript, React. View portfolio and work experience."
+		/>
+		<!-- Open Graph (if shared on social) -->
+		<meta property="og:title" content="Ali Al Yahya – Web Developer" />
+		<meta
+			property="og:description"
+			content="Finance professional transitioning to web development. Front-end specialist. React, JavaScript, responsive design."
+		/>
+		<!-- adjust later for open graph image -->
+		<!-- <meta
+			property="og:image"
+			content="https://alyahya.com/assets/images/page-images/2025-Dec-14-Profile-Pic-Square-No-BG-504x495.png"
+		/> -->
+
+		<!-- JSON-LD Schema -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Ali Al Yahya",
+				"jobTitle": "Web Developer",
+				"sameAs": [
+					"https://github.com/ayx234",
+					"https://www.linkedin.com/in/ali-al-yahya-74b9b9155/"
+				]
+			}
+		</script>
 		<title>Ali Al Yahya's Resume & CV</title>
 		<link rel="stylesheet" href="./assets/styles/css/styles.css" />
 		<script src="./assets/js/main.js" defer></script>
@@ -12,16 +41,35 @@
 	<body>
 		<nav
 			class="page-section bg-color-secondary nav"
-			data-status="nav-hidden"
+			aria-hidden="true"
 			id="nav"
 		>
 			<div class="section-container container-nav bg-color-secondary">
-				<div class="nav-icons-container">
+				<div class="nav-button-container">
+					<div class="home-button-container">
+						<a href="#home" class="nav-button">
+							<svg
+								class="fa-icon-nav"
+								width="1em"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 640 640"
+							>
+								<!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+								<path
+									fill="currentColor"
+									d="M304 70.1C313.1 61.9 326.9 61.9 336 70.1L568 278.1C577.9 286.9 578.7 302.1 569.8 312C560.9 321.9 545.8 322.7 535.9 313.8L527.9 306.6L527.9 511.9C527.9 547.2 499.2 575.9 463.9 575.9L175.9 575.9C140.6 575.9 111.9 547.2 111.9 511.9L111.9 306.6L103.9 313.8C94 322.6 78.9 321.8 70 312C61.1 302.2 62 287 71.8 278.1L304 70.1zM320 120.2L160 263.7L160 512C160 520.8 167.2 528 176 528L224 528L224 424C224 384.2 256.2 352 296 352L344 352C383.8 352 416 384.2 416 424L416 528L464 528C472.8 528 480 520.8 480 512L480 263.7L320 120.3zM272 528L368 528L368 424C368 410.7 357.3 400 344 400L296 400C282.7 400 272 410.7 272 424L272 528z"
+								/>
+								<!-- <path fill="currentColor" d="M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3 315.7C71.1 327.9 82.8 336 96 336L112 336L112 512C112 547.3 140.7 576 176 576L464 576C499.3 576 528 547.3 528 512L528 336L544 336C557.2 336 569 327.9 573.8 315.7C578.6 303.5 575.4 289.5 565.8 280.6L341.8 72.6zM304 384L336 384C362.5 384 384 405.5 384 432L384 528L256 528L256 432C256 405.5 277.5 384 304 384z"/> -->
+							</svg>
+						</a>
+					</div>
 					<button
 						class="nav-button"
 						id="nav-button"
 						type="button"
 						aria-label="toggle navigation menu"
+						aria-expanded="false"
+						aria-controls="nav"
 					>
 						<svg
 							class="fa-icon-nav menu-bars"
@@ -51,37 +99,78 @@
 						</svg>
 					</button>
 				</div>
-				<ul class="nav__ul">
+				<ul class="nav__ul" id="nav-ul" inert>
 					<li class="nav__li">
-						<a class="nav__link" href="#home">home</a>
+						<a
+							class="nav__link main-nav-link"
+							tab-index="-1"
+							href="#home"
+							>home</a
+						>
 					</li>
 					<li class="nav__li">
-						<a class="nav__link" href="#contact">contact</a>
+						<a
+							class="nav__link main-nav-link"
+							tab-index="-1"
+							href="#contact"
+							>contact</a
+						>
 					</li>
 					<li class="nav__li">
-						<a class="nav__link" href="#profile">profile</a>
+						<a
+							class="nav__link main-nav-link"
+							tab-index="-1"
+							href="#profile"
+							>profile</a
+						>
 					</li>
 					<li class="nav__li">
-						<a class="nav__link" href="#technical-skills"
+						<a
+							class="nav__link main-nav-link"
+							tab-index="-1"
+							href="#technical-skills"
 							>technical-skills</a
 						>
 					</li>
 					<li class="nav__li">
-						<a class="nav__link" href="#github-projects"
+						<a
+							class="nav__link main-nav-link"
+							tab-index="-1"
+							href="#github-projects"
 							>github-projects</a
 						>
 					</li>
 					<li class="nav__li">
-						<a class="nav__link" href="#soft-skills">soft-skills</a>
+						<a
+							class="nav__link main-nav-link"
+							tab-index="-1"
+							href="#soft-skills"
+							>soft-skills</a
+						>
 					</li>
 					<li class="nav__li">
-						<a class="nav__link" href="#work">work</a>
+						<a
+							class="nav__link main-nav-link"
+							tab-index="-1"
+							href="#work"
+							>work</a
+						>
 					</li>
 					<li class="nav__li">
-						<a class="nav__link" href="#education">education</a>
+						<a
+							class="nav__link main-nav-link"
+							tab-index="-1"
+							href="#education"
+							>education</a
+						>
 					</li>
 					<li class="nav__li">
-						<a class="nav__link" href="#languages">languages</a>
+						<a
+							class="nav__link main-nav-link"
+							tab-index="-1"
+							href="#languages"
+							>languages</a
+						>
 					</li>
 				</ul>
 			</div>
@@ -105,23 +194,23 @@
 					class="page-section section-container contact bg-color-secondary"
 					id="contact"
 				>
-					<h2 class="h2">Contact</h2>
-					<p>
-						<a class="phone" href="tel:+966540859177"
-							>+966 (540) 859-177</a
-						>
-					</p>
-					<p>
-						<a class="email" href="mailto:alyahya.ali.h@gmail.com"
-							>alyahya.ali.h@gmail.com</a
-						>
-					</p>
-					<section class="links">
-						<h3 class="h3 links">Links</h3>
+					<a href="#contact" class="nav-link h2-link">
+						<h2 class="h2">#Contact</h2>
+					</a>
+					<a class="contact-link phone" href="tel:+966540859177"
+						>+966 (540) 859-177</a
+					>
+					<a
+						class="contact-link email"
+						href="mailto:alyahya.ali.h@gmail.com"
+						>alyahya.ali.h@gmail.com</a
+					>
+					<section class="social-links">
+						<h3 class="h3">Links</h3>
 						<a
 							href="https://github.com/ayx234"
 							title="Ali's github"
-							class="github"
+							class="social-links__link github"
 							target="_blank"
 							rel="noopener noreferrer"
 							><svg
@@ -141,7 +230,7 @@
 						<a
 							href="https://www.linkedin.com/in/ali-al-yahya-74b9b9155/"
 							aria-label="Ali's LinkedIn"
-							class="linkedin"
+							class="social-links__link linkedin"
 							target="_blank"
 							rel="noopener noreferrer"
 							><svg
@@ -168,9 +257,11 @@
 		</header>
 		<section class="page-section" id="profile">
 			<div class="section-container profile container-max">
-				<h2 class="h2">Profile</h2>
+				<a class="nav-link h2-link" href="#profile">
+					<h2 class="h2">#Profile</h2>
+				</a>
+
 				<p>
-					<a href="">testing link styles</a>
 					Finance graduate and former business owner transitioning
 					into web development and fintech, combining analytical
 					finance and accounting experience with practical front‑end
@@ -186,58 +277,77 @@
 		</section>
 		<section class="page-section bg-color-secondary" id="technical-skills">
 			<div class="section-container technical-skills container-max">
-				<h2 class="h2">technical skills</h2>
-				<section class="skill-area">
-					<h3 class="h3">programming languages & web</h3>
-					<span class="skill">HTML</span>
-					<span class="skill">CSS</span>
-					<span class="skill">JavaScript</span>
+				<a href="#technical-skills" class="nav-link h2-link">
+					<h2 class="h2">#technical skills</h2>
+				</a>
+				<section class="skill-area" id="programming-languages-web">
+					<a href="#programming-languages-web" class="nav__link">
+						<h3 class="h3">#programming languages & web</h3>
+					</a>
+					<span class="skill-or-course">HTML</span>
+					<span class="skill-or-course">CSS</span>
+					<span class="skill-or-course">JavaScript</span>
 				</section>
-				<section class="skill-area">
-					<h3 class="h3">frameworks & libraries</h3>
-					<span class="skill">React</span>
-					<span class="skill">Boostrap</span>
-					<span class="skill">SASS</span>
+				<section class="skill-area" id="frameworks-libraries">
+					<a href="#frameworks-libraries" class="nav__link">
+						<h3 class="h3">#frameworks & libraries</h3>
+					</a>
+					<span class="skill-or-course">React</span>
+					<span class="skill-or-course">Boostrap</span>
+					<span class="skill-or-course">SASS</span>
 				</section>
-				<section class="skill-area">
-					<h3 class="h3">tools & workflow</h3>
-					<span class="skill">Git</span>
-					<span class="skill">GitHub</span>
-					<span class="skill">browser DevTools</span>
-					<span class="skill">npm</span>
-					<span class="skill">bash</span>
-					<span class="skill">VSCode</span>
+				<section class="skill-area" id="tools-workflow">
+					<a href="#tools-workflow" class="nav__link">
+						<h3 class="h3">#tools & workflow</h3>
+					</a>
+					<span class="skill-or-course">Git</span>
+					<span class="skill-or-course">GitHub</span>
+					<span class="skill-or-course">browser DevTools</span>
+					<span class="skill-or-course">npm</span>
+					<span class="skill-or-course">bash</span>
+					<span class="skill-or-course">VSCode</span>
 				</section>
-				<section class="skill-area">
-					<h3 class="h3">practices</h3>
-					<span class="skill">Responsive Design</span>
-					<span class="skill">Component-based UI</span>
-					<span class="skill">Semantic HTML</span>
-					<span class="skill">Version control</span>
-					<span class="skill">basic API</span>
-					<span class="skill">Consumption</span>
-					<span class="skill">Debugging & refactoring</span>
+				<section class="skill-area" id="practices">
+					<a href="#practices" class="nav__link">
+						<h3 class="h3">#practices</h3>
+					</a>
+					<span class="skill-or-course">Responsive Design</span>
+					<span class="skill-or-course">Component-based UI</span>
+					<span class="skill-or-course">Semantic HTML</span>
+					<span class="skill-or-course">Version control</span>
+					<span class="skill-or-course">basic API</span>
+					<span class="skill-or-course">Consumption</span>
+					<span class="skill-or-course">Debugging & refactoring</span>
 				</section>
-				<section class="skill-area">
-					<h3 class="h3">productivity & OS</h3>
-					<span class="skill">Microsoft Office</span>
-					<span class="skill">Excel</span>
-					<span class="skill">Word</span>
-					<span class="skill">Power Point</span>
-					<span class="skill">Windows</span>
-					<span class="skill">macOS</span>
-					<span class="skill">Linux</span>
+				<section class="skill-area" id="productivity-os">
+					<a href="#productivity-os" class="nav__link">
+						<h3 class="h3">#productivity & OS</h3>
+					</a>
+					<span class="skill-or-course">Microsoft Office</span>
+					<span class="skill-or-course">Excel</span>
+					<span class="skill-or-course">Word</span>
+					<span class="skill-or-course">Power Point</span>
+					<span class="skill-or-course">Windows</span>
+					<span class="skill-or-course">macOS</span>
+					<span class="skill-or-course">Linux</span>
 				</section>
 			</div>
 		</section>
 		<section class="page-section" id="github-projects">
 			<div class="section-container github-projects container-max">
-				<h2 class="h2">GitHub Projects</h2>
-				<section class="github-projects__project section-separator">
-					<h3 class="h3 work-title">
-						Javascript Calculator
-						<span class="work-year">(Oct 2025)</span>
-					</h3>
+				<a href="#github-projects" class="nav-link h2-link">
+					<h2 class="h2">#GitHub Projects</h2>
+				</a>
+				<section
+					class="github-projects__project section-separator"
+					id="javascript-calculator"
+				>
+					<a href="#javascript-calculator" class="nav__link">
+						<h3 class="h3 work-title">
+							#Javascript Calculator
+							<span class="work-year">(Oct 2025)</span>
+						</h3>
+					</a>
 					<div class="github-projects__content-container">
 						<div class="github-projects__screenshot">
 							<img
@@ -304,12 +414,17 @@
 						</div>
 					</div>
 				</section>
-				<section class="github-projects__project section-separator">
-					<h3 class="h3 work-title">
-						React Tic Tac Toe<span class="work-year"
-							>(Jun 2025)</span
-						>
-					</h3>
+				<section
+					class="github-projects__project section-separator"
+					id="react-tic-tac-toe"
+				>
+					<a href="#react-tic-tac-toe" class="nav__link">
+						<h3 class="h3 work-title">
+							#React Tic Tac Toe<span class="work-year"
+								>(Jun 2025)</span
+							>
+						</h3>
+					</a>
 					<div class="github-projects__content-container">
 						<div class="github-projects__screenshot">
 							<img
@@ -332,7 +447,7 @@
 							<a
 								class="webdev-project-link"
 								href="https://github.com/ayx234/React_Learn_TIcTacToe"
-								title="github page for javascript calculator"
+								title="github page for react tic tac toe"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -354,7 +469,7 @@
 							<a
 								class="webdev-project-link"
 								href="https://ayx234.github.io/React_Learn_TIcTacToe/"
-								title="live site for javascript calculator"
+								title="live site for react tic tac toe"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -364,8 +479,6 @@
 									aria-hidden="true"
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 640 640"
-									height="var(--fa-icon-size)"
-									aria-hidden="true"
 								>
 									<!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
 									<path
@@ -378,11 +491,16 @@
 						</div>
 					</div>
 				</section>
-				<section class="github-projects__project section-separator">
-					<h3 class="h3 work-title">
-						Meet Chat Landing Page
-						<span class="work-year">(Mar 2026)</span>
-					</h3>
+				<section
+					class="github-projects__project section-separator"
+					id="meet-chat-landing-page"
+				>
+					<a href="#meet-chat-landing-page" class="nav__link">
+						<h3 class="h3 work-title">
+							#Meet Chat Landing Page
+							<span class="work-year">(Mar 2026)</span>
+						</h3>
+					</a>
 					<div class="github-projects__content-container">
 						<div class="github-projects__screenshot">
 							<img
@@ -405,7 +523,7 @@
 							<a
 								class="webdev-project-link"
 								href="https://github.com/ayx234/FM-Meet_Landing_Page"
-								title="github page for javascript calculator"
+								title="github page for meet landing page"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -427,7 +545,7 @@
 							<a
 								class="webdev-project-link"
 								href="https://ayx234.github.io/FM-Meet_Landing_Page"
-								title="live site for javascript calculator"
+								title="live site for meet landing page"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -449,11 +567,16 @@
 						</div>
 					</div>
 				</section>
-				<section class="github-projects__project section-separator">
-					<h3 class="h3 work-title">
-						Testimonials Grid Section
-						<span class="work-year">(Mar 2026)</span>
-					</h3>
+				<section
+					class="github-projects__project section-separator"
+					id="testimonials-grid-section"
+				>
+					<a href="#testimonials-grid-section" class="nav__link">
+						<h3 class="h3 work-title">
+							#Testimonials Grid Section
+							<span class="work-year">(Mar 2026)</span>
+						</h3>
+					</a>
 					<div class="github-projects__content-container">
 						<div class="github-projects__screenshot">
 							<img
@@ -475,7 +598,7 @@
 							<a
 								class="webdev-project-link"
 								href="https://github.com/ayx234/FM_Testimonials-Grid-Section"
-								title="github page for javascript calculator"
+								title="github page for testimonials grid section"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -497,7 +620,7 @@
 							<a
 								class="webdev-project-link"
 								href="https://ayx234.github.io/FM_Testimonials-Grid-Section"
-								title="live site for javascript calculator"
+								title="live site for testimonials grid section"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -507,8 +630,6 @@
 									aria-hidden="true"
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 640 640"
-									height="var(--fa-icon-size)"
-									aria-hidden="true"
 								>
 									<!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
 									<path
@@ -521,11 +642,16 @@
 						</div>
 					</div>
 				</section>
-				<section class="github-projects__project">
-					<h3 class="h3 work-title">
-						Four-Card Feature Section
-						<span class="work-year">(Feb 2026)</span>
-					</h3>
+				<section
+					class="github-projects__project"
+					id="four-card-feature-section"
+				>
+					<a href="#four-card-feature-section" class="nav__link">
+						<h3 class="h3 work-title">
+							#Four-Card Feature Section
+							<span class="work-year">(Feb 2026)</span>
+						</h3>
+					</a>
 					<div class="github-projects__content-container">
 						<div class="github-projects__screenshot">
 							<img
@@ -547,7 +673,7 @@
 							<a
 								class="webdev-project-link"
 								href="https://github.com/ayx234/FM-Four_Card_Feature_Section"
-								title="github page for javascript calculator"
+								title="github page for for card feature section"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -569,7 +695,7 @@
 							<a
 								class="webdev-project-link"
 								href="https://ayx234.github.io/FM-Four_Card_Feature_Section"
-								title="live site for javascript calculator"
+								title="live site for four card feature section"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -595,32 +721,38 @@
 		</section>
 		<section class="page-section bg-color-secondary" id="soft-skills">
 			<div class="section-container soft-skills container-max">
-				<h2 class="h2">Soft Skills</h2>
-				<ul class="soft-skills__ul">
-					<li class="soft-skills__li">
-						Strong verbal, written, and interpersonal communication
-						skills
-					</li>
-					<li class="soft-skills__li">
-						Adaptability and ability to work in a dynamic
-						environment
-					</li>
-					<li class="soft-skills__li">Creative thinker</li>
-					<li class="soft-skills__li">Analytical thinker</li>
-					<li class="soft-skills__li">Attentive to details</li>
-				</ul>
+				<a href="#soft-skills" class="nav-link h2-link">
+					<h2 class="h2">#Soft Skills</h2>
+				</a>
+				<span class="skill-or-course">
+					Adaptability and ability to work in a dynamic environment
+				</span>
+				<span class="skill-or-course"> Creative thinker </span>
+				<span class="skill-or-course"> Analytical thinker </span>
+				<span class="skill-or-course"> Attentive to details </span>
+				<span class="skill-or-course">
+					Strong verbal, written, and interpersonal communication
+					skills
+				</span>
 			</div>
 		</section>
 		<section class="page-section" id="work">
 			<div
 				class="section-container work-experience-and-projects container-max"
 			>
-				<h2 class="h2">Work experience &amp; projects</h2>
-				<section class="experience section-separator">
-					<h3 class="h3 work-title">
-						FreeCodeCamp certifications, short-term role, and
-						projects
-					</h3>
+				<a href="#work" class="nav-link h2-link">
+					<h2 class="h2">#Work experience &amp; projects</h2>
+				</a>
+				<section
+					class="experience section-separator"
+					id="freecodecamp-certifications"
+				>
+					<a href="#freecodecamp-certifications" class="nav__link">
+						<h3 class="h3 work-title">
+							#FreeCodeCamp certifications, short-term role, and
+							projects
+						</h3>
+					</a>
 					<span class="experience__year">
 						<svg
 							class="fa-icon-small"
@@ -650,10 +782,15 @@
 						</li>
 					</ul>
 				</section>
-				<section class="experience section-separator">
-					<h3 class="h3 work-title">
-						Self-directed web development study
-					</h3>
+				<section
+					class="experience section-separator"
+					id="self-directed-web-development"
+				>
+					<a href="#self-directed-web-development" class="nav__link">
+						<h3 class="h3 work-title">
+							#Self-directed web development study
+						</h3>
+					</a>
 					<span class="experience__year">
 						<svg
 							class="fa-icon-small"
@@ -679,8 +816,13 @@
 						</li>
 					</ul>
 				</section>
-				<section class="experience section-separator">
-					<h3 class="h3 work-title">Time Out Café</h3>
+				<section
+					class="experience section-separator"
+					id="time-out-cafe"
+				>
+					<a href="#time-out-cafe" class="nav__link">
+						<h3 class="h3 work-title">#Time Out Café</h3>
+					</a>
 					<p class="experience__description">
 						Operations Manager / Co‑Owner
 					</p>
@@ -740,8 +882,15 @@
 						</li>
 					</ul>
 				</section>
-				<section class="experience section-separator">
-					<h3 class="h3 work-title">Entrepreneurial web ventures</h3>
+				<section
+					class="experience section-separator"
+					id="entrepreneurial-web-ventures"
+				>
+					<a href="#entrepreneurial-web-ventures" class="nav__link">
+						<h3 class="h3 work-title">
+							#Entrepreneurial web ventures
+						</h3>
+					</a>
 					<span class="experience__year">
 						<svg
 							class="fa-icon-small"
@@ -768,8 +917,15 @@
 						</li>
 					</ul>
 				</section>
-				<section class="experience section-separator">
-					<h3 class="h3 work-title">Schlumberger Middle East S.A.</h3>
+				<section
+					class="experience section-separator"
+					id="schlumberger-middle-east"
+				>
+					<a href="#schlumberger-middle-east" class="nav__link">
+						<h3 class="h3 work-title">
+							#Schlumberger Middle East S.A.
+						</h3>
+					</a>
 					<p class="experience__description">
 						Accounts Receivable Accountant
 					</p>
@@ -836,10 +992,15 @@
 						</li>
 					</ul>
 				</section>
-				<section class="experience section-separator">
-					<h3 class="h3 work-title">
-						Scholarship, further study, and transition
-					</h3>
+				<section
+					class="experience section-separator"
+					id="scholarship-further-study"
+				>
+					<a href="#scholarship-further-study" class="nav__link">
+						<h3 class="h3 work-title">
+							#Scholarship, further study, and transition
+						</h3>
+					</a>
 					<span class="experience__year">
 						<svg
 							class="fa-icon-small"
@@ -865,8 +1026,10 @@
 						</li>
 					</ul>
 				</section>
-				<section class="experience">
-					<h3 class="h3 work-title">Saudi Pan Gulf</h3>
+				<section class="experience" id="saudi-pan-gulf">
+					<a href="#saudi-pan-gulf" class="nav__link">
+						<h3 class="h3 work-title">#Saudi Pan Gulf</h3>
+					</a>
 					<p class="experience__description">Accountant</p>
 					<span class="experience__location">
 						<svg
@@ -928,38 +1091,96 @@
 		</section>
 		<section class="page-section bg-color-secondary" id="education">
 			<div class="section-container education container-max">
-				<h2 class="h2">Education</h2>
-				<h3 class="h3">Web Development</h3>
-				<ul>
-					<li>
-						<strong>Certifications (FreeCodeCamp):</strong>
-						Responsive Web Design (2023); JavaScript Algorithms
-						&amp; Data Structures (2024); Front-End Development
-						Libraries (2025).
-					</li>
-					<li>
-						<strong>Learning roadmap:</strong> Python, pandas, basic
-						SQL, introductory data analysis and visualization
-					</li>
-				</ul>
-				<h3 class="h3">Bachelor of Science in Finance</h3>
-				<p>
-					The University of Tampa, Tampa, Florida, USA - Dec 2010 -
-					GPA: 3.16/4.00
-				</p>
-				<p>
-					Degree coursework: Financial &amp; Managerial Accounting;
-					Financial Management; International Financial Management;
-					Financial Markets &amp; Institutions; Money &amp; Banking;
-					Economics (Micro &amp; Macro); Managerial Statistics;
-					Operations Management; Marketing; International Business;
-					Oral Communications.
-				</p>
+				<a href="#education" class="nav-link h2-link">
+					<h2 class="h2">#Education</h2>
+				</a>
+				<section id="web-development">
+					<a href="#web-development" class="nav__link">
+						<h3 class="h3">#Web Development</h3>
+					</a>
+					<ul>
+						<li>
+							<h4>Certifications (FreeCodeCamp):</h4>
+							<span class="skill-or-course"
+								>Front-End Development Libraries (2025)</span
+							>
+							<span class="skill-or-course">
+								JavaScript Algorithms &amp; Data Structures
+								(2024)
+							</span>
+							<span class="skill-or-course">
+								Responsive Web Design (2023)
+							</span>
+						</li>
+						<li>
+							<h4>Learning roadmap:</h4>
+							<span class="skill-or-course">Python</span>
+							<span class="skill-or-course">Pandas</span>
+							<span class="skill-or-course">Basic SQL</span>
+							<span class="skill-or-course">
+								introductory data analysis and visualization
+							</span>
+						</li>
+					</ul>
+				</section>
+				<section id="degrees">
+					<a href="#degrees" class="nav__link">
+						<h3 class="h3">#Bachelor of Science in Finance</h3>
+					</a>
+					<ul>
+						<li>
+							<h4>The University of Tampa</h4>
+							<span class="skill-or-course">
+								Tampa, Florida, USA
+							</span>
+							<span class="skill-or-course"> Dec 2010 </span>
+							<span class="skill-or-course">
+								GPA: 3.16/4.00
+							</span>
+						</li>
+						<li>
+							<h4>Degree coursework:</h4>
+							<span class="skill-or-course">
+								Financial &amp; Managerial Accounting
+							</span>
+							<span class="skill-or-course">
+								Financial Management
+							</span>
+							<span class="skill-or-course">
+								International Financial Management
+							</span>
+							<span class="skill-or-course">
+								Financial Markets &amp; Institutions
+							</span>
+							<span class="skill-or-course">
+								Money &amp; Banking
+							</span>
+							<span class="skill-or-course">
+								Economics (Micro &amp; Macro)
+							</span>
+							<span class="skill-or-course">
+								Managerial Statistics
+							</span>
+							<span class="skill-or-course">
+								Operations Management
+							</span>
+							<span class="skill-or-course"> Marketing </span>
+							<span class="skill-or-course">
+								International Business
+							</span>
+							<span class="skill-or-course">
+								Oral Communications
+							</span>
+						</li>
+					</ul>
+				</section>
 			</div>
 		</section>
 		<section class="page-section" id="languages">
 			<div class="container-max section-container languages">
-				<h2 class="h2">Languages</h2>
+				<a href="#languages" class="nav-link h2-link">
+					<h2 class="h2">#Languages</h2>
+				</a>
 				<ul>
 					<li>Arabic – <strong>fluent</strong></li>
 					<li>English – <strong>fluent</strong></li>

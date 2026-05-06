@@ -7,31 +7,32 @@
   src: url("../../fonts/OpenSans-VariableFont_wdth,wght.ttf") format("truetype");
   font-weight: 100 900;
   font-style: normal;
+  font-display: swap;
 }
 /* ------- Variables ------- */
 :root {
-  /* 	----- colors ----- */
-  /* Background Colors */
+  /* === Background Colors === */
   --background-color-main: #ffffff;
   --background-color-secondary: #1b3142;
-  /* Text Colors */
+  /* === Text Colors === */
   --text-primary: #1a1a1a;
-  --text-secondary: #4a4a4a;
-  --text-muted: #8a8a8a;
+  --text-secondary: #646464;
+  --text-muted-lighter: #8a8a8a;
+  --text-muted: #707070;
   --text-secondary-bg: #eef2f4;
   --text-bluish-light: #2a4a5e;
-  --text-bluish-lighter: #3d5f75;
+  --text-bluish-lighter: #37566a;
   --text-bluish-dark: #0f1f2a;
   --text-bluish-darker: #081118;
   --text-bluish-muted: #253d4d;
-  /* Accent Colors */
+  /* === Accent Colors === */
   --accent-primary: #0066cc;
   --accent-strong: #004499;
   --accent-yellow: #f4b942;
-  /* UI Elements */
+  /* === UI Elements  === */
   --muted-line: #d9d9d9;
   --card-shadow: rgba(0, 0, 0, 0.08);
-  /* Additional Useful Colors */
+  /* === Additional Useful Colors === */
   --success: #2ecc71;
   --warning: #f39c12;
   --error: #e74c3c;
@@ -78,20 +79,29 @@
   --space-l-3xl: clamp(1.875rem, 0.2679rem + 8.0357vw, 7.5rem);
   /* Semantic font-size */
   --font-size-body: var(--step-0);
-  --font-size-large-icon: var(--step-6);
+  --font-size-nav-link: var(--step-1);
+  --font-size-fa-icon-nav: 3rem;
+  --font-size-fa-icon-small: inherit;
+  --font-size-fa-icon-large: var(--step-6);
   /* Semantic spacing */
   --padding-block-section-container: var(--space-s);
   --photo-size-190-300: clamp(11.875rem, 9.9107rem + 9.8214vw, 18.75rem);
-  --photo-margin-b-s: -1.875rem; /* 30px */
   --photo-margin-b-e: var(--space-s);
   /* ----- Icons ----- */
   --fa-icon-size: 1em;
-  /* Borders */
-  --screenshot-border-width: var(--space-3xs-2xs) ;
-  --screenshot-border: var(--screenshot-border-width) solid
+  /* === Borders === */
+  /* Border width */
+  --border-width-screenshot: var(--space-3xs-2xs);
+  /* Border shorthand */
+  --border-shorthand-screenshot: var(--border-width-screenshot) solid
   	var(--background-color-secondary);
-  --screenshot-border-radius: 0.5em;
-  /* Box Shadow */
+  /* Border radius */
+  --border-radius-default: 0.25em;
+  --border-radius-pill: 50rem;
+  --border-radius-personal-photo: 2.5em;
+  --border-radius-social-link-icon: 0.8em;
+  --border-radius-screenshot: 0.5em;
+  /* === Box Shadow === */
   --screenshot-boxshadow-size: clamp(
   	0.25rem,
   	0.1071rem + 0.7143vw,
@@ -105,6 +115,26 @@
   --screenshot-boxshadow: var(--screenshot-boxshadow-size)
   	var(--screenshot-boxshadow-size) var(--screenshot-boxshadow-size) 0
   	var(--text-secondary);
+  /* === Outlines === */
+  /* Outline width */
+  --outline-width-default: 0.1875em;
+  /* outline-offset */
+  --outline-offset-xs: 0.0625em;
+  --outline-offset-s: 0.125em;
+  --outline-offset-default: 0.1875em;
+  --outline-offset-l: 0.25em;
+  --outline-offset-xl: 0.5em;
+  /* === Transforms === */
+  --transform-header: translate(-1.5em, 0);
+  --transform-contact-link: translate(0, -0.25em);
+  --transform-main-nav-link: scale(1.05) translate(0, -0.25em);
+  --transform-social-link: scale(1.1) translate(0, -0.25em);
+  --transform-github-link: scale(1.1) translate(0, -0.3125em);
+  --transform-scale-up: scale(1.1);
+  /* === Transitions === */
+  --nav-ul-transition:
+  	max-height 0.3s ease, visibility 0.3s ease, margin-block 0.3s ease;
+  --transition-transform: transform 0.3s ease;
 }
 
 /** @format */
@@ -298,6 +328,8 @@ a:not([class]) {
     scroll-behavior: auto !important;
   }
 }
+/** @format */
+/** @format */
 /* ------- General [Elements] ------- */
 body {
   font-size: var(--font-size-body);
@@ -326,24 +358,27 @@ body {
 .h3,
 p {
   margin-block-end: var(--space-3xs);
+  margin-block-end: var(--space-2xs);
 }
 
 a,
 p,
 li {
   /* 
-  - somebrowsers don't break links or long words by default 
-  - without this, links would overflow in small screen
+  - some browsers don't break links or long words
+   by default 
+  - without this, links would overflow in small
+   screen
   */
   overflow-wrap: anywhere;
 }
 
-a:is(:link, :visited) {
-  color: inherit;
+a {
+  transition: var(--transition-transform);
 }
 
-a:has(> svg) {
-  display: inline-flex;
+a:has(h2, h3) {
+  display: block;
 }
 
 ul {
@@ -358,6 +393,12 @@ li {
   list-style: circle;
 }
 
+.h2-link {
+  text-decoration: none;
+}
+
+/** @format */
+/** @format */
 /* ------- Composition ------- */
 .page-section {
   /* 
@@ -385,7 +426,7 @@ li {
   - 2 * var(--padding-block-section-container)
     - 2 * to count for starting and ending padding
   and double margin-block-end of each section
-  - var(--font-size-large-icon)
+  - var(--font-size-fa-icon-large)
     - the font-size as part of height calculation
   	and is reliable for calculating the 
   	height of the nav's svg because it 
@@ -396,7 +437,8 @@ li {
   	present in the nav even if line-height was 1
    */
   --nav-height: calc(
-  	2 * var(--padding-block-section-container) + var(--font-size-large-icon)
+  	2 * var(--padding-block-section-container) +
+  		var(--font-size-fa-icon-large)
   );
   scroll-margin-top: var(--nav-height);
 }
@@ -412,25 +454,29 @@ li {
   color: inherit;
 }
 
-.section-container a {
-  color: var(--text-bluish-lighter);
-}
-
 .subsection-description {
   margin-block-start: 0;
   margin-block-end: var(--space-s);
 }
 
-/* ------- Components ------- */
+/** @format */
+/** @format */
+/* --------- Mobile first - Mobile and Mid Screens --------- */
+/* ------- Components - ------- */
 /* --- Nav --- */
 .nav {
   position: sticky;
   top: 0;
 }
 
-.nav-icons-container {
+.home-button-container {
+  display: inline-flex;
+}
+
+.nav-button-container {
   display: grid;
-  justify-self: center;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
 }
 
 .nav-button {
@@ -438,6 +484,7 @@ li {
   background-color: transparent;
   padding: 0;
   border: none;
+  transition: var(--transition-transform);
 }
 
 .container-nav {
@@ -447,6 +494,7 @@ li {
 
 .nav__ul {
   text-align: center;
+  transition: var(--nav-ul-transition);
 }
 @media (width > 450px) {
   .nav__ul {
@@ -461,29 +509,32 @@ li {
     justify-content: center;
     gap: 1rem;
   }
+  .nav__ul .main-nav-link {
+    margin-block: 0;
+  }
 }
 
 .nav__ul > li {
   break-inside: avoid;
 }
 
-[data-status=nav-hidden] .nav-icons-container .menu-x {
+[aria-hidden=true] .nav-button-container .menu-x {
   display: none;
 }
 
-[data-status=nav-hidden] .nav__ul {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
+[aria-hidden=true] .nav__ul {
+  max-height: 0;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+  visibility: hidden;
+  margin-block: 0;
 }
 
-[data-status=nav-shown] .nav-icons-container .menu-bars {
+[aria-hidden=false] .nav__ul {
+  max-height: 100vh;
+  visibility: visible;
+}
+
+[aria-hidden=false] .nav-button-container .menu-bars {
   display: none;
 }
 
@@ -492,10 +543,14 @@ li {
   text-transform: capitalize;
 }
 
-.nav__link {
+.main-nav-link {
   text-decoration: none;
-  font-size: var(--step-1);
+  font-size: var(--font-size-nav-link);
   font-weight: 900;
+  border-radius: var(--border-radius-default);
+  margin-block: 0.3125em;
+  display: inline-block;
+  transition: var(--transition-transform);
 }
 
 /* --- Header [Profile hero - Contact] --- */
@@ -527,7 +582,7 @@ li {
   border-width: 10px;
   border-style: solid;
   border-color: var(--text-secondary-bg);
-  border-radius: 50px;
+  border-radius: var(--border-radius-personal-photo);
   margin-block-end: var(--photo-margin-b-e);
 }
 
@@ -542,8 +597,8 @@ li {
   content: "";
   width: 2.5rem;
   height: 0.1875rem; /* 3px */
-  background-color: var(--text-muted);
-  border-radius: 50rem;
+  background-color: var(--text-muted-lighter);
+  border-radius: var(--border-radius-pill);
   margin-block: var(--space-2xs);
 }
 
@@ -557,24 +612,33 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  gap: var(--space-2xs);
+  gap: var(--space-xs);
 }
 
-.contact * {
-  margin: 0;
+.contact-link {
+  transition: var(--transition-transform);
 }
 
-.links {
+.social-links {
   margin-block-start: auto;
+}
+
+.social-links__link {
+  display: inline-flex;
+  transition: var(--transition-transform);
 }
 
 .nationality {
   margin-block-start: calc(-1 * var(--space-2xs));
 }
 
-.nationality__h3 {
+.contact.bg-color-secondary .nationality__h3 {
+  /* 
+  .bg-color-secondary needed to increase specificity
+  because .bg-color-secondary .h3 with same specificty
+  comes later in utlities
+   */
   text-transform: uppercase;
-  color: var(--text-muted);
   font-size: var(--step-0);
   letter-spacing: 0.125em; /* 2px */
   margin-block-end: 0;
@@ -586,11 +650,13 @@ li {
   gap: 0;
 }
 
-.skill {
-  padding: 0.25em 0.5em;
+.skill-or-course {
+  padding: 0.5em 1em;
   border: 2px solid currentcolor;
   border-radius: 4px;
-  display: inline-block;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   margin-block: var(--space-3xs);
   margin-inline: 0.0625em;
 }
@@ -609,8 +675,9 @@ li {
 
 .screenshot {
   width: 100%;
-  border: var(--screenshot-border);
-  border-radius: var(--screenshot-border-radius);
+  object-fit: cover;
+  border: var(--border-shorthand-screenshot);
+  border-radius: var(--border-radius-screenshot);
   margin-block: var(--space-2xs);
   box-shadow: var(--screenshot-boxshadow);
   align-self: start;
@@ -620,25 +687,27 @@ li {
   flex: 2 1 18rem;
 }
 
-.webdev-project-link {
-  padding: 0.25em 0.5em;
+.github-projects__description-container .webdev-project-link {
+  padding: 0.5em 1em;
   border: 2px solid currentcolor;
   border-radius: 4px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   display: inline-flex;
   align-items: center;
   gap: 0.25em;
-  color: var(--background-color-secondary);
   border-width: 0.1875em;
+  transition: var(--transition-transform);
 }
 
 .webdev-project-link + .webdev-project-link {
-  margin-inline-start: var(--space-3xs-2xs);
+  margin-inline-start: var(--space-2xs);
 }
 
 /* Soft Skills */
-.soft-skills__li {
-  list-style-type: circle;
-  text-decoration: underline;
+.soft-skills {
+  display: block;
 }
 
 /* Work experience & projects */
@@ -662,6 +731,78 @@ li {
   gap: 0;
 }
 
+.degree-info {
+  font-weight: 700;
+}
+
+/** @format */
+/** @format */
+/* ========== States  ========== */
+/* ===== General States ===== */
+a:is(:link, :visited) {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+.main-nav-link:focus-visible,
+.webdev-project-link:focus-visible {
+  outline: var(--outline-width-default) solid currentColor;
+  outline-offset: var(--outline-offset-default);
+  border-radius: var(--border-radius-default);
+}
+
+:is(a, [tabindex]):has(h2, h3):focus-visible {
+  /* [tabindex] is used to increase specificity 
+  because these elements hav both a and tabindex
+  and my reset file has a selector with :is(a, [tabindex]) */
+  outline: var(--outline-width-default) solid currentColor;
+  border-radius: var(--border-radius-default);
+  transform: var(--transform-header);
+}
+
+/* ===== Component Spesific States ===== */
+/* === Nav === */
+.nav-button:focus-visible {
+  margin-block-end: 0.1875em;
+  outline-width: var(--outline-width-default);
+  outline-offset: 0.125em;
+  border-radius: var(--border-radius-default);
+  transform: var(--transform-scale-up);
+}
+
+.main-nav-link:focus-visible {
+  outline-width: var(--outline-width-default);
+  outline-offset: var(--outline-offset-l);
+  transform: var(--transform-main-nav-link);
+}
+
+.main-nav-link:focus-visible {
+  outline-width: var(--outline-width-default);
+  outline-offset: var(--outline-offset-l);
+  transform: var(--transform-main-nav-link);
+}
+
+/* === Contact === */
+.social-links__link:focus-visible {
+  outline-offset: -0.25em;
+  border-radius: var(--border-radius-social-link-icon);
+  outline-width: var(--outline-width-default);
+  transform: var(--transform-social-link);
+}
+
+/* === Github Projects */
+.webdev-project-link:focus-visible {
+  outline-offset: var(--outline-offset-xs);
+  transform: var(--transform-github-link);
+}
+
+.webdev-project-link:is(:link, :visited) {
+  color: var(--text-bluish-light);
+}
+
+/** @format */
+/** @format */
 /* ------- Utilities ------- */
 .bg-color-secondary {
   background-color: var(--background-color-secondary);
@@ -691,19 +832,19 @@ for correct representation:
 	* use 1em so height and width reflect font-size
  */
 .fa-icon-nav {
-  font-size: 3rem;
+  font-size: var(--font-size-fa-icon-nav);
   width: var(--fa-icon-size, 1em);
   height: var(--fa-icon-size, 1em);
 }
 
 .fa-icon-large {
-  font-size: var(--step-6);
+  font-size: var(--font-size-fa-icon-large);
   width: var(--fa-icon-size, 1em);
   height: var(--fa-icon-size, 1em);
 }
 
 .fa-icon-small {
-  font-size: inherit;
+  font-size: var(--font-size-fa-icon-small);
   width: var(--fa-icon-size, 1em);
   height: var(--fa-icon-size, 1em);
   margin-block-start: 0.1em;
@@ -736,8 +877,16 @@ for correct representation:
 }
 
 .container-max {
+  /* 
+  equals ~1440px but breakpoints go to 1240px 
+  maintains visual consistency */
   max-width: 55em;
   margin-inline: auto;
 }
+
+/** @format */
+/** @format */
+/** @format */
+/** @format */
 
 /*# sourceMappingURL=styles.css.map */
