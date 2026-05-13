@@ -555,14 +555,14 @@ li {
 
 /* --- Header [Profile hero - Contact] --- */
 /* Profile hero */
-.cv-header {
+.cv-header-elements-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0;
 }
 
-.cv-header > * {
+.cv-header-elements-container > * {
   flex: 1 0 18rem;
 }
 
@@ -886,6 +886,12 @@ for correct representation:
 
 /** @format */
 /** @format */
+@media (width > 1000px) {
+  .layout-container-larger-screens {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+  }
+}
 /** @format */
 /** @format */
 

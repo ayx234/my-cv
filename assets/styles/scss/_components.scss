@@ -109,14 +109,14 @@
 
 /* Profile hero */
 
-.cv-header {
+.cv-header-elements-container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 0;
 }
 
-.cv-header > * {
+.cv-header-elements-container > * {
 	flex: 1 0 18rem;
 }
 

@@ -4,7 +4,8 @@
 @use "mixins";
 
 @media (width > 1000px) {
-  // body {
-    
-  // }
+  .layout-container-larger-screens {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+  }
 }
