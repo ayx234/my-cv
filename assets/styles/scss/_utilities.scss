@@ -5,19 +5,6 @@
 
 /* ------- Utilities ------- */
 
-.bg-color-secondary {
-	background-color: var(--background-color-secondary);
-	color: var(--text-secondary-bg);
-}
-
-.bg-color-secondary .h2 {
-	color: var(--neutral-medium);
-}
-
-.bg-color-secondary .h3 {
-	color: var(--muted-line);
-}
-
 .work-title {
 	color: var(--text-bluish-light);
 }
@@ -78,10 +65,7 @@ for correct representation:
 	justify-content: center;
 }
 
-.container-max {
-	/* 
-	equals ~1440px but breakpoints go to 1240px 
-	maintains visual consistency */
-	max-width: 55em;
+.component-container-large {
+	max-width: var(--breakpoint-lrg-container, 55em);
 	margin-inline: auto;
 }

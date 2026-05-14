@@ -41,50 +41,73 @@
   /* 	----- Font Size & Spacing ----- */
   /* @link https://utopia.fyi/type/calculator?c=320,15,1.2,1440,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l|l-2xl&g=s,l,xl,12 */
   /* // --- font size --- */
-  --step--2: clamp(0.651rem, 0.6085rem + 0.2128vw, 0.8rem);
-  --step--1: clamp(0.7813rem, 0.7188rem + 0.3125vw, 1rem);
-  --step-0: clamp(0.9375rem, 0.8482rem + 0.4464vw, 1.25rem);
-  --step-1: clamp(1.125rem, 1rem + 0.625vw, 1.5625rem);
-  --step-2: clamp(1.35rem, 1.1777rem + 0.8616vw, 1.9531rem);
-  --step-3: clamp(1.62rem, 1.3853rem + 1.1734vw, 2.4414rem);
-  --step-4: clamp(1.944rem, 1.6275rem + 1.5825vw, 3.0518rem);
-  --step-5: clamp(2.3328rem, 1.9094rem + 2.117vw, 3.8147rem);
-  --step-6: clamp(2.7994rem, 2.2368rem + 2.8129vw, 4.7684rem);
+  --step--2: clamp(0.651rem, 0.6085rem + 0.2128cqi, 0.8rem);
+  --step--1: clamp(0.7813rem, 0.7188rem + 0.3125cqi, 1rem);
+  --step-0: clamp(0.9375rem, 0.8482rem + 0.4464cqi, 1.25rem);
+  --step-1: clamp(1.125rem, 1rem + 0.625cqi, 1.5625rem);
+  --step-2: clamp(1.35rem, 1.1777rem + 0.8616cqi, 1.9531rem);
+  --step-3: clamp(1.62rem, 1.3853rem + 1.1734cqi, 2.4414rem);
+  --step-4: clamp(1.944rem, 1.6275rem + 1.5825cqi, 3.0518rem);
+  --step-5: clamp(2.3328rem, 1.9094rem + 2.117cqi, 3.8147rem);
+  --step-6: clamp(2.7994rem, 2.2368rem + 2.8129cqi, 4.7684rem);
   /* // --- Spacing --- */
   /* // Fluid */
-  --space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
-  --space-2xs: clamp(0.5625rem, 0.5446rem + 0.0893vw, 0.625rem);
-  --space-xs: clamp(0.875rem, 0.8571rem + 0.0893vw, 0.9375rem);
-  --space-s: clamp(1.125rem, 1.0893rem + 0.1786vw, 1.25rem);
-  --space-m: clamp(1.6875rem, 1.6339rem + 0.2679vw, 1.875rem);
-  --space-l: clamp(2.25rem, 2.1786rem + 0.3571vw, 2.5rem);
-  --space-xl: clamp(3.375rem, 3.2679rem + 0.5357vw, 3.75rem);
-  --space-2xl: clamp(4.5rem, 4.3571rem + 0.7143vw, 5rem);
-  --space-3xl: clamp(6.75rem, 6.5357rem + 1.0714vw, 7.5rem);
+  --space-3xs: clamp(0.3125rem, 0.3125rem + 0cqi, 0.3125rem);
+  --space-2xs: clamp(0.5625rem, 0.5446rem + 0.0893cqi, 0.625rem);
+  --space-xs: clamp(0.875rem, 0.8571rem + 0.0893cqi, 0.9375rem);
+  --space-s: clamp(1.125rem, 1.0893rem + 0.1786cqi, 1.25rem);
+  --space-m: clamp(1.6875rem, 1.6339rem + 0.2679cqi, 1.875rem);
+  --space-l: clamp(2.25rem, 2.1786rem + 0.3571cqi, 2.5rem);
+  --space-xl: clamp(3.375rem, 3.2679rem + 0.5357cqi, 3.75rem);
+  --space-2xl: clamp(4.5rem, 4.3571rem + 0.7143cqi, 5rem);
+  --space-3xl: clamp(6.75rem, 6.5357rem + 1.0714cqi, 7.5rem);
   /*   // One-up pairs */
-  --space-3xs-2xs: clamp(0.3125rem, 0.2232rem + 0.4464vw, 0.625rem);
-  --space-2xs-xs: clamp(0.5625rem, 0.4554rem + 0.5357vw, 0.9375rem);
-  --space-xs-s: clamp(0.875rem, 0.7679rem + 0.5357vw, 1.25rem);
-  --space-s-m: clamp(1.125rem, 0.9107rem + 1.0714vw, 1.875rem);
-  --space-m-l: clamp(1.6875rem, 1.4554rem + 1.1607vw, 2.5rem);
-  --space-l-xl: clamp(2.25rem, 1.8214rem + 2.1429vw, 3.75rem);
-  --space-xl-2xl: clamp(3.375rem, 2.9107rem + 2.3214vw, 5rem);
-  --space-2xl-3xl: clamp(4.5rem, 3.6429rem + 4.2857vw, 7.5rem);
+  --space-3xs-2xs: clamp(0.3125rem, 0.2232rem + 0.4464cqi, 0.625rem);
+  --space-2xs-xs: clamp(0.5625rem, 0.4554rem + 0.5357cqi, 0.9375rem);
+  --space-xs-s: clamp(0.875rem, 0.7679rem + 0.5357cqi, 1.25rem);
+  --space-s-m: clamp(1.125rem, 0.9107rem + 1.0714cqi, 1.875rem);
+  --space-m-l: clamp(1.6875rem, 1.4554rem + 1.1607cqi, 2.5rem);
+  --space-l-xl: clamp(2.25rem, 1.8214rem + 2.1429cqi, 3.75rem);
+  --space-xl-2xl: clamp(3.375rem, 2.9107rem + 2.3214cqi, 5rem);
+  --space-2xl-3xl: clamp(4.5rem, 3.6429rem + 4.2857cqi, 7.5rem);
   /*   // Custom pairs */
-  --space-3xs-2xs: clamp(0.3125rem, 0.2411rem + 0.3571vw, 0.5625rem);
-  --space-2xs-m: clamp(0.5625rem, 0.1875rem + 1.875vw, 1.875rem);
-  --space-2xs-l: clamp(0.5625rem, 0.0804rem + 2.4107vw, 2.25rem);
-  --space-s-l: clamp(1.125rem, 0.7321rem + 1.9643vw, 2.5rem);
-  --space-l-2xl: clamp(2.25rem, 1.4643rem + 3.9286vw, 5rem);
-  --space-l-3xl: clamp(1.875rem, 0.2679rem + 8.0357vw, 7.5rem);
+  --space-3xs-2xs: clamp(0.3125rem, 0.2411rem + 0.3571cqi, 0.5625rem);
+  --space-2xs-m: clamp(0.5625rem, 0.1875rem + 1.875cqi, 1.875rem);
+  --space-2xs-ml: clamp(0.5625rem, 0.0804rem + 2.4107cqi, 2.25rem);
+  --space-s-l: clamp(1.125rem, 0.7321rem + 1.9643cqi, 2.5rem);
+  --space-ml-3xl: clamp(1.875rem, 0.2679rem + 8.0357cqi, 7.5rem);
+  --space-l-2xl: clamp(2.25rem, 1.4643rem + 3.9286cqi, 5rem);
+  --space-l-3xl: clamp(2.25rem, 0.1023rem + 9.5455cqi, 7.5rem);
   /* Semantic font-size */
   --font-size-body: var(--step-0);
   --font-size-nav-link: var(--step-1);
-  --font-size-fa-icon-nav: 3rem;
+  --font-size-fa-icon-nav: var(--step-6);
   --font-size-fa-icon-small: inherit;
   --font-size-fa-icon-large: var(--step-6);
+  --font-size-fa-icon-large: clamp(
+  	2.7994rem,
+  	2.2368rem + 2.8129vw,
+  	4.7684rem
+  );
   /* Semantic spacing */
   --padding-block-section-container: var(--space-s);
+  --padding-inilne-larger-screens-side-section-container: clamp(
+  	2.75rem,
+  	-3.1562rem + 26.25cqi,
+  	17.1875rem
+  );
+  --padding-inilne-larger-screens-main-section-container: clamp(
+  	1.5rem,
+  	-0.1875rem + 7.5cqi,
+  	5.625rem
+  );
+  --padding-inilne-larger-screens-main-section-container: clamp(
+  	1rem,
+  	-0.892rem + 8.4091cqi,
+  	5.625rem
+  );
+  /* for --photo-size-190-300
+   vw is better than cqi for the photo */
   --photo-size-190-300: clamp(11.875rem, 9.9107rem + 9.8214vw, 18.75rem);
   --photo-margin-b-e: var(--space-s);
   /* ----- Icons ----- */
@@ -104,12 +127,12 @@
   /* === Box Shadow === */
   --screenshot-boxshadow-size: clamp(
   	0.25rem,
-  	0.1071rem + 0.7143vw,
+  	0.1071rem + 0.7143cqi,
   	0.75rem
   ); /* 4 - 12 px */
   --screenshot-boxshadow-size: clamp(
   	0.1875rem,
-  	0.0982rem + 0.4464vw,
+  	0.0982rem + 0.4464cqi,
   	0.5rem
   ); /* 3 - 8 px */
   --screenshot-boxshadow: var(--screenshot-boxshadow-size)
@@ -127,14 +150,49 @@
   /* === Transforms === */
   --transform-header: translate(-1.5em, 0);
   --transform-contact-link: translate(0, -0.25em);
-  --transform-main-nav-link: scale(1.05) translate(0, -0.25em);
+  --transform-nav-item: scale(1.05) translate(0, -0.25em);
   --transform-social-link: scale(1.1) translate(0, -0.25em);
   --transform-github-link: scale(1.1) translate(0, -0.3125em);
   --transform-scale-up: scale(1.1);
   /* === Transitions === */
+  /* transition duration and timing */
+  --transition-duration: 0.3s;
+  --transition-timing-function: ease-in-out;
+  /* transition semantic properties */
   --nav-ul-transition:
-  	max-height 0.3s ease, visibility 0.3s ease, margin-block 0.3s ease;
-  --transition-transform: transform 0.3s ease;
+  	max-height var(--transition-duration) var(--transition-timing-function),
+  	visibility var(--transition-duration) var(--transition-timing-function),
+  	margin-block var(--transition-duration)
+  		var(--transition-timing-function);
+  --transition-main-nav-link:
+  	opacity var(--transition-duration) var(--transition-timing-function),
+  	transform var(--transition-duration) var(--transition-timing-function);
+  --transition-webdev-project-link:
+  	transform var(--transition-duration) var(--transition-timing-function),
+  	background-color var(--transition-duration)
+  		var(--transition-timing-function),
+  	color var(--transition-duration) var(--transition-timing-function);
+  /* transition property utilities */
+  --transition-transform: transform var(--transition-duration)
+  	var(--transition-timing-function);
+  --transition-opacity: opacity var(--transition-duration)
+  	var(--transition-timing-function);
+  --transition-height: height var(--transition-duration)
+  	var(--transition-timing-function);
+  --transition-width: width var(--transition-duration)
+  	var(--transition-timing-function);
+  /*=== Grid display related ===*/
+  --ul-default-gap: 0.5em;
+  /* === Breakpoints === */
+  --breakpoint-max-container: 1800px;
+  --breakpoint-lrg-container: 55em; /*
+- equals ~1440px but breakpoints go to 1240px 
+maintains visual consistency
+- used to container #home and #contact
+ on small screens.
+- kept larger than js larger screen breakpoint 1000px
+in case javascript didn't work (progressive enhancement)
+*/
 }
 
 /** @format */
@@ -340,6 +398,7 @@ body {
   font-variation-settings: "wdth" 100;
   line-height: 1.5;
   color: var(--text-primary);
+  overflow-anchor: none;
 }
 
 .h2 {
@@ -373,8 +432,49 @@ li {
   overflow-wrap: anywhere;
 }
 
+:is(a, button, .main-nav-link, .webdev-project-link):is(:focus-visible,
+:hover) {
+  outline: var(--outline-width-default) solid currentColor;
+  outline-offset: var(--outline-offset-default);
+  border-radius: var(--border-radius-default);
+}
+
 a {
   transition: var(--transition-transform);
+}
+
+a:is(:link, :visited) {
+  color: inherit;
+}
+
+:is(a, [tabindex]):has(h2, h3) {
+  /* [tabindex] is used to increase specificity 
+  because these elements hav both a and tabindex
+  and my reset file has a selector with :is(a, [tabindex]) */
+  position: relative;
+}
+:is(a, [tabindex]):has(h2, h3) :is(h2, h3)::before {
+  content: "";
+  display: block;
+  width: 0em;
+  background-color: currentColor;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -0.5em;
+  border-radius: var(--border-radius-pill);
+  transition: var(--transition-width);
+}
+
+:is(a, [tabindex]):has(h2, h3):is(:focus-visible, :hover, [data-focus-temporary]) {
+  /* [tabindex] is used to increase specificity 
+  	because these elements hav both a and tabindex
+  	and my reset file has a selector with :is(a, [tabindex]) */
+  transform: var(--transform-header);
+  outline: none;
+}
+:is(a, [tabindex]):has(h2, h3):is(:focus-visible, :hover, [data-focus-temporary]) :is(h2, h3)::before {
+  width: 0.15em;
 }
 
 a:has(h2, h3) {
@@ -386,7 +486,7 @@ ul {
   margin-block: 0;
   margin-block: var(--space-3xs);
   display: grid;
-  gap: 0.5em;
+  gap: var(--ul-default-gap, 0.5em);
 }
 
 li {
@@ -445,9 +545,22 @@ li {
 
 .section-container {
   padding-block: var(--padding-block-section-container);
-  padding-inline: var(--space-l-3xl);
+  padding-inline: var(--space-ml-3xl);
   display: grid;
   gap: var(--space-3xs);
+}
+
+.bg-color-secondary {
+  background-color: var(--background-color-secondary);
+  color: var(--text-secondary-bg);
+}
+
+.bg-color-secondary .h2 {
+  color: var(--neutral-medium);
+}
+
+.bg-color-secondary .h3 {
+  color: var(--muted-line);
 }
 
 .bg-color-secondary .section-container a {
@@ -459,14 +572,28 @@ li {
   margin-block-end: var(--space-s);
 }
 
+ul:has(.skill-or-course) {
+  display: block;
+}
+
+li:has(.skill-or-course) {
+  display: inline-block;
+}
+
 /** @format */
 /** @format */
 /* --------- Mobile first - Mobile and Mid Screens --------- */
 /* ------- Components - ------- */
 /* --- Nav --- */
+.container-nav {
+  max-width: var(--breakpoint-max-container, 1800px);
+  margin-inline: auto;
+}
+
 .nav {
   position: sticky;
   top: 0;
+  z-index: 999;
 }
 
 .home-button-container {
@@ -484,12 +611,35 @@ li {
   background-color: transparent;
   padding: 0;
   border: none;
+  text-decoration: none;
+  position: relative;
   transition: var(--transition-transform);
 }
 
-.container-nav {
-  max-width: 1800px;
-  margin-inline: auto;
+.nav-button:is(:focus-visible, :hover) {
+  margin-block-end: 0.1875em;
+  outline-width: var(--outline-width-default);
+  outline-offset: var(--outline-offset-s, 0.125em);
+  border-radius: var(--border-radius-default, 0.25em);
+  transform: var(--transform-nav-item);
+}
+
+.nav-button-text {
+  width: max-content;
+  text-transform: capitalize;
+  font-size: var(--font-size-nav-link);
+  font-weight: 900;
+  position: absolute;
+  left: 120%;
+  top: 50%;
+  translate: 0 -50%;
+  opacity: 0;
+  transition: var(--transition-opacity);
+}
+@media (width >= 500px) {
+  .nav-button-text {
+    opacity: 1;
+  }
 }
 
 .nav__ul {
@@ -518,23 +668,23 @@ li {
   break-inside: avoid;
 }
 
-[aria-hidden=true] .nav-button-container .menu-x {
+[data-visibility=hidden] .nav-button-container .menu-x {
   display: none;
 }
 
-[aria-hidden=true] .nav__ul {
+[data-visibility=hidden] .nav__ul {
   max-height: 0;
   overflow: hidden;
   visibility: hidden;
   margin-block: 0;
 }
 
-[aria-hidden=false] .nav__ul {
+[data-visibility=shown] .nav__ul {
   max-height: 100vh;
   visibility: visible;
 }
 
-[aria-hidden=false] .nav-button-container .menu-bars {
+[data-visibility=shown] .nav-button-container .menu-bars {
   display: none;
 }
 
@@ -548,9 +698,43 @@ li {
   font-size: var(--font-size-nav-link);
   font-weight: 900;
   border-radius: var(--border-radius-default);
-  margin-block: 0.3125em;
+  margin-block: 0.3125em; /* 5px */
   display: inline-block;
-  transition: var(--transition-transform);
+  transition: var(--transition-main-nav-link);
+  opacity: 0;
+  position: relative;
+}
+.main-nav-link::after {
+  /* appears on :focus-visible */
+  content: "";
+  display: block;
+  height: 0;
+  background-color: currentColor;
+  border-radius: 5px;
+  border-radius: var(--border-radius-pill, 0.25em);
+  position: absolute;
+  bottom: 3;
+  right: 0;
+  left: 0;
+  transition: var(--transition-height);
+}
+
+.main-nav-link:is(:focus-visible, :hover) {
+  outline: none;
+  transform: var(--transform-nav-item);
+}
+.main-nav-link:is(:focus-visible, :hover)::after {
+  height: 0.1875em; /* 3/16 = 0.1875 */
+}
+
+[data-visibility=shown] .main-nav-link {
+  opacity: 1;
+}
+
+@media (width >= 1500px) {
+  .nav .main-nav-link {
+    opacity: 1;
+  }
 }
 
 /* --- Header [Profile hero - Contact] --- */
@@ -579,7 +763,7 @@ li {
 .personal-photo {
   width: var(--photo-size-190-300);
   background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(244, 185, 66) 80%);
-  border-width: 10px;
+  border-width: 0.5625em; /* 9/16 = .5625 */
   border-style: solid;
   border-color: var(--text-secondary-bg);
   border-radius: var(--border-radius-personal-photo);
@@ -590,12 +774,13 @@ li {
   display: grid;
   justify-items: center;
   font-weight: 900;
+  text-align: center;
 }
 
 .name::after {
   display: block;
   content: "";
-  width: 2.5rem;
+  width: 20%;
   height: 0.1875rem; /* 3px */
   background-color: var(--text-muted-lighter);
   border-radius: var(--border-radius-pill);
@@ -617,6 +802,25 @@ li {
 
 .contact-link {
   transition: var(--transition-transform);
+  position: relative;
+}
+.contact-link::before {
+  transition: var(--transition-width);
+  content: "";
+  display: block;
+  width: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -0.5em;
+  background-color: currentColor;
+  border-radius: var(--border-radius-pill, 50rem);
+}
+.contact-link:is(:focus-visible, :hover) {
+  outline: none;
+}
+.contact-link:is(:focus-visible, :hover)::before {
+  width: 0.15em;
 }
 
 .social-links {
@@ -628,16 +832,18 @@ li {
   transition: var(--transition-transform);
 }
 
+.social-links__link:is(:focus-visible, :hover) {
+  outline-offset: calc(-1 * var(--outline-offset-l, -0.25em));
+  border-radius: var(--border-radius-social-link-icon);
+  outline-width: var(--outline-width-default);
+  transform: var(--transform-social-link);
+}
+
 .nationality {
   margin-block-start: calc(-1 * var(--space-2xs));
 }
 
-.contact.bg-color-secondary .nationality__h3 {
-  /* 
-  .bg-color-secondary needed to increase specificity
-  because .bg-color-secondary .h3 with same specificty
-  comes later in utlities
-   */
+.contact .nationality__h3 {
   text-transform: uppercase;
   font-size: var(--step-0);
   letter-spacing: 0.125em; /* 2px */
@@ -653,8 +859,9 @@ li {
 .skill-or-course {
   padding: 0.5em 1em;
   border: 2px solid currentcolor;
-  border-radius: 4px;
+  border-radius: 0.25em;
   min-height: 44px;
+  /* min-height in px is the recommended value for accessibility*/
   display: inline-flex;
   align-items: center;
   margin-block: var(--space-3xs);
@@ -666,7 +873,7 @@ li {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-2xs-l);
+  gap: var(--space-2xs-ml);
 }
 
 .github-projects__screenshot {
@@ -690,19 +897,37 @@ li {
 .github-projects__description-container .webdev-project-link {
   padding: 0.5em 1em;
   border: 2px solid currentcolor;
-  border-radius: 4px;
+  border-radius: 0.25em;
   min-height: 44px;
+  /* min-height in px is the recommended value for accessibility*/
   display: inline-flex;
   align-items: center;
   display: inline-flex;
   align-items: center;
   gap: 0.25em;
   border-width: 0.1875em;
-  transition: var(--transition-transform);
+}
+
+.webdev-project-link {
+  transition: var(--transition-webdev-project-link);
 }
 
 .webdev-project-link + .webdev-project-link {
   margin-inline-start: var(--space-2xs);
+}
+
+.webdev-project-link:is(:focus-visible, :hover) {
+  outline: none;
+  transform: var(--transform-github-link);
+}
+
+.webdev-project-link:is(:link, :visited) {
+  color: var(--text-bluish-light);
+}
+
+.webdev-project-link:is(:link, :visited):is(:focus-visible, :hover) {
+  background-color: var(--text-bluish-light);
+  color: var(--background-color-main);
 }
 
 /* Soft Skills */
@@ -737,86 +962,7 @@ li {
 
 /** @format */
 /** @format */
-/* ========== States  ========== */
-/* ===== General States ===== */
-a:is(:link, :visited) {
-  color: inherit;
-}
-
-a:focus-visible,
-button:focus-visible,
-.main-nav-link:focus-visible,
-.webdev-project-link:focus-visible {
-  outline: var(--outline-width-default) solid currentColor;
-  outline-offset: var(--outline-offset-default);
-  border-radius: var(--border-radius-default);
-}
-
-:is(a, [tabindex]):has(h2, h3):focus-visible {
-  /* [tabindex] is used to increase specificity 
-  because these elements hav both a and tabindex
-  and my reset file has a selector with :is(a, [tabindex]) */
-  outline: var(--outline-width-default) solid currentColor;
-  border-radius: var(--border-radius-default);
-  transform: var(--transform-header);
-}
-
-/* ===== Component Spesific States ===== */
-/* === Nav === */
-.nav-button:focus-visible {
-  margin-block-end: 0.1875em;
-  outline-width: var(--outline-width-default);
-  outline-offset: 0.125em;
-  border-radius: var(--border-radius-default);
-  transform: var(--transform-scale-up);
-}
-
-.main-nav-link:focus-visible {
-  outline-width: var(--outline-width-default);
-  outline-offset: var(--outline-offset-l);
-  transform: var(--transform-main-nav-link);
-}
-
-.main-nav-link:focus-visible {
-  outline-width: var(--outline-width-default);
-  outline-offset: var(--outline-offset-l);
-  transform: var(--transform-main-nav-link);
-}
-
-/* === Contact === */
-.social-links__link:focus-visible {
-  outline-offset: -0.25em;
-  border-radius: var(--border-radius-social-link-icon);
-  outline-width: var(--outline-width-default);
-  transform: var(--transform-social-link);
-}
-
-/* === Github Projects */
-.webdev-project-link:focus-visible {
-  outline-offset: var(--outline-offset-xs);
-  transform: var(--transform-github-link);
-}
-
-.webdev-project-link:is(:link, :visited) {
-  color: var(--text-bluish-light);
-}
-
-/** @format */
-/** @format */
 /* ------- Utilities ------- */
-.bg-color-secondary {
-  background-color: var(--background-color-secondary);
-  color: var(--text-secondary-bg);
-}
-
-.bg-color-secondary .h2 {
-  color: var(--neutral-medium);
-}
-
-.bg-color-secondary .h3 {
-  color: var(--muted-line);
-}
-
 .work-title {
   color: var(--text-bluish-light);
 }
@@ -876,20 +1022,69 @@ for correct representation:
   justify-content: center;
 }
 
-.container-max {
-  /* 
-  equals ~1440px but breakpoints go to 1240px 
-  maintains visual consistency */
-  max-width: 55em;
+.component-container-large {
+  max-width: var(--breakpoint-lrg-container, 55em);
   margin-inline: auto;
 }
 
 /** @format */
 /** @format */
-@media (width > 1000px) {
+@media (width >= 1000px) {
+  /* ===== General ===== */
+  h4 {
+    color: var(--text-bluish-muted);
+  }
+  li {
+    list-style: disc;
+  }
+  /* ===== Layout / Composition ===== */
   .layout-container-larger-screens {
+    max-width: var(--breakpoint-max-container, 1800px);
+    margin-inline: auto;
     display: grid;
     grid-template-columns: 2fr 5fr;
+  }
+  .side-larger-screens,
+  .main-larger-screens {
+    container-type: inline-size;
+  }
+  .side-larger-screens :not(.contact *):is(a, h3) {
+    text-decoration: none;
+  }
+  .side-larger-screens li {
+    text-decoration: underline;
+  }
+  .side-larger-screens .section-container {
+    padding-inline: var(--padding-inilne-larger-screens-side-section-container);
+  }
+  .main-larger-screens .section-container {
+    padding-inline: var(--padding-inilne-larger-screens-main-section-container);
+  }
+  .main-larger-screens .section-container {
+    margin-inline-start: 0;
+  }
+  /* Layout - Composition */
+  .main-larger-screens h3 {
+    color: var(--text-bluish-light);
+  }
+  .main-larger-screens li::marker {
+    color: var(--background-color-secondary);
+  }
+  ul:has(.skill-or-course) {
+    display: grid;
+  }
+  li:has(.skill-or-course) {
+    display: list-item;
+  }
+  ul .skill-or-course {
+    padding: 0;
+    border: none;
+    display: inline;
+    margin: 0;
+  }
+  /* ===== Components ===== */
+  .profile-hero {
+    justify-content: center;
   }
 }
 /** @format */

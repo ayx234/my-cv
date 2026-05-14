@@ -58,8 +58,14 @@
 @mixin text-box {
 	padding: 0.5em 1em;
 	border: 2px solid currentcolor;
-	border-radius: 4px;
+	border-radius: 0.25em;
 	min-height: 44px;
+	/* min-height in px is the recommended value for accessibility*/
 	display: inline-flex;
 	align-items: center;
+}
+
+@mixin container-max {
+	max-width: var(--breakpoint-max-container,1800px);
+	margin-inline: auto;
 }

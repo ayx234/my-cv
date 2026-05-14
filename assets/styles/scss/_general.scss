@@ -2,11 +2,11 @@
 @use "settings";
 @use "mixins";
 
-
 /* ------- General [Elements] ------- */
 
 body {
 	@include mixins.text-preset-1;
+  overflow-anchor: none;
 }
 
 .h2 {
@@ -34,8 +34,52 @@ li {
 	@include mixins.break-word-overflow;
 }
 
+:is(a, button, .main-nav-link, .webdev-project-link):is(
+	:focus-visible,
+	:hover
+) {
+	outline: var(--outline-width-default) solid currentColor;
+	outline-offset: var(--outline-offset-default);
+	border-radius: var(--border-radius-default);
+}
+
 a {
 	transition: var(--transition-transform);
+}
+
+a:is(:link, :visited) {
+	color: inherit;
+}
+
+:is(a, [tabindex]):has(h2, h3) {
+	/* [tabindex] is used to increase specificity 
+	because these elements hav both a and tabindex
+	and my reset file has a selector with :is(a, [tabindex]) */
+
+	position: relative;
+	:is(h2, h3)::before {
+		content: "";
+		display: block;
+		width: 0em;
+		background-color: currentColor;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: -0.5em;
+		border-radius: var(--border-radius-pill);
+		transition: var(--transition-width);
+	}
+}
+
+:is(a, [tabindex]):has(h2, h3):is(:focus-visible, :hover, [data-focus-temporary]) {
+	/* [tabindex] is used to increase specificity 
+		because these elements hav both a and tabindex
+		and my reset file has a selector with :is(a, [tabindex]) */
+	transform: var(--transform-header);
+	outline: none;
+	:is(h2, h3)::before {
+		width: 0.15em;
+	}
 }
 
 a:has(h2, h3) {
@@ -47,7 +91,7 @@ ul {
 	margin-block: 0;
 	margin-block: var(--space-3xs);
 	display: grid;
-	gap: 0.5em;
+	gap: var(--ul-default-gap ,0.5em);
 }
 
 li {

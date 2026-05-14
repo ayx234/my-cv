@@ -3,9 +3,81 @@
 @use "settings";
 @use "mixins";
 
-@media (width > 1000px) {
-  .layout-container-larger-screens {
-    display: grid;
-    grid-template-columns: 2fr 5fr;
-  }
+@media (width >= 1000px) {
+	/* ===== General ===== */
+
+	h4 {
+		color: var(--text-bluish-muted);
+	}
+
+	li {
+		list-style: disc;
+
+	}
+
+	/* ===== Layout / Composition ===== */
+
+	.layout-container-larger-screens {
+		@include mixins.container-max;
+		display: grid;
+		grid-template-columns: 2fr 5fr;
+	}
+
+	.side-larger-screens,
+	.main-larger-screens {
+		container-type: inline-size;
+	}
+
+	.side-larger-screens :not(.contact *):is(a, h3) {
+		text-decoration: none;
+	}
+
+	.side-larger-screens li {
+		text-decoration: underline;
+	}
+
+	.side-larger-screens .section-container {
+		padding-inline: var(
+			--padding-inilne-larger-screens-side-section-container
+		);
+	}
+
+	.main-larger-screens .section-container {
+		padding-inline: var(
+			--padding-inilne-larger-screens-main-section-container
+		);
+	}
+
+	.main-larger-screens .section-container {
+		margin-inline-start: 0;
+	}
+	/* Layout - Composition */
+
+	.main-larger-screens h3 {
+		color: var(--text-bluish-light);
+	}
+
+	.main-larger-screens li::marker {
+		color: var(--background-color-secondary);
+	}
+
+	ul:has(.skill-or-course) {
+		display: grid;
+	}
+	li:has(.skill-or-course) {
+		display: list-item;
+	}
+	ul .skill-or-course {
+		padding: 0;
+		border: none;
+		display: inline;
+		margin: 0;
+		// text-decoration: underline;
+	}
+
+	/* ===== Components ===== */
+
+	.profile-hero {
+		justify-content: center;
+	}
 }

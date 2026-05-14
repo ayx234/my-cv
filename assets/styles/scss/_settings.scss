@@ -53,59 +53,82 @@
 	/* @link https://utopia.fyi/type/calculator?c=320,15,1.2,1440,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l|l-2xl&g=s,l,xl,12 */
 	/* // --- font size --- */
 
-	--step--2: clamp(0.651rem, 0.6085rem + 0.2128vw, 0.8rem);
-	--step--1: clamp(0.7813rem, 0.7188rem + 0.3125vw, 1rem);
-	--step-0: clamp(0.9375rem, 0.8482rem + 0.4464vw, 1.25rem);
-	--step-1: clamp(1.125rem, 1rem + 0.625vw, 1.5625rem);
-	--step-2: clamp(1.35rem, 1.1777rem + 0.8616vw, 1.9531rem);
-	--step-3: clamp(1.62rem, 1.3853rem + 1.1734vw, 2.4414rem);
-	--step-4: clamp(1.944rem, 1.6275rem + 1.5825vw, 3.0518rem);
-	--step-5: clamp(2.3328rem, 1.9094rem + 2.117vw, 3.8147rem);
-	--step-6: clamp(2.7994rem, 2.2368rem + 2.8129vw, 4.7684rem);
+	--step--2: clamp(0.651rem, 0.6085rem + 0.2128cqi, 0.8rem);
+	--step--1: clamp(0.7813rem, 0.7188rem + 0.3125cqi, 1rem);
+	--step-0: clamp(0.9375rem, 0.8482rem + 0.4464cqi, 1.25rem);
+	--step-1: clamp(1.125rem, 1rem + 0.625cqi, 1.5625rem);
+	--step-2: clamp(1.35rem, 1.1777rem + 0.8616cqi, 1.9531rem);
+	--step-3: clamp(1.62rem, 1.3853rem + 1.1734cqi, 2.4414rem);
+	--step-4: clamp(1.944rem, 1.6275rem + 1.5825cqi, 3.0518rem);
+	--step-5: clamp(2.3328rem, 1.9094rem + 2.117cqi, 3.8147rem);
+	--step-6: clamp(2.7994rem, 2.2368rem + 2.8129cqi, 4.7684rem);
 
 	/* // --- Spacing --- */
 
 	/* // Fluid */
-	--space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
-	--space-2xs: clamp(0.5625rem, 0.5446rem + 0.0893vw, 0.625rem);
-	--space-xs: clamp(0.875rem, 0.8571rem + 0.0893vw, 0.9375rem);
-	--space-s: clamp(1.125rem, 1.0893rem + 0.1786vw, 1.25rem);
-	--space-m: clamp(1.6875rem, 1.6339rem + 0.2679vw, 1.875rem);
-	--space-l: clamp(2.25rem, 2.1786rem + 0.3571vw, 2.5rem);
-	--space-xl: clamp(3.375rem, 3.2679rem + 0.5357vw, 3.75rem);
-	--space-2xl: clamp(4.5rem, 4.3571rem + 0.7143vw, 5rem);
-	--space-3xl: clamp(6.75rem, 6.5357rem + 1.0714vw, 7.5rem);
+	--space-3xs: clamp(0.3125rem, 0.3125rem + 0cqi, 0.3125rem);
+	--space-2xs: clamp(0.5625rem, 0.5446rem + 0.0893cqi, 0.625rem);
+	--space-xs: clamp(0.875rem, 0.8571rem + 0.0893cqi, 0.9375rem);
+	--space-s: clamp(1.125rem, 1.0893rem + 0.1786cqi, 1.25rem);
+	--space-m: clamp(1.6875rem, 1.6339rem + 0.2679cqi, 1.875rem);
+	--space-l: clamp(2.25rem, 2.1786rem + 0.3571cqi, 2.5rem);
+	--space-xl: clamp(3.375rem, 3.2679rem + 0.5357cqi, 3.75rem);
+	--space-2xl: clamp(4.5rem, 4.3571rem + 0.7143cqi, 5rem);
+	--space-3xl: clamp(6.75rem, 6.5357rem + 1.0714cqi, 7.5rem);
 
 	/*   // One-up pairs */
-	--space-3xs-2xs: clamp(0.3125rem, 0.2232rem + 0.4464vw, 0.625rem);
-	--space-2xs-xs: clamp(0.5625rem, 0.4554rem + 0.5357vw, 0.9375rem);
-	--space-xs-s: clamp(0.875rem, 0.7679rem + 0.5357vw, 1.25rem);
-	--space-s-m: clamp(1.125rem, 0.9107rem + 1.0714vw, 1.875rem);
-	--space-m-l: clamp(1.6875rem, 1.4554rem + 1.1607vw, 2.5rem);
-	--space-l-xl: clamp(2.25rem, 1.8214rem + 2.1429vw, 3.75rem);
-	--space-xl-2xl: clamp(3.375rem, 2.9107rem + 2.3214vw, 5rem);
-	--space-2xl-3xl: clamp(4.5rem, 3.6429rem + 4.2857vw, 7.5rem);
+	--space-3xs-2xs: clamp(0.3125rem, 0.2232rem + 0.4464cqi, 0.625rem);
+	--space-2xs-xs: clamp(0.5625rem, 0.4554rem + 0.5357cqi, 0.9375rem);
+	--space-xs-s: clamp(0.875rem, 0.7679rem + 0.5357cqi, 1.25rem);
+	--space-s-m: clamp(1.125rem, 0.9107rem + 1.0714cqi, 1.875rem);
+	--space-m-l: clamp(1.6875rem, 1.4554rem + 1.1607cqi, 2.5rem);
+	--space-l-xl: clamp(2.25rem, 1.8214rem + 2.1429cqi, 3.75rem);
+	--space-xl-2xl: clamp(3.375rem, 2.9107rem + 2.3214cqi, 5rem);
+	--space-2xl-3xl: clamp(4.5rem, 3.6429rem + 4.2857cqi, 7.5rem);
 
 	/*   // Custom pairs */
-	--space-3xs-2xs: clamp(0.3125rem, 0.2411rem + 0.3571vw, 0.5625rem);
-	--space-2xs-m: clamp(0.5625rem, 0.1875rem + 1.875vw, 1.875rem);
-	--space-2xs-l: clamp(0.5625rem, 0.0804rem + 2.4107vw, 2.25rem);
-	--space-s-l: clamp(1.125rem, 0.7321rem + 1.9643vw, 2.5rem);
-	--space-l-2xl: clamp(2.25rem, 1.4643rem + 3.9286vw, 5rem);
-	--space-l-3xl: clamp(1.875rem, 0.2679rem + 8.0357vw, 7.5rem);
+	--space-3xs-2xs: clamp(0.3125rem, 0.2411rem + 0.3571cqi, 0.5625rem);
+	--space-2xs-m: clamp(0.5625rem, 0.1875rem + 1.875cqi, 1.875rem);
+	--space-2xs-ml: clamp(0.5625rem, 0.0804rem + 2.4107cqi, 2.25rem);
+	--space-s-l: clamp(1.125rem, 0.7321rem + 1.9643cqi, 2.5rem);
+	--space-ml-3xl: clamp(1.875rem, 0.2679rem + 8.0357cqi, 7.5rem);
+	--space-l-2xl: clamp(2.25rem, 1.4643rem + 3.9286cqi, 5rem);
+	--space-l-3xl: clamp(2.25rem, 0.1023rem + 9.5455cqi, 7.5rem);
 
 	/* Semantic font-size */
 	--font-size-body: var(--step-0);
 	--font-size-nav-link: var(--step-1);
-	--font-size-fa-icon-nav: 3rem;
+	--font-size-fa-icon-nav: var(--step-6);
+	// --font-size-fa-icon-nav: clamp(2.8125rem, 2.5313rem + 1.25vw, 3.5rem);
 	--font-size-fa-icon-small: inherit;
 	--font-size-fa-icon-large: var(--step-6);
+	--font-size-fa-icon-large: clamp(
+		2.7994rem,
+		2.2368rem + 2.8129vw,
+		4.7684rem
+	);
 
 	/* Semantic spacing */
 	--padding-block-section-container: var(--space-s);
+	--padding-inilne-larger-screens-side-section-container: clamp(
+		2.75rem,
+		-3.1562rem + 26.25cqi,
+		17.1875rem
+	);
+	--padding-inilne-larger-screens-main-section-container: clamp(
+		1.5rem,
+		-0.1875rem + 7.5cqi,
+		5.625rem
+	);
+	--padding-inilne-larger-screens-main-section-container: clamp(
+		1rem,
+		-0.892rem + 8.4091cqi,
+		5.625rem
+	);
 
+	/* for --photo-size-190-300
+	 vw is better than cqi for the photo */
 	--photo-size-190-300: clamp(11.875rem, 9.9107rem + 9.8214vw, 18.75rem);
-	// --photo-margin-b-s: calc(clamp(1.25rem, 1.0714rem + 0.8929vw, 1.875rem) * -1);
 	--photo-margin-b-e: var(--space-s);
 
 	/* ----- Icons ----- */
@@ -127,12 +150,12 @@
 	/* === Box Shadow === */
 	--screenshot-boxshadow-size: clamp(
 		0.25rem,
-		0.1071rem + 0.7143vw,
+		0.1071rem + 0.7143cqi,
 		0.75rem
 	); /* 4 - 12 px */
 	--screenshot-boxshadow-size: clamp(
 		0.1875rem,
-		0.0982rem + 0.4464vw,
+		0.0982rem + 0.4464cqi,
 		0.5rem
 	); /* 3 - 8 px */
 	--screenshot-boxshadow: var(--screenshot-boxshadow-size)
@@ -153,13 +176,56 @@
 	/* === Transforms === */
 	--transform-header: translate(-1.5em, 0);
 	--transform-contact-link: translate(0, -0.25em);
-	--transform-main-nav-link: scale(1.05) translate(0, -0.25em);
+	--transform-nav-item: scale(1.05) translate(0, -0.25em);
 	--transform-social-link: scale(1.1) translate(0, -0.25em);
 	--transform-github-link: scale(1.1) translate(0, -0.3125em);
 	--transform-scale-up: scale(1.1);
 
 	/* === Transitions === */
+
+	/* transition duration and timing */
+	--transition-duration: 0.3s;
+	--transition-timing-function: ease-in-out;
+
+	/* transition semantic properties */
 	--nav-ul-transition:
-		max-height 0.3s ease, visibility 0.3s ease, margin-block 0.3s ease;
-	--transition-transform: transform 0.3s ease;
+		max-height var(--transition-duration) var(--transition-timing-function),
+		visibility var(--transition-duration) var(--transition-timing-function),
+		margin-block var(--transition-duration)
+			var(--transition-timing-function);
+	--transition-main-nav-link:
+		opacity var(--transition-duration) var(--transition-timing-function),
+		transform var(--transition-duration) var(--transition-timing-function);
+	--transition-webdev-project-link:
+		transform var(--transition-duration) var(--transition-timing-function),
+		background-color var(--transition-duration)
+			var(--transition-timing-function),
+		color var(--transition-duration) var(--transition-timing-function);
+
+	/* transition property utilities */
+	--transition-transform: transform var(--transition-duration)
+		var(--transition-timing-function);
+	--transition-opacity: opacity var(--transition-duration)
+		var(--transition-timing-function);
+	--transition-height: height var(--transition-duration)
+		var(--transition-timing-function);
+	--transition-width: width var(--transition-duration)
+		var(--transition-timing-function);
+
+		/*=== Grid display related ===*/
+		--ul-default-gap: 0.5em;
+
+
+	/* === Breakpoints === */
+	// breakpoints have limited support for @media queries for browsers
+	// // the breakpoints here are to be used inside selectors
+	--breakpoint-max-container: 1800px;
+	--breakpoint-lrg-container: 55em; /*
+	- equals ~1440px but breakpoints go to 1240px 
+	maintains visual consistency
+	- used to container #home and #contact
+	 on small screens.
+	- kept larger than js larger screen breakpoint 1000px
+	in case javascript didn't work (progressive enhancement)
+	*/
 }
