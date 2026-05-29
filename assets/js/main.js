@@ -9,6 +9,7 @@ let navInitialized = false;
 /* === Element Handles === */
 /* Nav handles */
 const MAIN_NAV = document.getElementById("nav");
+const MAIN_NAV_CONTAINER = document.getElementById("container-nav");
 const MAIN_NAV_BUTTON_CONTAINER = document.getElementById(
 	"nav-button-container",
 );
@@ -62,9 +63,15 @@ function initNav() {
 	if (navInitialized) return;
 	navInitialized = true;
 
-/* Display nav-button */
+	/* Progressive Enhancement:
+			- remove adjustments made for only HTML & CSS version
+	 */
 
+		MAIN_NAV_CONTAINER.classList.add("js-active");
+		CV_HEADER_ELEMENTS_CONTAINER.classList.add("js-active");
+	
 	/* Event handlers */
+
 	// toggle nav click
 	MAIN_NAV_BUTTON.addEventListener("click", toggleNav);
 

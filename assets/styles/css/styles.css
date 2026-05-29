@@ -566,7 +566,6 @@ li:has(.skill-or-course) {
 /** @format */
 /* --------- Mobile first - Mobile and Mid Screens --------- */
 /* ------- Components - ------- */
-/* --- Nav --- */
 .container-nav {
   max-width: var(--breakpoint-max-container, 1800px);
   margin-inline: auto;
@@ -579,6 +578,10 @@ li:has(.skill-or-course) {
     on HTML & CSS only larger screens */
     padding-block: var(--padding-block-section-container);
   }
+}
+
+.container-nav.js-active {
+  padding-block: var(--padding-block-section-container);
 }
 
 .nav {
@@ -752,6 +755,10 @@ li:has(.skill-or-course) {
     on HTML & CSS only larger screens */
     padding-block-start: 0;
   }
+}
+
+.cv-header-elements-container.js-active {
+  padding-block-start: 0;
 }
 
 .cv-header-elements-container > * {

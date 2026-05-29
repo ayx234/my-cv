@@ -1,17 +1,10 @@
 # CV Webpage
 
 ## Working on
-    
 
 ## Done
 
-
 ## Next
-
-- work on progressive enhancement:
-  - JS included version
-  - add scrollToAnchor on click event for `.page-subsection`
-  along with `.page-section`
 
 - Review - manual and AI
 - Work on the print version of the webpage
