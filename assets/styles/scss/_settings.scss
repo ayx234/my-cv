@@ -211,6 +211,7 @@
 		var(--transition-timing-function);
 	--transition-width: width var(--transition-duration)
 		var(--transition-timing-function);
+	--transition-padding: padding var(--transition-timing-function) var(--transition-duration);
 
 		/*=== Grid display related ===*/
 		--ul-default-gap: 0.5em;

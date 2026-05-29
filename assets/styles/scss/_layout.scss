@@ -4,47 +4,25 @@
 
 /* ------- Composition ------- */
 
-.page-section {
-	/* 
-	# fix internal link scroll for fixed nav
-
-	## Detail
-	
-	Because the nav has position: sticky, 
-	clicking internal links for .page-sections
-	makes them appear behind the nav rather than
-	under it
-
-	to fix this, javascript is also used, 
-	but since this is a progressive enhancement
-	project I want this to work even without js.
-
-	## IMPORTANT NOTES:
-	
-	- css only solution would not work if page
-	is resized becuause the calculation below
-	would be for the initial screen size only
-
-	## Calculation
-
-	- 2 * var(--padding-block-section-container)
-	  - 2 * to count for starting and ending padding
-	and double margin-block-end of each section
-	- var(--font-size-fa-icon-large)
-	  - the font-size as part of height calculation
-		and is reliable for calculating the 
-		height of the nav's svg because it 
-		has no borders, margin, or padding
-		and line height is removed by 
-		giving the parent display:grid.
-		- font-size would not be reliable if text was
-		present in the nav even if line-height was 1
-	 */
-	--nav-height: calc(
-		2 * var(--padding-block-section-container) +
-			var(--font-size-fa-icon-large)
-	);
+.page-section,
+.page-subsection {
+	--nav-height: 0;
 	scroll-margin-top: var(--nav-height);
+	@media screen and (width>=1500px) {
+		/* add on HTML & CSS only larger screens */
+		/*
+		--nav-height: calc(
+			2 * var(--padding-block-section-container) +
+				var(--font-size-nav-link);
+		);
+		*/
+		/* 
+		because the nav contains text, calculating height 
+		isn't reliable. it would be if we were using svgs.
+		pixels might be the best option for only HTML and CSS
+		*/
+		--nav-height: 77.5px;
+	}
 }
 
 .section-container {
@@ -77,9 +55,8 @@
 }
 
 ul:has(.skill-or-course) {
-  display: block;
+	display: block;
 }
 li:has(.skill-or-course) {
-  display: inline-block;
+	display: inline-block;
 }
-

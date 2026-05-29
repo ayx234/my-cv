@@ -181,6 +181,7 @@
   	var(--transition-timing-function);
   --transition-width: width var(--transition-duration)
   	var(--transition-timing-function);
+  --transition-padding: padding var(--transition-timing-function) var(--transition-duration);
   /*=== Grid display related ===*/
   --ul-default-gap: 0.5em;
   /* === Breakpoints === */
@@ -500,47 +501,28 @@ li {
 /** @format */
 /** @format */
 /* ------- Composition ------- */
-.page-section {
-  /* 
-  # fix internal link scroll for fixed nav
-
-  ## Detail
-
-  Because the nav has position: sticky, 
-  clicking internal links for .page-sections
-  makes them appear behind the nav rather than
-  under it
-
-  to fix this, javascript is also used, 
-  but since this is a progressive enhancement
-  project I want this to work even without js.
-
-  ## IMPORTANT NOTES:
-
-  - css only solution would not work if page
-  is resized becuause the calculation below
-  would be for the initial screen size only
-
-  ## Calculation
-
-  - 2 * var(--padding-block-section-container)
-    - 2 * to count for starting and ending padding
-  and double margin-block-end of each section
-  - var(--font-size-fa-icon-large)
-    - the font-size as part of height calculation
-  	and is reliable for calculating the 
-  	height of the nav's svg because it 
-  	has no borders, margin, or padding
-  	and line height is removed by 
-  	giving the parent display:grid.
-  	- font-size would not be reliable if text was
-  	present in the nav even if line-height was 1
-   */
-  --nav-height: calc(
-  	2 * var(--padding-block-section-container) +
-  		var(--font-size-fa-icon-large)
-  );
+.page-section,
+.page-subsection {
+  --nav-height: 0;
   scroll-margin-top: var(--nav-height);
+}
+@media screen and (width >= 1500px) {
+  .page-section,
+  .page-subsection {
+    /* add on HTML & CSS only larger screens */
+    /*
+    --nav-height: calc(
+    	2 * var(--padding-block-section-container) +
+    		var(--font-size-nav-link);
+    );
+    */
+    /* 
+    because the nav contains text, calculating height 
+    isn't reliable. it would be if we were using svgs.
+    pixels might be the best option for only HTML and CSS
+    */
+    --nav-height: 77.5px;
+  }
 }
 
 .section-container {
@@ -588,6 +570,15 @@ li:has(.skill-or-course) {
 .container-nav {
   max-width: var(--breakpoint-max-container, 1800px);
   margin-inline: auto;
+  padding-block: 0;
+  transition: var(--transition-padding);
+}
+@media screen and (width >= 1500px) {
+  .container-nav {
+    /* add padding when nav__ul shows
+    on HTML & CSS only larger screens */
+    padding-block: var(--padding-block-section-container);
+  }
 }
 
 .nav {
@@ -679,6 +670,14 @@ li:has(.skill-or-course) {
   margin-block: 0;
 }
 
+@media screen and (width >= 1500px) {
+  [data-visibility=hidden].ignore-data-visibility-on-large-screen .nav__ul {
+    /* show on HTML & CSS only larger screens */
+    max-height: 100vh;
+    visibility: visible;
+  }
+}
+
 [data-visibility=shown] .nav__ul {
   max-height: 100vh;
   visibility: visible;
@@ -740,10 +739,19 @@ li:has(.skill-or-course) {
 /* --- Header [Profile hero - Contact] --- */
 /* Profile hero */
 .cv-header-elements-container {
+  padding-block-start: var(--space-l-2xl);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0;
+  transition: var(--transition-padding);
+}
+@media screen and (width >= 1500px) {
+  .cv-header-elements-container {
+    /* remove extra padding when nav__ul shows
+    on HTML & CSS only larger screens */
+    padding-block-start: 0;
+  }
 }
 
 .cv-header-elements-container > * {

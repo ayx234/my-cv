@@ -9,8 +9,19 @@
 
 /* --- Nav --- */
 
+// .container-nav.ignore-data-visibility-on-large-screen {
+// 		paddin
+// }
+
 .container-nav {
 	@include mixins.container-max;
+	padding-block: 0;
+	transition: var(--transition-padding);
+	@media screen and (width>= 1500px) {
+		/* add padding when nav__ul shows
+		on HTML & CSS only larger screens */
+		padding-block: var(--padding-block-section-container);
+	}
 }
 
 .nav {
@@ -93,6 +104,13 @@
 	@include mixins.visibility-hidden;
 	margin-block: 0;
 }
+[data-visibility="hidden"].ignore-data-visibility-on-large-screen .nav__ul {
+	@media screen and (width>= 1500px) {
+		/* show on HTML & CSS only larger screens */
+		max-height: 100vh;
+		visibility: visible;
+	}
+}
 
 [data-visibility="shown"] .nav__ul {
 	max-height: 100vh;
@@ -157,10 +175,17 @@
 /* Profile hero */
 
 .cv-header-elements-container {
+	padding-block-start: var(--space-l-2xl);
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 0;
+	transition: var(--transition-padding);
+	@media screen and (width>=1500px) {
+		/* remove extra padding when nav__ul shows
+		on HTML & CSS only larger screens */
+		padding-block-start: 0;
+	}
 }
 
 .cv-header-elements-container > * {
@@ -255,7 +280,7 @@
 }
 
 .social-links__link:is(:focus-visible, :hover) {
-	outline-offset: calc(-1 * var(--outline-offset-l,-0.25em));
+	outline-offset: calc(-1 * var(--outline-offset-l, -0.25em));
 	border-radius: var(--border-radius-social-link-icon);
 	outline-width: var(--outline-width-default);
 	transform: var(--transform-social-link);
