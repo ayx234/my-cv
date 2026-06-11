@@ -2,15 +2,29 @@
 
 ## Working on
 
+### Issues
+
+- Javascript dependency for mobile navigation
+  - This is because the navigation menu is too large to be displayed all the time on mobile screens and the toggle button would only work with js
+
 ## Done
 
 ## Next
 
-- Review - manual and AI
+- Review AI assisted
+  - first pass of ai review
+    - PRIORITIZED ACTIONABLE LIST
+      - MEDIUM
 - Work on the print version of the webpage
 - update picture for shared links to yellow background
+- include this cv project in the cv
 
 ## Notes
+
+- [HIGH] index.html:274 - Profile image lacks height attribute (has width="168" but missing height); implicit aspect ratio not enforced
+  - including a height attribute would messup the dimensions when css and js are activated (probably only css) and including property aspect-ratio would probably not be percise for this picture.
+- [HIGH] index.html:1250-1350 - Experience section icons are <svg> with aria-hidden="true" but no text labels provided; dates/locations rely on icon context
+  - the line references are messed up in copilot's response, and I didn't find the mentioned issue reviewing manually
 
 ### Git
 

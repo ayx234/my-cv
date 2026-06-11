@@ -23,6 +23,7 @@ const NAV_LINKS = Array.from(document.getElementsByClassName("nav-link"));
 
 /* Layout handles */
 const BODY = document.getElementsByTagName("body")[0];
+const MAIN = document.getElementById("main");
 const HEADER = document.getElementsByTagName("header")[0];
 const CV_HEADER_ELEMENTS_CONTAINER = document.getElementById(
 	"cv-header-elements-container",
@@ -67,9 +68,9 @@ function initNav() {
 			- remove adjustments made for only HTML & CSS version
 	 */
 
-		MAIN_NAV_CONTAINER.classList.add("js-active");
-		CV_HEADER_ELEMENTS_CONTAINER.classList.add("js-active");
-	
+	MAIN_NAV_CONTAINER.classList.add("js-active");
+	CV_HEADER_ELEMENTS_CONTAINER.classList.add("js-active");
+
 	/* Event handlers */
 
 	// toggle nav click
@@ -104,19 +105,19 @@ function initNav() {
 	// Handle page load with hash (e.g., user bookmarks a section)
 	// Update --nav-height CSS property on page load
 	if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", onReady);
-  } else {
-    onReady();
-  }
+		document.addEventListener("DOMContentLoaded", onReady);
+	} else {
+		onReady();
+	}
 
 	// Update on window resize (in case nav height changes responsively)
 	window.addEventListener("resize", updateNavHeight);
 
 	/* Helper functions */
-	  function onReady() {
-    scrollToAnchor(window.location.hash);
-    updateNavHeight();
-  }
+	function onReady() {
+		scrollToAnchor(window.location.hash);
+		updateNavHeight();
+	}
 
 	function toggleNav() {
 		const isHidden = MAIN_NAV.getAttribute("data-visibility") === "hidden";
@@ -292,19 +293,21 @@ initNav();
 // Set up MediaQueryList and listener
 const MQ_SPLIT_LAYOUT_BREAKPOINT = window.matchMedia("(min-width: 1000px)");
 
-// Initialize according to current size
-handleLayoutStructure(MQ_SPLIT_LAYOUT_BREAKPOINT);
+window.addEventListener("load", () => {
+	// Initialize according to current size
+	handleLayoutStructure(MQ_SPLIT_LAYOUT_BREAKPOINT);
 
-// Listen for changes
-if (typeof MQ_SPLIT_LAYOUT_BREAKPOINT.addEventListener === "function") {
-	MQ_SPLIT_LAYOUT_BREAKPOINT.addEventListener(
-		"change",
-		handleLayoutStructure,
-	);
-} else {
-	// Safari and older browsers
-	MQ_SPLIT_LAYOUT_BREAKPOINT.addListener(handleLayoutStructure);
-}
+	// Listen for changes
+	if (typeof MQ_SPLIT_LAYOUT_BREAKPOINT.addEventListener === "function") {
+		MQ_SPLIT_LAYOUT_BREAKPOINT.addEventListener(
+			"change",
+			handleLayoutStructure,
+		);
+	} else {
+		// Safari and older browsers
+		MQ_SPLIT_LAYOUT_BREAKPOINT.addListener(handleLayoutStructure);
+	}
+});
 
 // Handler called on matchMedia changes
 function handleLayoutStructure(e) {
@@ -322,14 +325,10 @@ function handleLayoutStructure(e) {
 			["side-larger-screens", "bg-color-secondary"],
 			"side-larger-screens",
 		);
-		const mainForLargerScreens = $createElement(
-			"main",
-			["main-larger-screens"],
-			"main-larger-screens",
-		);
+		MAIN.classList.add("main-larger-screens");
 		/* Add new layout elements to page */
 		layoutContainerLargerScreens.appendChild(sideForLargerScreens);
-		layoutContainerLargerScreens.appendChild(mainForLargerScreens);
+		layoutContainerLargerScreens.appendChild(MAIN);
 		MAIN_NAV.insertAdjacentElement(
 			"afterend",
 			layoutContainerLargerScreens,
@@ -337,7 +336,6 @@ function handleLayoutStructure(e) {
 
 		// move page sections to new layout elements
 		PAGE_SECTIONS.forEach(section => {
-			section.parentElement.removeChild(section);
 			const id = section.id;
 			if (
 				id === "home" ||
@@ -351,11 +349,9 @@ function handleLayoutStructure(e) {
 				}
 				sideForLargerScreens.appendChild(section);
 			} else {
-				// put section in mainForLargerScreens
 				if (section.classList.contains("bg-color-secondary")) {
 					section.classList.remove("bg-color-secondary");
 				}
-				mainForLargerScreens.appendChild(section);
 			}
 		});
 
@@ -364,8 +360,7 @@ function handleLayoutStructure(e) {
 	} else {
 		// viewport < 1000px
 
-		// put header section back in layout
-		if (!BODY.contains(HEADER)) {
+		if (!MAIN.contains(HEADER)) {
 			// Page sections handles
 			const LAYOUT_CONTAINER_LARGER_SCREENS = document.getElementById(
 				"layout-container-larger-screens",
@@ -381,21 +376,20 @@ function handleLayoutStructure(e) {
 			const EDUCATION = document.getElementById("education");
 			const LANGUAGES = document.getElementById("languages");
 
-			BODY.appendChild(HEADER);
-
+			// Modify layout
 			CV_HEADER_ELEMENTS_CONTAINER.appendChild(HOME);
 			CV_HEADER_ELEMENTS_CONTAINER.appendChild(CONTACT);
-			BODY.appendChild(PROFILE);
-			BODY.appendChild(TECHNICAL_SKILLS);
-			BODY.appendChild(GITHUB_PROJECTS);
-			BODY.appendChild(SOFT_SKILLS);
-			BODY.appendChild(WORK);
-			EDUCATION.classList.add("bg-color-secondary");
-			BODY.appendChild(EDUCATION);
-			LANGUAGES.classList.remove("bg-color-secondary");
-			BODY.appendChild(LANGUAGES);
-			// remove large screen layout container
+
+			MAIN.insertBefore(HEADER, MAIN.firstChild);
+			MAIN.insertBefore(TECHNICAL_SKILLS, GITHUB_PROJECTS);
+			MAIN.insertBefore(SOFT_SKILLS, WORK);
+			MAIN.appendChild(LANGUAGES);
+			BODY.appendChild(MAIN);
 			BODY.removeChild(LAYOUT_CONTAINER_LARGER_SCREENS);
+			
+			MAIN.classList.remove("main-larger-screens");
+			EDUCATION.classList.add("bg-color-secondary");
+			LANGUAGES.classList.remove("bg-color-secondary");
 		}
 	}
 }
