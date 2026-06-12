@@ -110,17 +110,12 @@
 
 	/* Semantic spacing */
 	--padding-block-section-container: var(--space-s);
-	--padding-inilne-larger-screens-side-section-container: clamp(
+	--padding-inline-larger-screens-side-section-container: clamp(
 		2.75rem,
 		-3.1562rem + 26.25cqi,
 		17.1875rem
 	);
-	--padding-inilne-larger-screens-main-section-container: clamp(
-		1.5rem,
-		-0.1875rem + 7.5cqi,
-		5.625rem
-	);
-	--padding-inilne-larger-screens-main-section-container: clamp(
+	--padding-inline-larger-screens-main-section-container: clamp(
 		1rem,
 		-0.892rem + 8.4091cqi,
 		5.625rem
@@ -211,22 +206,38 @@
 		var(--transition-timing-function);
 	--transition-width: width var(--transition-duration)
 		var(--transition-timing-function);
-	--transition-padding: padding var(--transition-timing-function) var(--transition-duration);
+	--transition-padding: padding var(--transition-timing-function)
+		var(--transition-duration);
 
-		/*=== Grid display related ===*/
-		--ul-default-gap: 0.5em;
-
+	/*=== Grid display related ===*/
+	--ul-default-gap: 0.5em;
 
 	/* === Breakpoints === */
-	// breakpoints have limited support for @media queries for browsers
-	// // the breakpoints here are to be used inside selectors
+	/* == containers ==  */
 	--breakpoint-max-container: 1800px;
 	--breakpoint-lrg-container: 55em; /*
 	- equals ~1440px but breakpoints go to 1240px 
 	maintains visual consistency
 	- used to container #home and #contact
-	 on small screens.
+	on small screens.
 	- kept larger than js larger screen breakpoint 1000px
 	in case javascript didn't work (progressive enhancement)
 	*/
+
 }
+
+/* == @media breakpoints == */
+/* SCSS variables are used instead of CSS variables because the later has limited browser support */
+/* Note SCSS variables can't be inside :root{} */
+
+/* = nav = */
+/* nav layout  */
+$breakpoint-nav-layout-medium-screens: 450px;
+$breakpoint-nav-layout-larger-screens: 900px;
+$breakpoint-nav-layout-extra-large-screens: 1500px;
+/* nav text */
+$breakpoint-nav-show-text: 500px;
+
+/* =  page layout = */
+$breakpoint-profile-hero-justify-content-end: 600px;
+$breakpoint-larger-screens-page-layout: 1000px;

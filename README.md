@@ -2,6 +2,8 @@
 
 ## Working on
 
+### Conventional commit message
+
 ### Issues
 
 - Javascript dependency for mobile navigation
@@ -12,8 +14,7 @@
 ## Next
 
 - Review AI assisted
-  - PASS 2:
-    - start of pass 2
+  - PASS 3
 - Work on the print version of the webpage
 - include this cv project in the cv
 
@@ -27,7 +28,6 @@
 ### General
 
 - '.personal-photo' was not given an explicit height attribute. Height and width don't have an exact 1:1 aspect ratios and inlcluding a height attribute, would messup the picture when css and js are activated (probably only css).
-
 
 ### Git
 

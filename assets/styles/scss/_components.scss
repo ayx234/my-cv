@@ -11,7 +11,7 @@
 	@include mixins.container-max;
 	padding-block: 0;
 	transition: var(--transition-padding);
-	@media screen and (width>= 1500px) {
+	@media screen and (width >= settings.$breakpoint-nav-layout-extra-large-screens) {
 		/* add padding when nav__ul shows
 		on HTML & CSS only larger screens */
 		padding-block: var(--padding-block-section-container);
@@ -67,7 +67,7 @@
 	translate: 0 -50%;
 	opacity: 0;
 	transition: var(--transition-opacity);
-	@media (width >= 500px) {
+	@media screen and (width >= settings.$breakpoint-nav-show-text) {
 		opacity: 1;
 	}
 }
@@ -75,11 +75,11 @@
 .nav__ul {
 	text-align: center;
 	transition: var(--nav-ul-transition);
-	@media (width > 450px) {
+	@media screen and (width > settings.$breakpoint-nav-layout-medium-screens) {
 		display: block;
 		column-width: 18ch;
 	}
-	@media (width > 900px) {
+	@media screen and (width > settings.$breakpoint-nav-layout-larger-screens) {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
@@ -103,7 +103,7 @@
 	margin-block: 0;
 }
 [data-visibility="hidden"].ignore-data-visibility-on-large-screen .nav__ul {
-	@media screen and (width>= 1500px) {
+	@media screen and (width >= settings.$breakpoint-nav-layout-extra-large-screens) {
 		/* show on HTML & CSS only larger screens */
 		max-height: 100vh;
 		visibility: visible;
@@ -140,10 +140,9 @@
 		display: block;
 		height: 0;
 		background-color: currentColor;
-		border-radius: 5px;
 		border-radius: var(--border-radius-pill, 0.25em);
 		position: absolute;
-		bottom: 3;
+		bottom: -0.1875em;
 		right: 0;
 		left: 0;
 		transition: var(--transition-height);
@@ -163,7 +162,7 @@
 }
 
 .nav .main-nav-link {
-	@media (width >= 1500px) {
+	@media screen and (width >= settings.$breakpoint-nav-layout-extra-large-screens) {
 		opacity: 1;
 	}
 }
@@ -179,7 +178,7 @@
 	justify-content: center;
 	gap: 0;
 	transition: var(--transition-padding);
-	@media screen and (width>=1500px) {
+	@media screen and (width >= settings.$breakpoint-nav-layout-extra-large-screens) {
 		/* remove extra padding when nav__ul shows
 		on HTML & CSS only larger screens */
 		padding-block-start: 0;
@@ -197,7 +196,7 @@
 .profile-hero {
 	display: grid;
 	place-items: center;
-	@media (min-width: 600px) {
+	@media (min-width: settings.$breakpoint-profile-hero-justify-content-end) {
 		justify-content: end;
 	}
 }

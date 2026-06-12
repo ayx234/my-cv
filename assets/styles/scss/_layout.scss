@@ -8,7 +8,7 @@
 .page-subsection {
 	--nav-height: 0;
 	scroll-margin-top: var(--nav-height);
-	@media screen and (width>=1500px) {
+	@media screen and (width >= settings.$breakpoint-nav-layout-extra-large-screens) {
 		/* add on HTML & CSS only larger screens */
 		/*
 		--nav-height: calc(

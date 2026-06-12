@@ -3,7 +3,7 @@
 @use "settings";
 @use "mixins";
 
-@media (width >= 1000px) {
+@media (width >= settings.$breakpoint-larger-screens-page-layout) {
 	/* ===== General ===== */
 
 	h4 {
@@ -12,7 +12,6 @@
 
 	li {
 		list-style: disc;
-
 	}
 
 	/* ===== Layout / Composition ===== */
@@ -38,13 +37,13 @@
 
 	.side-larger-screens .section-container {
 		padding-inline: var(
-			--padding-inilne-larger-screens-side-section-container
+			--padding-inline-larger-screens-side-section-container
 		);
 	}
 
 	.main-larger-screens .section-container {
 		padding-inline: var(
-			--padding-inilne-larger-screens-main-section-container
+			--padding-inline-larger-screens-main-section-container
 		);
 	}
 

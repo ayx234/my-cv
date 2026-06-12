@@ -91,17 +91,12 @@
   );
   /* Semantic spacing */
   --padding-block-section-container: var(--space-s);
-  --padding-inilne-larger-screens-side-section-container: clamp(
+  --padding-inline-larger-screens-side-section-container: clamp(
   	2.75rem,
   	-3.1562rem + 26.25cqi,
   	17.1875rem
   );
-  --padding-inilne-larger-screens-main-section-container: clamp(
-  	1.5rem,
-  	-0.1875rem + 7.5cqi,
-  	5.625rem
-  );
-  --padding-inilne-larger-screens-main-section-container: clamp(
+  --padding-inline-larger-screens-main-section-container: clamp(
   	1rem,
   	-0.892rem + 8.4091cqi,
   	5.625rem
@@ -181,21 +176,30 @@
   	var(--transition-timing-function);
   --transition-width: width var(--transition-duration)
   	var(--transition-timing-function);
-  --transition-padding: padding var(--transition-timing-function) var(--transition-duration);
+  --transition-padding: padding var(--transition-timing-function)
+  	var(--transition-duration);
   /*=== Grid display related ===*/
   --ul-default-gap: 0.5em;
   /* === Breakpoints === */
+  /* == containers ==  */
   --breakpoint-max-container: 1800px;
   --breakpoint-lrg-container: 55em; /*
 - equals ~1440px but breakpoints go to 1240px 
 maintains visual consistency
 - used to container #home and #contact
- on small screens.
+on small screens.
 - kept larger than js larger screen breakpoint 1000px
 in case javascript didn't work (progressive enhancement)
 */
 }
 
+/* == @media breakpoints == */
+/* SCSS variables are used instead of CSS variables because the later has limited browser support */
+/* Note SCSS variables can't be inside :root{} */
+/* = nav = */
+/* nav layout  */
+/* nav text */
+/* =  page layout = */
 /** @format */
 /* Utility styles */
 /** @format */
@@ -405,7 +409,8 @@ body {
 .h2 {
   color: var(--background-color-secondary);
   text-transform: capitalize;
-  border-bottom: 2px solid currentColor;
+  border-bottom: 0.125em solid currentColor;
+  padding-bottom: 0.125em;
   margin-block-end: var(--space-2xs);
 }
 
@@ -417,7 +422,6 @@ body {
 
 .h3,
 p {
-  margin-block-end: var(--space-3xs);
   margin-block-end: var(--space-2xs);
 }
 
@@ -630,7 +634,7 @@ li:has(.skill-or-course) {
   opacity: 0;
   transition: var(--transition-opacity);
 }
-@media (width >= 500px) {
+@media screen and (width >= 500px) {
   .nav-button-text {
     opacity: 1;
   }
@@ -640,13 +644,13 @@ li:has(.skill-or-course) {
   text-align: center;
   transition: var(--nav-ul-transition);
 }
-@media (width > 450px) {
+@media screen and (width > 450px) {
   .nav__ul {
     display: block;
     column-width: 18ch;
   }
 }
-@media (width > 900px) {
+@media screen and (width > 900px) {
   .nav__ul {
     display: flex;
     flex-wrap: wrap;
@@ -712,10 +716,9 @@ li:has(.skill-or-course) {
   display: block;
   height: 0;
   background-color: currentColor;
-  border-radius: 5px;
   border-radius: var(--border-radius-pill, 0.25em);
   position: absolute;
-  bottom: 3;
+  bottom: -0.1875em;
   right: 0;
   left: 0;
   transition: var(--transition-height);
@@ -733,7 +736,7 @@ li:has(.skill-or-course) {
   opacity: 1;
 }
 
-@media (width >= 1500px) {
+@media screen and (width >= 1500px) {
   .nav .main-nav-link {
     opacity: 1;
   }
@@ -985,7 +988,7 @@ li:has(.skill-or-course) {
 /* 
 IMPORTANT: SVG element sizing
 April 2026
-sizing on browsers is quirky 
+sizing on browsers is quirky, 
 for correct representation:
 * use only one css class for each element
 * font-size must be set
@@ -1070,10 +1073,10 @@ for correct representation:
     text-decoration: underline;
   }
   .side-larger-screens .section-container {
-    padding-inline: var(--padding-inilne-larger-screens-side-section-container);
+    padding-inline: var(--padding-inline-larger-screens-side-section-container);
   }
   .main-larger-screens .section-container {
-    padding-inline: var(--padding-inilne-larger-screens-main-section-container);
+    padding-inline: var(--padding-inline-larger-screens-main-section-container);
   }
   .main-larger-screens .section-container {
     margin-inline-start: 0;
