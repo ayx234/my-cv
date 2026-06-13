@@ -1056,6 +1056,15 @@ for correct representation:
     list-style: disc;
   }
   /* ===== Layout / Composition ===== */
+  /*
+  The following classes are not in the original HTML,
+  but will be added for larger screens using JS:
+
+  - .layout-container-larger-screens
+   - .side-larger-screens
+  - .main-larger-screens
+
+  */
   .layout-container-larger-screens {
     max-width: var(--breakpoint-max-container, 1800px);
     margin-inline: auto;
@@ -1081,7 +1090,6 @@ for correct representation:
   .main-larger-screens .section-container {
     margin-inline-start: 0;
   }
-  /* Layout - Composition */
   .main-larger-screens h3 {
     color: var(--text-bluish-light);
   }
