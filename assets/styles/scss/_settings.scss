@@ -2,6 +2,13 @@
 
 /* ------- Fonts ------- */
 
+/*
+@import is used for faster loading when users have the font 
+loaded on their machines.
+
+@font-face is a fallback
+*/
+
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 @font-face {
@@ -99,9 +106,7 @@
 	--font-size-body: var(--step-0);
 	--font-size-nav-link: var(--step-1);
 	--font-size-fa-icon-nav: var(--step-6);
-	// --font-size-fa-icon-nav: clamp(2.8125rem, 2.5313rem + 1.25vw, 3.5rem);
 	--font-size-fa-icon-small: inherit;
-	--font-size-fa-icon-large: var(--step-6);
 	--font-size-fa-icon-large: clamp(
 		2.7994rem,
 		2.2368rem + 2.8129vw,
@@ -144,11 +149,6 @@
 
 	/* === Box Shadow === */
 	--screenshot-boxshadow-size: clamp(
-		0.25rem,
-		0.1071rem + 0.7143cqi,
-		0.75rem
-	); /* 4 - 12 px */
-	--screenshot-boxshadow-size: clamp(
 		0.1875rem,
 		0.0982rem + 0.4464cqi,
 		0.5rem
@@ -159,12 +159,16 @@
 
 	/* === Outlines === */
 	/* Outline width */
-	--outline-width-default: 0.1875em;
+	--outline-width-m: 0.1875em;
 
 	/* outline-offset */
+	/*
+   Used to control focus ring spacing around interactive elements.
+   Scale: xs (smallest) → s (small) → m (medium - standard) → l (large) → xl (extra-large)
+	*/
 	--outline-offset-xs: 0.0625em;
 	--outline-offset-s: 0.125em;
-	--outline-offset-default: 0.1875em;
+	--outline-offset-m: 0.1875em;
 	--outline-offset-l: 0.25em;
 	--outline-offset-xl: 0.5em;
 
@@ -223,7 +227,6 @@
 	- kept larger than js larger screen breakpoint 1000px
 	in case javascript didn't work (progressive enhancement)
 	*/
-
 }
 
 /* == @media breakpoints == */

@@ -6,14 +6,14 @@
 
 body {
 	@include mixins.text-preset-1;
-  overflow-anchor: none;
+	overflow-anchor: none;
 }
 
 .h2 {
 	color: var(--background-color-secondary);
 	text-transform: capitalize;
-	border-bottom: 0.1250em solid currentColor;
-	padding-bottom: 0.1250em;
+	border-bottom: 0.125em solid currentColor;
+	padding-bottom: 0.125em;
 	margin-block-end: var(--space-2xs);
 }
 
@@ -38,8 +38,8 @@ li {
 	:focus-visible,
 	:hover
 ) {
-	outline: var(--outline-width-default) solid currentColor;
-	outline-offset: var(--outline-offset-default);
+	outline: var(--outline-width-m) solid currentColor;
+	outline-offset: var(--outline-offset-m);
 	border-radius: var(--border-radius-default);
 }
 
@@ -71,7 +71,11 @@ a:is(:link, :visited) {
 	}
 }
 
-:is(a, [tabindex]):has(h2, h3):is(:focus-visible, :hover, [data-focus-temporary]) {
+:is(a, [tabindex]):has(h2, h3):is(
+		:focus-visible,
+		:hover,
+		[data-focus-temporary]
+	) {
 	/* [tabindex] is used to increase specificity 
 		because these elements hav both a and tabindex
 		and my reset file has a selector with :is(a, [tabindex]) */
@@ -91,7 +95,7 @@ ul {
 	margin-block: 0;
 	margin-block: var(--space-3xs);
 	display: grid;
-	gap: var(--ul-default-gap ,0.5em);
+	gap: var(--ul-default-gap, 0.5em);
 }
 
 li {

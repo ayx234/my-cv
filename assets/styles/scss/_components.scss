@@ -19,7 +19,7 @@
 }
 
 .container-nav.js-active {
-		padding-block: var(--padding-block-section-container);
+	padding-block: var(--padding-block-section-container);
 }
 
 .nav {
@@ -50,7 +50,7 @@
 
 .nav-button:is(:focus-visible, :hover) {
 	margin-block-end: 0.1875em;
-	outline-width: var(--outline-width-default);
+	outline-width: var(--outline-width-m);
 	outline-offset: var(--outline-offset-s, 0.125em);
 	border-radius: var(--border-radius-default, 0.25em);
 	transform: var(--transform-nav-item);
@@ -186,7 +186,7 @@
 }
 
 .cv-header-elements-container.js-active {
-		padding-block-start: 0;
+	padding-block-start: 0;
 }
 
 .cv-header-elements-container > * {
@@ -283,7 +283,7 @@
 .social-links__link:is(:focus-visible, :hover) {
 	outline-offset: calc(-1 * var(--outline-offset-l, -0.25em));
 	border-radius: var(--border-radius-social-link-icon);
-	outline-width: var(--outline-width-default);
+	outline-width: var(--outline-width-m);
 	transform: var(--transform-social-link);
 }
 

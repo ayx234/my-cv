@@ -1,6 +1,13 @@
+@charset "UTF-8";
 /** @format */
 /** @format */
 /* ------- Fonts ------- */
+/*
+@import is used for faster loading when users have the font 
+loaded on their machines.
+
+@font-face is a fallback
+*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @font-face {
   font-family: "Open Sans";
@@ -83,7 +90,6 @@
   --font-size-nav-link: var(--step-1);
   --font-size-fa-icon-nav: var(--step-6);
   --font-size-fa-icon-small: inherit;
-  --font-size-fa-icon-large: var(--step-6);
   --font-size-fa-icon-large: clamp(
   	2.7994rem,
   	2.2368rem + 2.8129vw,
@@ -121,11 +127,6 @@
   --border-radius-screenshot: 0.5em;
   /* === Box Shadow === */
   --screenshot-boxshadow-size: clamp(
-  	0.25rem,
-  	0.1071rem + 0.7143cqi,
-  	0.75rem
-  ); /* 4 - 12 px */
-  --screenshot-boxshadow-size: clamp(
   	0.1875rem,
   	0.0982rem + 0.4464cqi,
   	0.5rem
@@ -135,11 +136,15 @@
   	var(--text-secondary);
   /* === Outlines === */
   /* Outline width */
-  --outline-width-default: 0.1875em;
+  --outline-width-m: 0.1875em;
   /* outline-offset */
+  /*
+    Used to control focus ring spacing around interactive elements.
+    Scale: xs (smallest) → s (small) → m (medium - standard) → l (large) → xl (extra-large)
+  */
   --outline-offset-xs: 0.0625em;
   --outline-offset-s: 0.125em;
-  --outline-offset-default: 0.1875em;
+  --outline-offset-m: 0.1875em;
   --outline-offset-l: 0.25em;
   --outline-offset-xl: 0.5em;
   /* === Transforms === */
@@ -439,8 +444,8 @@ li {
 
 :is(a, button, .main-nav-link, .webdev-project-link):is(:focus-visible,
 :hover) {
-  outline: var(--outline-width-default) solid currentColor;
-  outline-offset: var(--outline-offset-default);
+  outline: var(--outline-width-m) solid currentColor;
+  outline-offset: var(--outline-offset-m);
   border-radius: var(--border-radius-default);
 }
 
@@ -471,14 +476,18 @@ a:is(:link, :visited) {
   transition: var(--transition-width);
 }
 
-:is(a, [tabindex]):has(h2, h3):is(:focus-visible, :hover, [data-focus-temporary]) {
+:is(a, [tabindex]):has(h2, h3):is(:focus-visible,
+:hover,
+[data-focus-temporary]) {
   /* [tabindex] is used to increase specificity 
   	because these elements hav both a and tabindex
   	and my reset file has a selector with :is(a, [tabindex]) */
   transform: var(--transform-header);
   outline: none;
 }
-:is(a, [tabindex]):has(h2, h3):is(:focus-visible, :hover, [data-focus-temporary]) :is(h2, h3)::before {
+:is(a, [tabindex]):has(h2, h3):is(:focus-visible,
+:hover,
+[data-focus-temporary]) :is(h2, h3)::before {
   width: 0.15em;
 }
 
@@ -616,7 +625,7 @@ li:has(.skill-or-course) {
 
 .nav-button:is(:focus-visible, :hover) {
   margin-block-end: 0.1875em;
-  outline-width: var(--outline-width-default);
+  outline-width: var(--outline-width-m);
   outline-offset: var(--outline-offset-s, 0.125em);
   border-radius: var(--border-radius-default, 0.25em);
   transform: var(--transform-nav-item);
@@ -853,7 +862,7 @@ li:has(.skill-or-course) {
 .social-links__link:is(:focus-visible, :hover) {
   outline-offset: calc(-1 * var(--outline-offset-l, -0.25em));
   border-radius: var(--border-radius-social-link-icon);
-  outline-width: var(--outline-width-default);
+  outline-width: var(--outline-width-m);
   transform: var(--transform-social-link);
 }
 

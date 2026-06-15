@@ -19,6 +19,12 @@
 	color: var(--text-primary);
 }
 
+@mixin fa-icon-sizing($font-size-var) {
+	font-size: var($font-size-var);
+	width: var(--fa-icon-size, 1em);
+	height: var(--fa-icon-size, 1em);
+}
+
 /* Utility styles */
 
 @mixin screen-readers-only {

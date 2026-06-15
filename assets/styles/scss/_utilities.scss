@@ -21,21 +21,15 @@ for correct representation:
  */
 
 .fa-icon-nav {
-	font-size: var(--font-size-fa-icon-nav);
-	width: var(--fa-icon-size, 1em);
-	height: var(--fa-icon-size, 1em);
+	@include mixins.fa-icon-sizing(--font-size-fa-icon-nav);
 }
 
 .fa-icon-large {
-	font-size: var(--font-size-fa-icon-large);
-	width: var(--fa-icon-size, 1em);
-	height: var(--fa-icon-size, 1em);
+	@include mixins.fa-icon-sizing(--font-size-fa-icon-large);
 }
 
 .fa-icon-small {
-	font-size: var(--font-size-fa-icon-small);
-	width: var(--fa-icon-size, 1em);
-	height: var(--fa-icon-size, 1em);
+	@include mixins.fa-icon-sizing(--font-size-fa-icon-small);
 	margin-block-start: 0.1em;
 }
 

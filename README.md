@@ -13,17 +13,13 @@
 
 ## Next
 
-- Review AI assisted
-  - PASS 4
-- Work on the print version of the webpage
+- work on the print version of the webpage
 - include this cv project in the cv
+- turn JS into modules.
 
 ## Notes
 
 ### WIP
-
-- [HIGH] index.html:1250-1350 - Experience section icons are `<svg>` with `aria-hidden="true"` but no text labels provided; dates/locations rely on icon context
-  - the line references are messed up in copilot's response, and I didn't find the mentioned issue reviewing manually
 
 ### General
 
@@ -37,7 +33,7 @@
 
 - "#" hashtags for `<h2>` and `<h3>` inside `<a>`
 are inserted manually in html instead of through
-using ::before because some `<h3>` elements are parent
+using `::before` because some `<h3>` elements are parent
 elements that have child nodes and this puts white-space
 characters between the hashes and the text/element nodes.
   - `<h2>` hashtags are also inserted manually to stay consistent
@@ -50,3 +46,19 @@ adding this element and it's children, including
 an `<svg>` from font-awesome is complicated and
 prone to errors through plain JS. When JS works,
 it modifies this inline style value.
+
+### CSS & SCSS
+
+- Font in _settings.scss
+  - `@import` is used for faster loading when users have the font
+loaded on their machines.
+  - `@font-face` is a fallback
+- Sizing `<svg>` elements
+  - sizing on browsers is quirky (April 2026)
+  - for correct representation:
+    - use only one css class for each element
+    - font-size must be set
+    - height and width must be set for the element to appear
+      - use 1em so height and width reflect font-size
+- `@mixin text-box` has hardcoded `min-height: 44px`
+  - px are used because this is the minimux absolute value recommended for accessibility.
