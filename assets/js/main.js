@@ -293,6 +293,12 @@ initNav();
 // Set up MediaQueryList and listener
 const MQ_SPLIT_LAYOUT_BREAKPOINT = window.matchMedia("(min-width: 1000px)");
 
+// Track current layout state to make handleLayoutStructure idempotent
+let isLargeScreenLayoutActive = false;
+
+// Track whether media query listener is active (to disable during print)
+let isMediaQueryListenerActive = false;
+
 window.addEventListener("load", () => {
 	// Initialize according to current size
 	handleLayoutStructure(MQ_SPLIT_LAYOUT_BREAKPOINT);
@@ -307,11 +313,18 @@ window.addEventListener("load", () => {
 		// Safari and older browsers
 		MQ_SPLIT_LAYOUT_BREAKPOINT.addListener(handleLayoutStructure);
 	}
+	isMediaQueryListenerActive = true;
 });
 
 // Handler called on matchMedia changes
 function handleLayoutStructure(e) {
 	const matches = typeof e === "boolean" ? e : e.matches;
+
+	// Early return if already in the requested state (idempotent check)
+	if (matches === isLargeScreenLayoutActive) {
+		return;
+	}
+
 	if (matches) {
 		// viewport >= 1000px
 		/* Create new layout elements */
@@ -357,6 +370,9 @@ function handleLayoutStructure(e) {
 
 		// Remove elements of older layout
 		HEADER.parentElement.removeChild(HEADER);
+
+		// Update state tracking
+		isLargeScreenLayoutActive = true;
 	} else {
 		// viewport < 1000px
 
@@ -386,10 +402,13 @@ function handleLayoutStructure(e) {
 			MAIN.appendChild(LANGUAGES);
 			BODY.appendChild(MAIN);
 			BODY.removeChild(LAYOUT_CONTAINER_LARGER_SCREENS);
-			
+
 			MAIN.classList.remove("main-larger-screens");
 			EDUCATION.classList.add("bg-color-secondary");
 			LANGUAGES.classList.remove("bg-color-secondary");
+
+			// Update state tracking
+			isLargeScreenLayoutActive = false;
 		}
 	}
 }
@@ -413,3 +432,90 @@ function $ArrayElementsByClass(className) {
 function $ElementByID(id) {
 	return document.getElementById(id);
 }
+
+/* ======== Print Support ======= */
+
+/**
+ * Ensure large-screen layout is active during print.
+ *
+ * On beforeprint: Activate the >=1000px layout if not already active.
+ * On afterprint: Restore the layout based on current viewport width.
+ *
+ * This ensures printed output always shows the 2-column sidebar + main layout,
+ * and returns to responsive behavior after print preview is closed.
+ */
+
+let wasLargeScreenLayoutActiveBefore = false;
+
+window.addEventListener("beforeprint", () => {
+	// Disable the media query listener to prevent Chrome's print viewport changes
+	// from interfering with the layout during print preview
+	if (typeof MQ_SPLIT_LAYOUT_BREAKPOINT.removeEventListener === "function") {
+		MQ_SPLIT_LAYOUT_BREAKPOINT.removeEventListener(
+			"change",
+			handleLayoutStructure,
+		);
+	} else if (
+		typeof MQ_SPLIT_LAYOUT_BREAKPOINT.removeListener === "function"
+	) {
+		// Safari and older browsers
+		MQ_SPLIT_LAYOUT_BREAKPOINT.removeListener(handleLayoutStructure);
+	}
+	isMediaQueryListenerActive = false;
+
+	// Check if large-screen layout is already active
+	const layoutContainerExists = document.getElementById(
+		"layout-container-larger-screens",
+	);
+	wasLargeScreenLayoutActiveBefore = !!layoutContainerExists;
+
+	// If not active, activate it (simulating >=1000px layout)
+	if (!wasLargeScreenLayoutActiveBefore) {
+		handleLayoutStructure(true); // Force large-screen layout
+	} else {
+		// 	console.log(document.getElementById(
+		// 	"layout-container-larger-screens",
+		// ).children);
+	}
+});
+
+window.addEventListener("afterprint", () => {
+	// Re-enable the media query listener
+	if (typeof MQ_SPLIT_LAYOUT_BREAKPOINT.addEventListener === "function") {
+		MQ_SPLIT_LAYOUT_BREAKPOINT.addEventListener(
+			"change",
+			handleLayoutStructure,
+		);
+	} else {
+		// Safari and older browsers
+		MQ_SPLIT_LAYOUT_BREAKPOINT.addListener(handleLayoutStructure);
+	}
+	isMediaQueryListenerActive = true;
+
+	// After printing, restore the layout based on actual viewport width
+	const shoudLargeScreenLayoutBeActiveLater = window.matchMedia(
+		"(min-width: 1000px)",
+	).matches;
+
+	// Only restore if the layout state should change
+	if (
+		!wasLargeScreenLayoutActiveBefore &&
+		shoudLargeScreenLayoutBeActiveLater
+	) {
+		// Layout should stay large-screen; do nothing (handleLayoutStructure(true) was executed in beforeprint event)
+	} else if (
+		wasLargeScreenLayoutActiveBefore &&
+		!shoudLargeScreenLayoutBeActiveLater
+	) {
+		// Layout was large-screen before but should now be mobile; switch back
+		handleLayoutStructure(false); // Force mobile layout
+	} else if (
+		!wasLargeScreenLayoutActiveBefore &&
+		!shoudLargeScreenLayoutBeActiveLater
+	) {
+		handleLayoutStructure(false); // (handleLayoutStructure(true) was executed in beforeprint event - we need to reverse it)
+	}
+	// else:
+	// wasLargeScreenLayoutActiveBefore && shoudLargeScreenLayoutBeActiveLater
+	// layout was large-screen and should stay large-screen; do nothing
+});

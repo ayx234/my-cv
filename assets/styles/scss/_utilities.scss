@@ -9,30 +9,6 @@
 	color: var(--text-bluish-light);
 }
 
-/* 
-IMPORTANT: SVG element sizing
-April 2026
-sizing on browsers is quirky, 
-for correct representation:
-* use only one css class for each element
-* font-size must be set
-* height and width must be set for the element to appear
-	* use 1em so height and width reflect font-size
- */
-
-.fa-icon-nav {
-	@include mixins.fa-icon-sizing(--font-size-fa-icon-nav);
-}
-
-.fa-icon-large {
-	@include mixins.fa-icon-sizing(--font-size-fa-icon-large);
-}
-
-.fa-icon-small {
-	@include mixins.fa-icon-sizing(--font-size-fa-icon-small);
-	margin-block-start: 0.1em;
-}
-
 .section-separator {
 	border-bottom: 1px solid var(--background-color-secondary);
 	padding-bottom: var(--space-xs);
@@ -62,4 +38,44 @@ for correct representation:
 .component-container-large {
 	max-width: var(--breakpoint-lrg-container, 55em);
 	margin-inline: auto;
+}
+
+/* 
+IMPORTANT: SVG element sizing
+April 2026
+sizing on browsers is quirky, 
+for correct representation:
+* use only one css class for each element
+* font-size must be set
+* height and width must be set for the element to appear
+	* use 1em so height and width reflect font-size
+ */
+
+.fa-icon-nav {
+	@include mixins.fa-icon-sizing(--font-size-fa-icon-nav);
+}
+
+.fa-icon-large {
+	@include mixins.fa-icon-sizing(--font-size-fa-icon-large);
+}
+
+.fa-icon-small {
+	@include mixins.fa-icon-sizing(--font-size-fa-icon-small);
+	margin-block-start: 0.1em;
+}
+
+.show-on-print {
+	display: none;
+}
+
+.visually-hidden{
+  position:absolute !important;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
 }

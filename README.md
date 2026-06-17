@@ -2,20 +2,19 @@
 
 ## Working on
 
+- include this cv project in the cv
+
 ### Conventional commit message
-
-### Issues
-
-- Javascript dependency for mobile navigation
-  - This is because the navigation menu is too large to be displayed all the time on mobile screens and the toggle button would only work with js
 
 ## Done
 
 ## Next
 
-- work on the print version of the webpage
-- include this cv project in the cv
+- add pdf version and download button
 - turn JS into modules.
+- _print.scss
+  - remove non-used styles
+  - make all color values variables
 
 ## Notes
 

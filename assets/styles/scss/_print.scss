@@ -2,3 +2,698 @@
 
 @use "settings";
 @use "mixins";
+
+/**
+ * PRINT STYLESHEET
+ * 
+ * Goals:
+ * 1. Reproduce the >=1000px screen layout for print (2-column sidebar + main)
+ * 2. Use pt units for all print-specific sizing
+ * 3. Hide interactive/navigation elements
+ * 4. Add page numbers to footer
+ * 5. Hide screenshot images
+ * 6. Optimize for A4 portrait (210mm x 297mm / 8.27" x 11.69")
+ * 
+ * Pixel to Point Conversion Reference:
+ * 1rem = 16px = 12pt
+ * 1px = 0.75pt
+ * 
+ * Spacing Scale (fixed for print):
+ * --space-3xs: 4pt  (0.3125rem)
+ * --space-2xs: 7pt  (0.5625rem)
+ * --space-xs:  11pt (0.875rem)
+ * --space-s:   13pt (1.125rem)
+ * --space-m:   20pt (1.6875rem)
+ * --space-l:   27pt (2.25rem)
+ * --space-xl:  40pt (3.375rem)
+ * 
+ * Font Size Scale (fixed for print):
+ * --step--2:  9pt   (0.651rem)
+ * --step--1:  12pt  (0.7813rem)
+ * --step-0:   12pt  (0.9375rem, body text)
+ * --step-1:   14pt  (1.125rem, nav/headings)
+ * --step-2:   16pt  (1.35rem)
+ * --step-3:   19pt  (1.62rem)
+ * --step-4:   23pt  (1.944rem)
+ */
+
+@media print {
+	/* ================== GENERAL - GLOBAL STYLES ================== */
+
+	/* ===== Page Setup ===== */
+
+	// .page-title {
+	// 		// string-set: title-text content();
+	// 		// string-set: title-text attr(data-title);
+	// 		// not working as of - Jun 2026 (firefox and chrome)
+	// 		// though support is there https://caniuse.com/?search=string-set
+
+	// }
+
+	@page {
+		size: A4 portrait;
+		margin: 0.75in 0.75in 1in 0.75in; /* top right bottom left (1in for footer) */
+
+		// @top-center {
+		// 	// content: string(title-text);
+		// 	// title-text is made through the string-set property
+		// 	// string-set doesn't work on scss - Jun 2026
+		// 	// content: "Ali Al Yahya's CV";
+		// }
+
+		// @top-left {
+		// 	// content: "Last updated: June 2026";
+		// }
+
+		/* Page number in footer */
+		@bottom-center {
+			content: "Page " counter(page) " of " counter(pages);
+			font-size: 10pt;
+			color: #666;
+			margin-top: 0.25in;
+		}
+	}
+
+	@page :first {
+		margin-bottom: 0.75in; /* No footer space on first page */
+	}
+
+	/* ===== Global Print Styles ===== */
+
+	html,
+	body {
+		font-size: 12pt;
+		line-height: 1.5;
+		color: #000;
+		background: #fff;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+		overflow-anchor: auto;
+	}
+
+	/* ===== Cleanup for Print ===== */
+
+	/* Remove transitions, shadows, and visual effects */
+	* {
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+
+	/* Ensure text is readable in print */
+	body {
+		color: #000 !important;
+		background: #fff !important;
+	}
+
+	a {
+		background: none !important;
+	}
+
+	/* Print-friendly outline */
+	:focus-visible {
+		outline: none !important;
+	}
+
+	/* ===== Hide Non-Print Elements ===== */
+
+	/* Interactive elements */
+	button,
+	[role="button"],
+	a[href]::after {
+		display: none;
+	}
+
+	/* ===== Images ===== */
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	/* Screenshots specifically */
+	.screenshot {
+		display: none !important;
+	}
+
+	.social-media-link-text {
+		display: block;
+		font-size: 9pt;
+	}
+
+	/* ===== Page Breaks ===== */
+
+	/* General elements- page breaks */
+
+	header {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+
+	// section {
+	// 	page-break-inside: avoid;
+	// }
+
+	img {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		page-break-after: avoid;
+		break-after: avoid;
+		page-break-inside: avoid;
+		break-inside: avoid;
+		orphans: 3;
+		widows: 3;
+	}
+
+	p {
+		page-break-inside: avoid;
+		break-inside: avoid;
+		orphans: 3;
+		widows: 3;
+	}
+
+	li {
+		page-break-inside: avoid;
+		break-inside: avoid;
+		orphans: 3;
+		widows: 3;
+	}
+
+	/* composition (layout) - page breaks */
+
+	/* Avoid orphaning headings */
+	h2 + p,
+	h3 + p {
+		page-break-before: avoid;
+		break-before: avoid;
+	}
+
+	/* components - page breaks */
+
+	.page-section {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+
+	.layout-container-larger-screens {
+		page-break-after: avoid;
+		break-after: avoid;
+	}
+
+	.side-larger-screens.bg-color-secondary {
+		page-break-inside: avoid;
+		break-inside: avoid;
+		box-decoration-break: clone;
+	}
+
+	.side-larger-screens .page-subsection {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+
+	.main-larger-screens {
+		box-decoration-break: clone;
+	}
+
+	.profile-hero {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+
+	.github-projects {
+		page-break-inside: auto;
+		break-inside: auto;
+	}
+
+	// .experience {
+	// 	page-break-inside: avoid;
+	// 	break-inside: avoid;
+	// }
+
+	.education-section,
+	.education__section {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+	/* ===== Focus indicators and transitions ===== */
+	* {
+		transition: none !important;
+		animation: none !important;
+	}
+
+	/* ===== Typography ===== */
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 0;
+	}
+
+	h1 {
+		font-size: 28pt;
+		font-weight: 900;
+		margin-block: 0 13pt;
+	}
+
+	h2 {
+		font-size: 18pt;
+		font-weight: 900;
+		color: var(--background-color-secondary);
+		border-bottom: 1.5pt solid var(--background-color-secondary);
+		padding-bottom: 1.5pt;
+		margin-block: 13pt 7pt;
+	}
+
+	h3 {
+		font-size: 13pt;
+		font-weight: 900;
+		text-transform: capitalize;
+		text-decoration: underline;
+		margin-block: 4pt 7pt;
+	}
+
+	h4 {
+		font-size: 11pt;
+		font-weight: 700;
+		color: var(--text-bluish-muted, #253d4d);
+		margin-block: 4pt 4pt;
+	}
+
+	p {
+		font-size: 12pt;
+		margin: 0 0 7pt 0;
+	}
+
+	/* ===== Lists ===== */
+
+	ul,
+	ol {
+		margin: 0 0 7pt 0;
+		padding: 0;
+	}
+
+	li {
+		margin-block: 4pt;
+		list-style: circle;
+	}
+
+	ul li {
+		margin-inline-start: 20pt;
+	}
+
+	ol li {
+		list-style: decimal;
+		margin-inline-start: 20pt;
+	}
+
+	/* ================== LAYOUT - COMPOSITION ================== */
+	/* ===== Layout: 2-Column Sidebar + Main ===== */
+
+	main {
+		display: block;
+	}
+
+	/* Create sidebar-main layout (replaces JS-driven layout for print) */
+
+	.layout-container-larger-screens {
+		display: grid;
+		grid-template-columns: 2fr 5fr;
+		gap: 20pt;
+		max-width: 6.77in; /* A4 width - margins */
+		margin: 0 auto;
+	}
+
+	.side-larger-screens.bg-color-secondary {
+		background: #f5f5f5;
+		color: #000;
+		font-size: 10pt;
+		padding: 13pt 13pt 13pt 13pt;
+		border-radius: 10pt;
+	}
+
+	.main-larger-screens {
+		display: block;
+		padding-block-start: 13pt;
+	}
+
+	.fa-icon-large {
+		--fa-icon-size: 40px;
+	}
+
+	/* Sidebar Styling */
+
+	.side-larger-screens :is(.h1, .h2, .h3, .job-target) {
+		color: var(--background-color-secondary);
+	}
+
+	.side-larger-screens h2 {
+		font-size: 14pt;
+		border-bottom: 1pt solid var(--background-color-secondary);
+		color: var(--background-color-secondary);
+	}
+
+	.side-larger-screens h3 {
+		font-size: 12pt;
+		color: var(--background-color-secondary);
+		text-decoration: none;
+	}
+
+	.side-larger-screens li {
+		text-decoration: underline;
+		margin-block: 3pt;
+		list-style: circle;
+	}
+
+	.side-larger-screens .section-container {
+		padding-inline: 10pt;
+	}
+
+	/* Main Content Styling */
+
+	.main-larger-screens h3 {
+		color: var(--text-bluish-light, #2a4a5e);
+	}
+
+	.main-larger-screens li {
+		list-style: disc;
+	}
+
+	.main-larger-screens li::marker {
+		color: var(--background-color-secondary);
+	}
+
+	.main-larger-screens .section-container {
+		padding-inline: 0;
+		margin-inline-start: 0;
+	}
+
+	/* ===== Sections ===== */
+
+	section {
+		margin-block: 13pt;
+		margin-block: 0pt;
+	}
+
+	.section-container {
+		padding: 0;
+		display: block;
+		gap: 0;
+	}
+
+	.bg-color-secondary {
+		background: none;
+		color: #000;
+	}
+
+	.bg-color-secondary a {
+		color: inherit;
+	}
+
+	.skill-or-course {
+		display: inline;
+		padding: 4pt 7pt;
+		margin: 3pt 3pt 3pt 0;
+		border: none;
+	}
+
+	ul:has(.skill-or-course) {
+		display: grid;
+	}
+
+	li:has(.skill-or-course) {
+		display: inline-block;
+		display: list-item;
+		margin: 0;
+	}
+
+	ul .skill-or-course {
+		padding: 0 0pt;
+		margin: 2pt 2pt;
+	}
+
+	/* ================== COMPONENTS ================== */
+	/* ===== Navigation ===== */
+	/*
+  .nav-link is excluded because it includes some headers
+  and one's inside the main nav have .main-nav-link
+  */
+	nav,
+	.nav,
+	.nav-button,
+	.nav-button-container,
+	.nav__ul,
+	.main-nav-link,
+	.nav-button-text {
+		display: none !important;
+	}
+
+	/* ===== Header ===== */
+
+	.profile-hero {
+		display: block;
+		text-align: center;
+		margin: 0 0 13pt 0;
+	}
+
+	.personal-photo {
+		width: 1.5in;
+		background: radial-gradient(
+			circle,
+			rgb(255, 255, 255) 0%,
+			var(--background-color-secondary) 80%
+		);
+		border: none;
+		border-radius: 10pt;
+		margin: 0 auto 7pt;
+	}
+
+	.name {
+		font-size: 24pt;
+		font-weight: 900;
+		text-align: center;
+		margin: 0 0 3pt 0;
+	}
+
+	.job-target {
+		font-size: 12pt;
+		font-weight: 700;
+		text-transform: uppercase;
+		text-align: center;
+		margin: 0;
+	}
+
+	/* ===== Contact Section ===== */
+
+	.contact {
+		display: block;
+		gap: 0;
+		margin: 0;
+	}
+
+	.contact-address {
+		position: relative;
+	}
+
+	.contact-address .fa-icon-small {
+		position: absolute;
+		left: -16pt;
+		top: 3pt;
+	}
+
+	.contact-link {
+		display: block;
+		margin: 4pt 0;
+		transition: none;
+	}
+
+	.contact-link::before {
+		display: none;
+	}
+
+	.social-links {
+		margin: 7pt 0;
+	}
+
+	.social-links h3 {
+		font-size: 11pt;
+		margin: 7pt 0 4pt 0;
+	}
+
+	.social-links__link {
+		display: block;
+		margin-right: 4pt;
+	}
+
+	.social-links__link + .social-links__link {
+		margin-top: 7pt;
+	}
+
+	.nationality {
+		margin-top: 7pt;
+	}
+
+	.side-larger-screens .nationality__h3 {
+		font-size: 10pt;
+		letter-spacing: 1.5pt;
+		margin: 0 0 3pt 0;
+	}
+
+	/* ===== Technical Skills ===== */
+
+	/* ===== Soft Skills ===== */
+
+	.soft-skills {
+		display: block;
+	}
+
+	.soft-skills__ul {
+		display: block;
+	}
+
+	/* ===== Languages Section ===== */
+
+	.languages-section {
+		background: none;
+		color: #000;
+	}
+
+	.languages ul {
+		display: block;
+		gap: 0;
+	}
+
+	.languages li {
+		margin: 4pt 0;
+	}
+
+	/* ===== Profile Section ===== */
+
+	.profile-h2 {
+		margin-block-start: 0;
+	}
+
+	/* ===== GitHub Projects ===== */
+
+	.github-projects__content-container {
+		display: block;
+		margin: 13pt 0;
+	}
+
+	.github-projects__screenshot {
+		display: none;
+	}
+
+	.github-projects__description-container {
+		display: block;
+	}
+
+	.github-projects__description-container .webdev-project-link {
+		display: flex;
+		gap: 8pt;
+		font-size: 10pt;
+		font-weight: 600;
+		color: var(--text-bluish-light);
+		min-height: 0;
+		padding: 2pt 0pt;
+		margin: 3pt 3pt 0 0;
+		border: none;
+	}
+
+	.webdev-project-link:is(:link, :visited) {
+		color: var(--text-bluish-light);
+	}
+
+	/* ===== Work Experience & Projects ===== */
+
+	.experience {
+		margin: 13pt 0;
+		margin: 0;
+	}
+
+	.experience__location,
+	.experience__year {
+		display: inline-block;
+		font-size: 10pt;
+		color: #666;
+		font-weight: 700;
+		margin: 0 4pt 4pt 0;
+	}
+
+	.experience__location::before,
+	.experience__year::before {
+		display: none;
+	}
+
+	.experience__description {
+		color: #37566a;
+		font-weight: 700;
+		font-size: 11pt;
+		margin: 4pt 0;
+	}
+
+	.experience__ul {
+		margin: 7pt 0;
+		padding-left: 20pt;
+		padding-left: 0pt;
+	}
+
+	.experience__li {
+		margin: 3pt 0;
+	}
+
+	/* ===== Education ===== */
+
+	.education {
+		gap: 0;
+	}
+
+	.education-section,
+	.education__section {
+		margin: 7pt 0;
+	}
+
+	.education-sub-section {
+		margin: 7pt 0;
+	}
+
+	.education-sub-section h4 {
+		font-size: 11pt;
+		font-weight: 700;
+		margin: 7pt 0 4pt 0;
+	}
+
+	/* ================== UTILITIES ================== */
+	/* ===== General Utilities ===== */
+
+	.section-separator {
+		border-bottom: 1pt solid #ccc;
+		padding-bottom: 7pt;
+		margin-bottom: 7pt;
+	}
+
+	.subsection-description {
+		margin: 0 0 7pt 0;
+		font-size: 12pt;
+	}
+
+	.show-on-print {
+		display: block;
+	}
+
+	.hide-on-print {
+		display: none;
+	}
+}
