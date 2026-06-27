@@ -2,9 +2,13 @@
 
 ## Working on
 
-- include this cv project in the cv
-
 ### Conventional commit message
+
+content(cv:) add this cv website to github projects
+
+additional changes to content:
+
+- remove Javascript calculator from github projects
 
 ## Done
 

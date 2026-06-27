@@ -1183,10 +1183,25 @@ for correct representation:
   @page {
     size: A4 portrait;
     margin: 0.75in 0.75in 1in 0.75in; /* top right bottom left (1in for footer) */
+    @top-center {
+      content: "Ali Al Yahya's CV";
+      color: #222;
+      font-size: 12pt;
+    }
+    @top-left {
+      content: "Last updated: June 2026";
+      color: #222;
+      font-size: 12pt;
+    }
+    @top-right {
+      content: "https://github.com/ayx234/my-cv";
+      color: #222;
+      font-size: 12pt;
+    }
     /* Page number in footer */
-    @bottom-center {
+    @bottom-right {
       content: "Page " counter(page) " of " counter(pages);
-      font-size: 10pt;
+      font-size: 16pt;
       color: #666;
       margin-top: 0.25in;
     }
@@ -1206,6 +1221,66 @@ for correct representation:
     margin: 0;
     padding: 0;
     overflow-anchor: auto;
+  }
+  section {
+    margin-block: 13pt;
+    margin-block: 0pt;
+  }
+  /*  Typography  */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+  h1 {
+    font-size: 28pt;
+    font-weight: 900;
+    margin-block: 0 13pt;
+  }
+  h2 {
+    font-size: 18pt;
+    font-weight: 900;
+    color: var(--background-color-secondary);
+    border-bottom: 1.5pt solid var(--background-color-secondary);
+    padding-bottom: 1.5pt;
+    margin-block: 13pt 7pt;
+  }
+  h3 {
+    font-size: 13pt;
+    font-weight: 900;
+    text-transform: capitalize;
+    text-decoration: underline;
+    margin-block: 4pt 7pt;
+  }
+  h4 {
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--text-bluish-muted, #253d4d);
+    margin-block: 4pt 4pt;
+  }
+  p {
+    font-size: 12pt;
+    margin: 0 0 7pt 0;
+  }
+  /* Lists  */
+  ul,
+  ol {
+    margin: 0 0 7pt 0;
+    padding: 0;
+  }
+  li {
+    margin-block: 4pt;
+    list-style: circle;
+  }
+  ul li {
+    margin-inline-start: 20pt;
+  }
+  ol li {
+    list-style: decimal;
+    margin-inline-start: 20pt;
   }
   /* ===== Cleanup for Print ===== */
   /* Remove transitions, shadows, and visual effects */
@@ -1255,18 +1330,22 @@ for correct representation:
     page-break-inside: avoid;
     break-inside: avoid;
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
     page-break-after: avoid;
     break-after: avoid;
     page-break-inside: avoid;
     break-inside: avoid;
     orphans: 3;
     widows: 3;
+  }
+  .h3 {
+    margin-block-start: 10pt;
+    margin-block-end: 8px;
   }
   p {
     page-break-inside: avoid;
@@ -1301,10 +1380,6 @@ for correct representation:
     break-inside: avoid;
     box-decoration-break: clone;
   }
-  .side-larger-screens .page-subsection {
-    page-break-inside: avoid;
-    break-inside: avoid;
-  }
   .main-larger-screens {
     box-decoration-break: clone;
   }
@@ -1312,7 +1387,15 @@ for correct representation:
     page-break-inside: avoid;
     break-inside: avoid;
   }
+  .side-larger-screens .page-subsection {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
   .github-projects {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+  .education {
     page-break-inside: auto;
     break-inside: auto;
   }
@@ -1325,62 +1408,6 @@ for correct representation:
   * {
     transition: none !important;
     animation: none !important;
-  }
-  /* ===== Typography ===== */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 0;
-  }
-  h1 {
-    font-size: 28pt;
-    font-weight: 900;
-    margin-block: 0 13pt;
-  }
-  h2 {
-    font-size: 18pt;
-    font-weight: 900;
-    color: var(--background-color-secondary);
-    border-bottom: 1.5pt solid var(--background-color-secondary);
-    padding-bottom: 1.5pt;
-    margin-block: 13pt 7pt;
-  }
-  h3 {
-    font-size: 13pt;
-    font-weight: 900;
-    text-transform: capitalize;
-    text-decoration: underline;
-    margin-block: 4pt 7pt;
-  }
-  h4 {
-    font-size: 11pt;
-    font-weight: 700;
-    color: var(--text-bluish-muted, #253d4d);
-    margin-block: 4pt 4pt;
-  }
-  p {
-    font-size: 12pt;
-    margin: 0 0 7pt 0;
-  }
-  /* ===== Lists ===== */
-  ul,
-  ol {
-    margin: 0 0 7pt 0;
-    padding: 0;
-  }
-  li {
-    margin-block: 4pt;
-    list-style: circle;
-  }
-  ul li {
-    margin-inline-start: 20pt;
-  }
-  ol li {
-    list-style: decimal;
-    margin-inline-start: 20pt;
   }
   /* ================== LAYOUT - COMPOSITION ================== */
   /* ===== Layout: 2-Column Sidebar + Main ===== */
@@ -1444,11 +1471,6 @@ for correct representation:
   .main-larger-screens .section-container {
     padding-inline: 0;
     margin-inline-start: 0;
-  }
-  /* ===== Sections ===== */
-  section {
-    margin-block: 13pt;
-    margin-block: 0pt;
   }
   .section-container {
     padding: 0;
@@ -1589,10 +1611,14 @@ for correct representation:
   .profile-h2 {
     margin-block-start: 0;
   }
+  .profile__description {
+    margin-block-start: 12pt;
+  }
   /* ===== GitHub Projects ===== */
   .github-projects__content-container {
     display: block;
     margin: 13pt 0;
+    margin: 0;
   }
   .github-projects__screenshot {
     display: none;
@@ -1615,6 +1641,9 @@ for correct representation:
     color: var(--text-bluish-light);
   }
   /* ===== Work Experience & Projects ===== */
+  .work-section .work-title {
+    margin-block-end: 6pt;
+  }
   .experience {
     margin: 13pt 0;
     margin: 0;
@@ -1639,8 +1668,9 @@ for correct representation:
   }
   .experience__ul {
     margin: 7pt 0;
-    padding-left: 20pt;
-    padding-left: 0pt;
+    margin: 0;
+    padding-inline-start: 0pt;
+    gap: 0;
   }
   .experience__li {
     margin: 3pt 0;
