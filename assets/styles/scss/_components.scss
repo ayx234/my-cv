@@ -237,6 +237,23 @@
 	font-weight: 900;
 }
 
+.btn-download {
+	@include mixins.text-box;
+	background: rgba(244, 185, 66, 1);
+	border-width: var(--border-width-default, 0.1875em);
+	border-style: solid;
+	border-color: var(--text-secondary-bg);
+	border-radius: var(--border-radius-btn-download);
+	font-weight: 600;
+	padding: var(--padding-btn-download);
+	cursor: pointer;
+	text-decoration: none;
+
+	&:is(:focus-visible, :hover) {
+		transform: var(--transform-scale-up);
+	}
+}
+
 /* Contact */
 
 .contact {
@@ -250,7 +267,6 @@
 	transition: var(--transition-transform);
 	position: relative;
 	display: flex;
-	gap: 0.50em;
 	gap: var(--space-2xs);
 	align-items: center;
 
@@ -334,7 +350,7 @@
 	border: var(--border-shorthand-screenshot);
 	border-radius: var(--border-radius-screenshot);
 	margin-block: var(--space-2xs);
-	box-shadow: var(--screenshot-boxshadow);
+	box-shadow: var(--boxshadow-shorthand-default);
 	align-self: start;
 }
 
@@ -345,7 +361,8 @@
 .github-projects__description-container .webdev-project-link {
 	@include mixins.text-box;
 	@include mixins.vertically-centered-inline;
-	border-width: 0.1875em;
+	border-width: var(--border-width-default, 0.1875em);
+	box-shadow: var(--boxshadow-shorthand-default);
 }
 
 .webdev-project-link {

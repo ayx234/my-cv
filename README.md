@@ -4,17 +4,11 @@
 
 ### Conventional commit message
 
-content(cv:) add this cv website to github projects
-
-additional changes to content:
-
-- remove Javascript calculator from github projects
-
 ## Done
 
 ## Next
 
-- add pdf version and download button
+- have AI make this readme into a proper docs
 - turn JS into modules.
 - _print.scss
   - remove non-used styles

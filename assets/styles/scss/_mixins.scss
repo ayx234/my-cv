@@ -63,7 +63,7 @@
 
 @mixin text-box {
 	padding: 0.5em 1em;
-	border: 2px solid currentcolor;
+	border: .125em solid currentcolor;
 	border-radius: 0.25em;
 	min-height: 44px;
 	/* min-height in px is the recommended value for accessibility*/

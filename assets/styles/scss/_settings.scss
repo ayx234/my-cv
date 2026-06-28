@@ -70,6 +70,17 @@ loaded on their machines.
 	--step-5: clamp(2.3328rem, 1.9094rem + 2.117cqi, 3.8147rem);
 	--step-6: clamp(2.7994rem, 2.2368rem + 2.8129cqi, 4.7684rem);
 
+	/* Semantic font-size */
+	--font-size-body: var(--step-0);
+	--font-size-nav-link: var(--step-1);
+	--font-size-fa-icon-nav: var(--step-6);
+	--font-size-fa-icon-small: inherit;
+	--font-size-fa-icon-large: clamp(
+		2.7994rem,
+		2.2368rem + 2.8129vw,
+		4.7684rem
+	);
+
 	/* // --- Spacing --- */
 
 	/* // Fluid */
@@ -102,17 +113,6 @@ loaded on their machines.
 	--space-l-2xl: clamp(2.25rem, 1.4643rem + 3.9286cqi, 5rem);
 	--space-l-3xl: clamp(2.25rem, 0.1023rem + 9.5455cqi, 7.5rem);
 
-	/* Semantic font-size */
-	--font-size-body: var(--step-0);
-	--font-size-nav-link: var(--step-1);
-	--font-size-fa-icon-nav: var(--step-6);
-	--font-size-fa-icon-small: inherit;
-	--font-size-fa-icon-large: clamp(
-		2.7994rem,
-		2.2368rem + 2.8129vw,
-		4.7684rem
-	);
-
 	/* Semantic spacing */
 	--padding-block-section-container: var(--space-s);
 	--padding-inline-larger-screens-side-section-container: clamp(
@@ -125,6 +125,8 @@ loaded on their machines.
 		-0.892rem + 8.4091cqi,
 		5.625rem
 	);
+	--padding-btn-download: var(--space-3xs-2xs)
+		clamp(1.25rem, 0.8716rem + 1.8919vw, 3rem);
 
 	/* for --photo-size-190-300
 	 vw is better than cqi for the photo */
@@ -137,6 +139,7 @@ loaded on their machines.
 	/* === Borders === */
 	/* Border width */
 	--border-width-screenshot: var(--space-3xs-2xs);
+	--border-width-default: 0.1875em;
 	/* Border shorthand */
 	--border-shorthand-screenshot: var(--border-width-screenshot) solid
 		var(--background-color-secondary);
@@ -146,15 +149,16 @@ loaded on their machines.
 	--border-radius-personal-photo: 2.5em;
 	--border-radius-social-link-icon: 0.8em;
 	--border-radius-screenshot: 0.5em;
+	--border-radius-btn-download: 0.3125em;
 
 	/* === Box Shadow === */
-	--screenshot-boxshadow-size: clamp(
+	---boxshadow-size-default: clamp(
 		0.1875rem,
 		0.0982rem + 0.4464cqi,
 		0.5rem
 	); /* 3 - 8 px */
-	--screenshot-boxshadow: var(--screenshot-boxshadow-size)
-		var(--screenshot-boxshadow-size) var(--screenshot-boxshadow-size) 0
+	--boxshadow-shorthand-default: var(---boxshadow-size-default)
+		var(---boxshadow-size-default) var(---boxshadow-size-default) 0
 		var(--text-secondary);
 
 	/* === Outlines === */
