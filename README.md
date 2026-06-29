@@ -16,8 +16,6 @@
 
 ## Notes
 
-### WIP
-
 ### General
 
 - '.personal-photo' was not given an explicit height attribute. Height and width don't have an exact 1:1 aspect ratios and inlcluding a height attribute, would messup the picture when css and js are activated (probably only css).
@@ -46,16 +44,34 @@ it modifies this inline style value.
 
 ### CSS & SCSS
 
-- Font in _settings.scss
-  - `@import` is used for faster loading when users have the font
+#### Print Styles
+
+`_print.scss`
+
+- Page breaks using `page-break-inside` `break-inside` `break-after` etc...
+  - These styles are applying perfectly on Chrome and Edge
+  - They are not applying as intended on Firefox
+     or browsers on iOS (June 2026).
+
+#### Font Importing
+
+In `_settings.scss`:
+
+- `@import` is used for faster loading when users have the font
 loaded on their machines.
-  - `@font-face` is a fallback
-- Sizing `<svg>` elements
-  - sizing on browsers is quirky (April 2026)
-  - for correct representation:
-    - use only one css class for each element
-    - font-size must be set
-    - height and width must be set for the element to appear
-      - use 1em so height and width reflect font-size
-- `@mixin text-box` has hardcoded `min-height: 44px`
-  - px are used because this is the minimux absolute value recommended for accessibility.
+- `@font-face` is a fallback
+
+#### Sizing of SVG Elements
+  
+Sizing on browsers is quirky (April 2026).
+For correct representation the following rules were used:
+
+- Use only one css class for each element
+- `font-size` must be set
+- `height` and `width` must be set for the element to appear
+  - use `1em` so `height` and `width` reflect `font-size`
+
+#### min-height for Button & Button-like Elements
+
+`@mixin text-box` has hardcoded `min-height: 44px`.
+This `px` value is the minimum absolute value recommended for accessibility.
