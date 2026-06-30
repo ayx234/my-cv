@@ -177,7 +177,7 @@ loaded on their machines.
 	--outline-offset-xl: 0.5em;
 
 	/* === Transforms === */
-	--transform-header: translate(-1.5em, 0);
+	--transform-header: translateX(clamp(-1.5625rem, 0.1645rem + -3.9474cqi, -0.625rem)); /*-10px @ 320px container width to -25px @ 700px cw*/
 	--transform-contact-link: translate(0, -0.25em);
 	--transform-nav-item: scale(1.05) translate(0, -0.25em);
 	--transform-social-link: scale(1.1) translate(0, -0.25em);

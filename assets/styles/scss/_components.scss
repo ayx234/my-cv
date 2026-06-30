@@ -320,7 +320,7 @@
 
 /* Technical Skills */
 
-.section-container.technical-skills {
+.section-container.technical-skills-container {
 	/* display: grid; on .section-container */
 	gap: 0;
 }
@@ -356,6 +356,10 @@
 
 .github-projects__description-container {
 	flex: 2 1 18rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
+	margin-block-end: var(--space-2xs);
 }
 
 .github-projects__description-container .webdev-project-link {
@@ -367,10 +371,6 @@
 
 .webdev-project-link {
 	transition: var(--transition-webdev-project-link);
-}
-
-.webdev-project-link + .webdev-project-link {
-	margin-inline-start: var(--space-2xs);
 }
 
 .webdev-project-link:is(:focus-visible, :hover) {

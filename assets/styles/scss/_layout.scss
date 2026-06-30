@@ -49,9 +49,13 @@
 	color: inherit;
 }
 
+.bg-color-secondary li::marker {
+    color: currentColor;
+  }
+
 .subsection-description {
 	margin-block-start: 0;
-	margin-block-end: var(--space-s);
+	margin-block-end: var(--space-3xs);
 }
 
 ul:has(.skill-or-course) {

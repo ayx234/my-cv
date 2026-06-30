@@ -4,14 +4,37 @@
 @use "mixins";
 
 @media (width >= settings.$breakpoint-larger-screens-page-layout) {
-	/* ===== General ===== */
-
-	h4 {
-		color: var(--text-bluish-muted);
-	}
+	/* =============== When JS is not available =============== */
 
 	li {
 		list-style: disc;
+	}
+
+	ul:has(.skill-or-course) {
+		display: grid;
+	}
+	
+	li:has(.skill-or-course) {
+		display: list-item;
+	}
+	
+	ul .skill-or-course {
+		padding: 0;
+		border: none;
+		display: inline;
+		margin: 0;
+		// text-decoration: underline;
+	}
+
+	.bg-color-secondary li {
+		text-decoration: underline;
+	}
+	/* =============== When JS is active =============== */
+
+	/* ===== General ===== */
+
+	.layout-container-larger-screens h4 {
+		color: var(--text-bluish-muted);
 	}
 
 	/* ===== Layout / Composition ===== */
@@ -65,27 +88,13 @@
 		color: var(--text-bluish-light);
 	}
 
-	.main-larger-screens li::marker {
-		color: var(--background-color-secondary);
-	}
-
-	ul:has(.skill-or-course) {
-		display: grid;
-	}
-	li:has(.skill-or-course) {
-		display: list-item;
-	}
-	ul .skill-or-course {
-		padding: 0;
-		border: none;
-		display: inline;
-		margin: 0;
-		// text-decoration: underline;
-	}
+	// .main-larger-screens li::marker {
+	// 	color: var(--background-color-secondary);
+	// }
 
 	/* ===== Components ===== */
 
-	.profile-hero {
+	.layout-container-larger-screens .profile-hero {
 		justify-content: center;
 	}
 }

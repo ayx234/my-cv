@@ -79,7 +79,7 @@ a:is(:link, :visited) {
 	/* [tabindex] is used to increase specificity 
 		because these elements hav both a and tabindex
 		and my reset file has a selector with :is(a, [tabindex]) */
-	transform: var(--transform-header);
+		transform: var(--transform-header);
 	outline: none;
 	:is(h2, h3)::before {
 		width: 0.15em;
@@ -98,9 +98,13 @@ ul {
 	gap: var(--ul-default-gap, 0.5em);
 }
 
-li {
-	list-style: circle;
-}
+// li {
+// 	list-style: circle;
+// }
+
+li::marker {
+    color: var(--background-color-secondary);
+  }
 
 .h2-link {
 	text-decoration: none;

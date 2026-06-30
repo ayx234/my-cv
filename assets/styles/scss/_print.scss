@@ -38,6 +38,56 @@
  */
 
 @media print {
+	/* ===================== ALWAYS APPLIES: WHETHER JS OR NOT ===================== */
+	/* ====================== ONLY WHEN JS IS NOT AVAILABLE ====================== */
+	
+	/* IMPORTANT NOTE: JS is available main is inside .layout-container-larger-screens */
+
+	body > main {
+		padding-inline: 18pt;
+	}
+
+	body > main .technical-skills {
+		page-break-inside: auto;
+		break-inside: auto;
+	}
+
+
+	body > main .work-section {
+		page-break-inside: auto;
+		break-inside: auto;
+	}
+
+	body > main .work-section .page-subsection {
+		page-break-inside: auto;
+		break-inside: auto;
+		orphans: 3;
+		widows: 3;
+	}
+
+	body > main .work-section .page-subsection.page-subsection__time-out-cafe {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+
+	body > main .work-section .page-subsection.page-subsection__schlumberger-middle-east {
+		page-break-inside: avoid;
+		break-inside: avoid;
+		// orphans: revert;
+		// widows: revert;
+	}
+
+	/* ul below refuses not to be broken even on chrome */
+	// body > main .work-section .page-subsection.page-subsection__schlumberger-middle-east ul {
+	// 	page-break-inside: auto;
+	// 	break-inside: auto;
+	// 	orphans: revert;
+	// 	widows: revert;
+	// }
+
+	/* ====================== ONLY WHEN JS IS AVAILABLE ====================== */
+	/* TO ORGANIZE ACCORDING TO CATEGORIES ON TOP: ALWAYS, NO JS, ONLY WITH JS */
+
 	/* ================== GENERAL - GLOBAL STYLES ================== */
 
 	/* ===== Page Setup ===== */
@@ -165,7 +215,7 @@
 
 	li {
 		margin-block: 4pt;
-		list-style: circle;
+		// list-style: circle;
 	}
 
 	ul li {
@@ -293,6 +343,11 @@
 		break-inside: avoid;
 	}
 
+	.page-subsection {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+
 	.layout-container-larger-screens {
 		page-break-after: avoid;
 		break-after: avoid;
@@ -322,11 +377,6 @@
 		page-break-inside: auto;
 		break-inside: auto;
 	}
-
-	// .experience {
-	// 	page-break-inside: avoid;
-	// 	break-inside: avoid;
-	// }
 
 	.education {
 		page-break-inside: auto;
@@ -412,9 +462,9 @@
 		color: var(--text-bluish-light, #2a4a5e);
 	}
 
-	.main-larger-screens li {
-		list-style: disc;
-	}
+	// .main-larger-screens li {
+	// 	list-style: disc;
+	// }
 
 	.main-larger-screens li::marker {
 		color: var(--background-color-secondary);

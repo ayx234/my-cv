@@ -152,7 +152,7 @@ loaded on their machines.
   --outline-offset-l: 0.25em;
   --outline-offset-xl: 0.5em;
   /* === Transforms === */
-  --transform-header: translate(-1.5em, 0);
+  --transform-header: translateX(clamp(-1.5625rem, 0.1645rem + -3.9474cqi, -0.625rem)); /*-10px @ 320px container width to -25px @ 700px cw*/
   --transform-contact-link: translate(0, -0.25em);
   --transform-nav-item: scale(1.05) translate(0, -0.25em);
   --transform-social-link: scale(1.1) translate(0, -0.25em);
@@ -507,8 +507,8 @@ ul {
   gap: var(--ul-default-gap, 0.5em);
 }
 
-li {
-  list-style: circle;
+li::marker {
+  color: var(--background-color-secondary);
 }
 
 .h2-link {
@@ -566,9 +566,13 @@ li {
   color: inherit;
 }
 
+.bg-color-secondary li::marker {
+  color: currentColor;
+}
+
 .subsection-description {
   margin-block-start: 0;
-  margin-block-end: var(--space-s);
+  margin-block-end: var(--space-3xs);
 }
 
 ul:has(.skill-or-course) {
@@ -907,7 +911,7 @@ li:has(.skill-or-course) {
 }
 
 /* Technical Skills */
-.section-container.technical-skills {
+.section-container.technical-skills-container {
   /* display: grid; on .section-container */
   gap: 0;
 }
@@ -948,6 +952,10 @@ li:has(.skill-or-course) {
 
 .github-projects__description-container {
   flex: 2 1 18rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-block-end: var(--space-2xs);
 }
 
 .github-projects__description-container .webdev-project-link {
@@ -967,10 +975,6 @@ li:has(.skill-or-course) {
 
 .webdev-project-link {
   transition: var(--transition-webdev-project-link);
-}
-
-.webdev-project-link + .webdev-project-link {
-  margin-inline-start: var(--space-2xs);
 }
 
 .webdev-project-link:is(:focus-visible, :hover) {
@@ -1103,12 +1107,29 @@ for correct representation:
 /** @format */
 /** @format */
 @media (width >= 1000px) {
-  /* ===== General ===== */
-  h4 {
-    color: var(--text-bluish-muted);
-  }
+  /* =============== When JS is not available =============== */
   li {
     list-style: disc;
+  }
+  ul:has(.skill-or-course) {
+    display: grid;
+  }
+  li:has(.skill-or-course) {
+    display: list-item;
+  }
+  ul .skill-or-course {
+    padding: 0;
+    border: none;
+    display: inline;
+    margin: 0;
+  }
+  .bg-color-secondary li {
+    text-decoration: underline;
+  }
+  /* =============== When JS is active =============== */
+  /* ===== General ===== */
+  .layout-container-larger-screens h4 {
+    color: var(--text-bluish-muted);
   }
   /* ===== Layout / Composition ===== */
   /*
@@ -1148,23 +1169,8 @@ for correct representation:
   .main-larger-screens h3 {
     color: var(--text-bluish-light);
   }
-  .main-larger-screens li::marker {
-    color: var(--background-color-secondary);
-  }
-  ul:has(.skill-or-course) {
-    display: grid;
-  }
-  li:has(.skill-or-course) {
-    display: list-item;
-  }
-  ul .skill-or-course {
-    padding: 0;
-    border: none;
-    display: inline;
-    margin: 0;
-  }
   /* ===== Components ===== */
-  .profile-hero {
+  .layout-container-larger-screens .profile-hero {
     justify-content: center;
   }
 }
@@ -1204,6 +1210,37 @@ for correct representation:
  * --step-4:   23pt  (1.944rem)
  */
 @media print {
+  /* ===================== ALWAYS APPLIES: WHETHER JS OR NOT ===================== */
+  /* ====================== ONLY WHEN JS IS NOT AVAILABLE ====================== */
+  /* IMPORTANT NOTE: JS is available main is inside .layout-container-larger-screens */
+  body > main {
+    padding-inline: 18pt;
+  }
+  body > main .technical-skills {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+  body > main .work-section {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+  body > main .work-section .page-subsection {
+    page-break-inside: auto;
+    break-inside: auto;
+    orphans: 3;
+    widows: 3;
+  }
+  body > main .work-section .page-subsection.page-subsection__time-out-cafe {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  body > main .work-section .page-subsection.page-subsection__schlumberger-middle-east {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  /* ul below refuses not to be broken even on chrome */
+  /* ====================== ONLY WHEN JS IS AVAILABLE ====================== */
+  /* TO ORGANIZE ACCORDING TO CATEGORIES ON TOP: ALWAYS, NO JS, ONLY WITH JS */
   /* ================== GENERAL - GLOBAL STYLES ================== */
   /* ===== Page Setup ===== */
   @page {
@@ -1299,7 +1336,6 @@ for correct representation:
   }
   li {
     margin-block: 4pt;
-    list-style: circle;
   }
   ul li {
     margin-inline-start: 20pt;
@@ -1397,6 +1433,10 @@ for correct representation:
     page-break-inside: avoid;
     break-inside: avoid;
   }
+  .page-subsection {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
   .layout-container-larger-screens {
     page-break-after: avoid;
     break-after: avoid;
@@ -1487,9 +1527,6 @@ for correct representation:
   /* Main Content Styling */
   .main-larger-screens h3 {
     color: var(--text-bluish-light, #2a4a5e);
-  }
-  .main-larger-screens li {
-    list-style: disc;
   }
   .main-larger-screens li::marker {
     color: var(--background-color-secondary);
