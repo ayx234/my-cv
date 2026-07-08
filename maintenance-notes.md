@@ -25,6 +25,9 @@ This file collects maintenance-oriented context for the project.
 - Update the downloadable PDF.
 - Add dark mode support.
 - Refactor the JavaScript into modules.
+- _utilities.scss should be the last stylesheet referred
+  - move referrence to last in main.scss
+  - adjust component styles if necessary
 - Reorganize and simplify the print stylesheet.
   - re-organize file
   - fine-tune print layout when no js

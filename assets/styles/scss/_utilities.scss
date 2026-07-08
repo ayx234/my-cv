@@ -68,6 +68,12 @@ for correct representation:
 	display: none;
 }
 
+.my-cv-github-anchor.show-on-print {
+	/* temporary - remove after making _utilities.scss 
+	the last stylesheet in main.scss */
+	display: none;
+}
+
 .visually-hidden{
   position:absolute !important;
   width:1px;
